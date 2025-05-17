@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import 'tailwind-scrollbar';        /* If you want to style the scrollbar */
+@import 'tailwind-scrollbar-hide'; 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -17,20 +18,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html{
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  
-}
-body {
-  padding:0;
-  margin: 0;
-  display: flex;
-  min-width: 320px;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
 
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
@@ -38,40 +25,5 @@ body::-webkit-scrollbar {
 }
 
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-
-  button {
-    background-color: #f9f9f9;
-  }
-}
-/* carousel navigation color */
-.swiper-button-next,
-.swiper-button-prev{
-  
-  color:lightgreen;
-  opacity:50%;
-}
-/* carousel pagination color */
-.swiper-pagination-bullet{
-  background-color: lightgreen; /* or any color you like */
-  opacity: 50%;
-}
-.swiper-pagination-bullet-active{
-  background-color: lightgreen; /* or any color you like */
-  opacity: 1;
-}
-/* testimonial slider */
-/* Add these styles to your global styles.css or a custom CSS file */
-
-/* Ensure no overflow beyond the section */
 
 

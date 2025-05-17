@@ -1,12 +1,14 @@
 import CarouselVideo from "./carouselSection";
 import AboutUs from "./aboutSection";
-import TestimonialCarousel from "./testimonialSection";
+import TestimonialSlider from "./testimonialSection";
+import Footer from "./footerSection";
 export default function Homepage(){
     return(
         <div>
             <CarouselVideo/>
             <AboutUs/>
-            <TestimonialCarousel/>
+            <TestimonialSlider/>
+            <Footer/>
         </div>
     )
 }

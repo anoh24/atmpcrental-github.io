@@ -28,7 +28,7 @@ export default function Navbar() {
         }`}>
             <div className="flex justify-between items-center max-w-7xl mx-auto">
                 <div className={`text-xl font-bold ${navbarBackground ? 'text-black': 'text-white'}`}>
-                    MYSITE
+                    ATMPC
                 </div>
                 {/* Burger Button - only on mobile */}
                 <button

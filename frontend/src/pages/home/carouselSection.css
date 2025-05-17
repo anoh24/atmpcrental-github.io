@@ -1,0 +1,21 @@
+/* carousel navigation color */
+.swiper-button-next,
+.swiper-button-prev{
+  
+  color:lightgreen;
+  opacity:50%;
+}
+/* carousel pagination color */
+.swiper-pagination-bullet{
+  background-color: lightgreen; /* or any color you like */
+  opacity: 50%;
+}
+.swiper-pagination-bullet-active{
+  background-color: lightgreen; /* or any color you like */
+  opacity: 1;
+}
+/* testimonial slider */
+/* Add these styles to your global styles.css or a custom CSS file */
+
+/* Ensure no overflow beyond the section */
+

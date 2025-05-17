@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { useRef } from 'react';
+import './carouselSection.css'
 
 const CarouselVideo = () => {
   const swiperRef = useRef(null);
@@ -25,7 +26,7 @@ const CarouselVideo = () => {
   ];
 
   return (
-    <div className="w-screen h-screen">
+    <div data-scroll-section className="w-screen h-screen">
       <Swiper 
        onSwiper={(swiper) => (swiperRef.current = swiper)}
         modules={[Navigation, Pagination, Autoplay]}
