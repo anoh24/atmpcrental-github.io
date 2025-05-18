@@ -1,27 +1,19 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import MainLayout from './layouts/MainLayout';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/navbar';
 import Homepage from './pages/home/homepage';
-
-// import About from './pages/About';
-// import Rooms from './pages/Rooms';
-// import Contact from './pages/Contact';
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: 
-          <MainLayout />,
-    children: [
-      { index: true, element: <Homepage/>}
-      // { path: 'AboutUs', element: <AboutUs /> },
-      // { path: 'Contact', element: <Contact /> },
-      // { path: '', element: <LoginRegister /> },
-    ],
-  },
-]);
+import Loginpage from './pages/LoginRegisterClient/loginPage';
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+      <Route path="/" element={<Homepage />} />
+        <Route path="/homepage" element={<Homepage />} />
+        <Route path="/loginpage" element={<Loginpage />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
