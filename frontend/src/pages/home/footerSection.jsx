@@ -15,11 +15,11 @@ const Footer = () => {
   
 
   return (
-    <footer className="bg-black w-full">
+    <footer className="bg-lightgreen w-full">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-20 sm:gap-20 md:gap-15 lg:gap-2 xl:gap-2 py-20">
           <div className="flex flex-col">
-            <h1 className="text-center text-white-700 text-2xl sm:text-base md:text-xl font-semibold mb-4">
+            <h1 className="text-center text-black text-2xl sm:text-base md:text-xl font-extrabold mb-4">
               AI Chat Support Inquiry
             </h1>
             <div style={{height:"250px"}} className="flex flex-col w-full max-w-md mx-auto bg-white rounded-lg shadow-md">
@@ -61,7 +61,7 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col items-center space-y-4 w-full mx-auto">
-            <h1 className="text-white-700 text-2xl sm:text-base md:text-xl font-semibold">Social Media</h1>
+            <h1 className="text-black text-2xl sm:text-base md:text-xl font-extrabold">Social Media</h1>
             <div className="flex flex-row space-x-5">
               <a href="#" className="text-green-500 hover:text-gray-400 text-xl">
                 <FaFacebookF />
@@ -82,9 +82,9 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col items-center space-y-4 w-full mx-auto">
-            <h1 className="text-white-700 text-2xl sm:text-base md:text-xl font-semibold">Contacts</h1>
-            <p className="text-white-200">Marawi Branch Smart : 0908-210-4526</p>
-            <p className="text-white-200">CDO Branch Globe : 0908-210-4497</p>
+            <h1 className="text-black text-2xl sm:text-base md:text-xl font-extrabold">Contacts</h1>
+            <p className="text-gray-900 ">Marawi Branch Smart : 0908-210-4526</p>
+            <p className="text-gray-900 ">CDO Branch Globe : 0908-210-4497</p>
           </div>
 
           <div className="flex">
@@ -98,7 +98,7 @@ const Footer = () => {
             ></iframe>
           </div>
         </div>
-        <p className="text-center text-white text-sm">ATMPC all right reserved 2025</p>
+        <p className="text-center text-black text-xs">ATMPC all right reserved 2025</p>
       </div>
     </footer>
   );

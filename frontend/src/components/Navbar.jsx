@@ -24,24 +24,24 @@ export default function Navbar() {
     }, []);
     return (
         <nav  className={`p-4 fixed top-0 w-full z-10 transition-all duration-300 ${
-            navbarBackground ? 'bg-black' : 'bg-transparent'
+            navbarBackground ? 'bg-white' : 'bg-transparent'
         }`}>
             <div className="flex justify-between items-center max-w-7xl mx-auto">
-                <div className={`text-2xl font-bold ${navbarBackground ? 'text-white': 'text-white'}`}>
+                <div className={`text-2xl font-black ${navbarBackground ? 'text-black': 'text-white'}`}>
                     MY APP
                 </div>
 
                 <button
-                    className={`bg-transparent  ${navbarBackground ? 'text-white': 'text-white'} border-none focus:outline-none md:hidden text-3xl transition-transform duration-1000 ease-in-out ${menuOpen ? 'rotate-45' : ''}`}
+                    className={`bg-transparent  ${navbarBackground ? 'text-black': 'text-white'} border-none focus:outline-none md:hidden text-3xl transition-transform duration-1000 ease-in-out ${menuOpen ? 'rotate-45' : ''}`}
                     onClick={() => setMenuOpen(!menuOpen)}
                 >
                    {menuOpen? '✖': '☰'}
                 </button>
 
                 <ul className="hidden md:flex justify-end space-x-8 pr-8">
-                    <li><Link className={`hover:text-green-500  ${navbarBackground ? 'text-white': 'text-white'}`} to="/Homepage">Home</Link></li>
-                    <li><Link className={`hover:text-green-500  ${navbarBackground ? 'text-white': 'text-white'}`} to="/AboutUs">About Us</Link></li>
-                    <li><Link className={`hover:text-green-500  ${navbarBackground ? 'text-white': 'text-white'}`} to="/Contact">Contact</Link></li>
+                    <li><Link className={`hover:text-green-500  ${navbarBackground ? 'text-black': 'text-white'}`} to="/Homepage">Home</Link></li>
+                    <li><Link className={`hover:text-green-500  ${navbarBackground ? 'text-black': 'text-white'}`} to="/AboutUs">About Us</Link></li>
+                    <li><Link className={`hover:text-green-500  ${navbarBackground ? 'text-black': 'text-white'}`} to="/Contact">Contact</Link></li>
                     <li><Link className="bg-green-500 opacity-80 text-white px-4 py-2 rounded hover:bg-green-600 transition font-semibold" to="/loginpage">Login/Register</Link></li>
                 </ul>
             </div>
@@ -52,9 +52,9 @@ export default function Navbar() {
                 }`}
             >
                 <ul className="flex flex-col px-4 pt-4 pb-2 space-y-4">
-                <li><Link className={`hover:text-green-500  ${navbarBackground ? 'text-white': 'text-white'}`} to="/Homepage">Home</Link></li>
-                    <li><Link className={`hover:text-green-500  ${navbarBackground ? 'text-white': 'text-white'}`} to="/AboutUs">About Us</Link></li>
-                    <li><Link className={`hover:text-green-500  ${navbarBackground ? 'text-white': 'text-white'}`} to="/Contact">Contact</Link></li>
+                <li><Link className={`hover:text-green-500  ${navbarBackground ? 'text-black': 'text-white'}`} to="/Homepage">Home</Link></li>
+                    <li><Link className={`hover:text-green-500  ${navbarBackground ? 'text-black': 'text-white'}`} to="/AboutUs">About Us</Link></li>
+                    <li><Link className={`hover:text-green-500  ${navbarBackground ? 'text-black': 'text-white'}`} to="/Contact">Contact</Link></li>
                     <li><Link className="bg-green-500 opacity-80 text-white px-4 py-2 rounded hover:bg-green-600 transition font-semibold" to="/loginpage">Login/Register</Link></li>
                 </ul>
             </div>
