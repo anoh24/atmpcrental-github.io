@@ -20,8 +20,8 @@ const RegisterForm = () => {
   const [showPassword,setShowPassword] = useState(false);
   const togglePassword = () => setShowPassword((prev) => !prev)
   return (
-    <div className="mt-40 mb-40 w-full">
-      <h1 className="text-black text-center text-4xl font-black">Sign Up Your Account</h1>
+    <div className="py-40 w-full">
+      <h1 className=" text-black text-center text-4xl font-black">Sign Up Your Account</h1>
         <div className="text-center text-gray-600 mt-10 max-w-7xl mx-auto px-4">
             <p>Create your account to connect with trusted landlord — just like many renters already have.</p>
 

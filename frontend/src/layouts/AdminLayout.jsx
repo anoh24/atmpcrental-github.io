@@ -4,7 +4,7 @@ const AdminLayout = ({ children }) => {
   return (
     <>
       <Sidebar />
-      <main>{children}</main>
+      <main className="flex-1 bg-gray-100">{children}</main>
     </>
   );
 };

@@ -4,7 +4,7 @@ const MainLayout = ({ children }) => {
   return (
     <>
       <Navbar />
-      <main>{children}</main>
+      <main className="bg-gray-10">{children}</main>
     </>
   );
 };

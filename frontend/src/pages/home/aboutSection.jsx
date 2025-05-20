@@ -13,7 +13,7 @@ const AboutUs = () =>{
                  and budget-friendly accommodations—conveniently located near campuses, offices, markets, and malls.
                 </p>
                 <div className="grid grid-cols-1 p-4 md:grid-cols-3 gap-6">
-                    <div className="p-4 rounded-xl shadow hover:shadow-md transition">
+                    <div className="bg-white p-4 rounded-xl shadow hover:shadow-md transition">
                         <h3 className="text-xl font-semibold font-extrabold text-black mb-2">
                         Mision
                         </h3>
@@ -22,7 +22,7 @@ const AboutUs = () =>{
                          empowering them to live comfortably and focus on their goals.
                         </p>
                     </div>
-                    <div className=" p-4 rounded-xl shadow hover:shadow-md transition">
+                    <div className="bg-white p-4 rounded-xl shadow hover:shadow-md transition">
                         <h3 className="text-xl font-semibold font-extrabold text-black mb-2">
                             Vision
                         </h3>
@@ -32,7 +32,7 @@ const AboutUs = () =>{
                          and comfort at every stage of their journey.
                         </p>
                     </div>
-                    <div className=" p-4 rounded-xl shadow hover:shadow-md transition">
+                    <div className="bg-white p-4 rounded-xl shadow hover:shadow-md transition">
                         <h3 className="text-xl font-semibold font-extrabold text-black mb-2">
                             Values
                         </h3>

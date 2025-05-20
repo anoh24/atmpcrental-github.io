@@ -25,8 +25,9 @@ import { Link } from 'react-router-dom';
   const togglePassword = () => setShowPassword((prev) => !prev);
 
   return (
-    <div className="mt-40 mb-40 w-full">
-      <h1 className="text-black text-center text-4xl font-black">Login to Your Account</h1>
+    
+    <div className="py-40 w-full">
+      <h1 className=" text-black text-center text-4xl font-black">Login to Your Account</h1>
         <div className="text-center text-gray-600 mt-10 max-w-7xl mx-auto px-4">
           <p>Log in to view your personal profile, view your rental status, and track your payments,</p>
           <p>Manage billing information, submit maintenance requests, and communicate with landlord.</p>

@@ -1,7 +1,8 @@
 import React from "react";
-
+import SuperAdminCharts from "./dashboardSection";
 export default function dashboardMainPage(){
-    <div>
-        
-    </div>
+    
+    return(
+        <SuperAdminCharts/>
+    )
 }
