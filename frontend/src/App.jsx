@@ -7,6 +7,8 @@ import RegisterPage from './pages/LoginRegisterClient/registerPage';
 import DashboardMainPage from './pages/superAdmin/dashboardMain/dashboardMainPage';
 import RegisterBranchAdminAccountPage from './pages/superAdmin/dashboardBranchAdminAccounts/registerBranchAdminPage';
 import ListBranchAdminAccountPage from './pages/superAdmin/dashboardBranchAdminAccountList/listBranchAdminAccountPage';
+import BranchAdminLayout from './layouts/branchAdminLayout/branchAdminLayout';
+import BranchAdminDashboardPage from './pages/branchAdmin/branchAdminDashboardPage';
 function App() {
   return (
     <Router>
@@ -64,6 +66,17 @@ function App() {
             </AdminLayout>
           }
         />
+        {/* Branch admin dashbnoard */}
+        <Route
+         path="/branchAdmin/branchAdminDashboardPage"
+         element={
+          <BranchAdminLayout>
+          <BranchAdminDashboardPage/>
+          </BranchAdminLayout>
+         }
+        >
+
+        </Route>
       </Routes>
     </Router>
   );

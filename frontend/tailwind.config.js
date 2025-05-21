@@ -14,6 +14,15 @@ module.exports = {
           '100%': { transform: 'translateX(-50%)' },
         },
       },
+       fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+        raleway: ['Raleway', 'sans-serif'],
+        oswald: ['Oswald', 'sans-serif'],
+        merriweather: ['Merriweather', 'serif'],
+        pacifico: ['Pacifico', 'cursive'],
+        ubuntu: ['Ubuntu', 'sans-serif'],
+        firacode: ['Fira Code', 'monospace'],
+      },
     },
   },
 
