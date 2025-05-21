@@ -4,9 +4,8 @@ import AdminLayout from './layouts/superAdminLayout/AdminLayout';
 import Homepage from './pages/home/homepage';
 import Loginpage from './pages/LoginRegisterClient/loginPage';
 import RegisterPage from './pages/LoginRegisterClient/registerPage';
-import DashboardMainPage from './pages/superAdmin/dashboardMain/dashboardMainPage';
-import RegisterBranchAdminAccountPage from './pages/superAdmin/dashboardBranchAdminAccounts/registerBranchAdminPage';
-import ListBranchAdminAccountPage from './pages/superAdmin/dashboardBranchAdminAccountList/listBranchAdminAccountPage';
+import DashboardMainPage from './pages/superAdmin/dashboardMainPage';
+
 function App() {
   return (
     <Router>
@@ -37,30 +36,21 @@ function App() {
           }
         />
 
-        {/* Admin dashboard */}
+        {/* Admin Pages */}
         <Route
-          path="/superAdmin/dashboardMain/dashboardMainPage"
+          path="/superAdmin/dashboardMainPage"
           element={
             <AdminLayout>
               <DashboardMainPage />
             </AdminLayout>
           }
         />
-        {/* Account regist branch admin */}
-           <Route
-          path="/superAdmin/dashboardBranchAdminAccounts/registerBranchAdminPage"
+        {/* Admin Branch Account Registering */}
+         <Route
+          path="/superAdmin/"
           element={
             <AdminLayout>
-              <RegisterBranchAdminAccountPage />
-            </AdminLayout>
-          }
-        />
-         {/* Account list branch admin */}
-           <Route
-          path="/superAdmin/dashboardBranchAdminAccountList/listBranchAdminAccountPage"
-          element={
-            <AdminLayout>
-              <ListBranchAdminAccountPage />
+              <DashboardMainPage />
             </AdminLayout>
           }
         />

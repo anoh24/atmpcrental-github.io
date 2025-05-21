@@ -36,10 +36,10 @@ const COLORS = ["#00C49F", "#FF8042"];
 
 const  SuperAdminCharts = () => {
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-2 gap-6 p-4 z-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 z-2">
       {/* Revenue Over Time */}
       <div className="bg-white rounded-2xl p-4 shadow-md">
-        <h2 className="text-xl font-semibold mb-2">Revenue Over Time</h2>
+        <h2 className="text-xl text-black font-black mb-2">Revenue Over Time</h2>
         <ResponsiveContainer width="100%" height={250}>
           <LineChart data={revenueData}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -54,7 +54,7 @@ const  SuperAdminCharts = () => {
 
       {/* Occupancy Rate Comparison */}
       <div className="bg-white rounded-2xl p-4 shadow-md">
-        <h2 className="text-xl font-semibold mb-2">Occupancy Rate by Branch</h2>
+        <h2 className="text-xl text-black font-black mb-2">Occupancy Rate by Branch</h2>
         <ResponsiveContainer width="100%" height={250}>
           <BarChart data={occupancyData}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -68,7 +68,7 @@ const  SuperAdminCharts = () => {
 
       {/* Tenant Type Pie Chart */}
       <div className="bg-white rounded-2xl p-4 shadow-md">
-        <h2 className="text-xl font-semibold mb-2">Tenant Types</h2>
+        <h2 className="text-xl text-black font-black mb-2">Tenant Types</h2>
         <ResponsiveContainer width="100%" height={250}>
           <PieChart>
             <Pie
@@ -91,7 +91,7 @@ const  SuperAdminCharts = () => {
 
       {/* Room Turnover Rate */}
       <div className="bg-white rounded-2xl p-4 shadow-md">
-        <h2 className="text-xl font-semibold mb-2">Room Turnover Rate</h2>
+        <h2 className="text-xl text-black font-black mb-2">Room Turnover Rate</h2>
         <ResponsiveContainer width="100%" height={250}>
           <AreaChart data={turnoverData}>
             <defs>
