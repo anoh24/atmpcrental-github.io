@@ -9,6 +9,7 @@ import RegisterBranchAdminAccountPage from './pages/superAdmin/dashboardBranchAd
 import ListBranchAdminAccountPage from './pages/superAdmin/dashboardBranchAdminAccountList/listBranchAdminAccountPage';
 import BranchAdminLayout from './layouts/branchAdminLayout/branchAdminLayout';
 import BranchAdminDashboardPage from './pages/branchAdmin/branchAdminDashboardPage';
+import BranchAdminDashboardTenantViewPage from './pages/branchAdmin/branchAdminTenantView/tenantViewPage'
 function App() {
   return (
     <Router>
@@ -72,6 +73,16 @@ function App() {
          element={
           <BranchAdminLayout>
           <BranchAdminDashboardPage/>
+          </BranchAdminLayout>
+         }
+        >
+        </Route>
+
+         <Route
+         path="/branchAdmin/branchAdminTenantView/tenantViewPage"
+         element={
+          <BranchAdminLayout>
+          <BranchAdminDashboardTenantViewPage/>
           </BranchAdminLayout>
          }
         >

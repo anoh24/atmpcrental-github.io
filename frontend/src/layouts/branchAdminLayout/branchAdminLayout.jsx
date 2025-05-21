@@ -1,11 +1,14 @@
+import React from "react";
 import BranchAdminBar from "../../components/branchAdminBar/branchAdminNavbar";
 
-const BranchAdminLayout = ({childern}) => {
+const BranchAdminLayout = ({children}) => {
     return(
         <>
-            <div className="flex flex-1 overflow-hidden">
+            <div className="flex flex-1">
                 <BranchAdminBar/>
-                <main className="flex-1 overflow-auto bg-gray-700 p-4"></main>
+                <main className="flex-1 bg-gray-100">
+                    {children}
+                </main>
             </div>
 
         </>
