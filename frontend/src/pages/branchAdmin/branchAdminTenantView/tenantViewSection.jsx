@@ -26,7 +26,7 @@ const TenantView = () => {
   ];
 
   return (
-    <div className="h-full font-oswald py-10 px-4 md:px-20 bg-gray-100 ">
+    <div className="h-full font-oswald py-10 px-4 md:px-20 bg-gray-100">
       {/* TENANTS LIST TABLE */}
       <div className="bg-white max-w-5xl mx-auto rounded-xl shadow-md p-6 border mb-10">
         <h2 className="text-lg font-bold text-black mb-4">🏠 Tenants List</h2>

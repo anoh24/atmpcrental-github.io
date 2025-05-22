@@ -10,6 +10,8 @@ import ListBranchAdminAccountPage from './pages/superAdmin/dashboardBranchAdminA
 import BranchAdminLayout from './layouts/branchAdminLayout/branchAdminLayout';
 import BranchAdminDashboardPage from './pages/branchAdmin/branchAdminDashboardPage';
 import BranchAdminDashboardTenantViewPage from './pages/branchAdmin/branchAdminTenantView/tenantViewPage'
+import BranchAdminRoomViewPage from './pages/branchAdmin/branchAdminRoomView/branchAdminRoomViewPage';
+import BranchAdminBillingViewPage from './pages/branchAdmin/branchAdminBillingView/branchAdminBillingViewPage'
 function App() {
   return (
     <Router>
@@ -83,6 +85,27 @@ function App() {
          element={
           <BranchAdminLayout>
           <BranchAdminDashboardTenantViewPage/>
+          </BranchAdminLayout>
+         }
+        >
+
+        </Route>
+          <Route
+         path="/branchAdmin/branchAdminRoomView/branchAdminRoomViewPage"
+         element={
+          <BranchAdminLayout>
+          <BranchAdminRoomViewPage/>
+          </BranchAdminLayout>
+         }
+        >
+
+        </Route>
+
+        <Route
+         path="/branchAdmin/branchAdminBillingView/branchAdminBillingViewPage"
+         element={
+          <BranchAdminLayout>
+          <BranchAdminBillingViewPage/>
           </BranchAdminLayout>
          }
         >
