@@ -5,7 +5,6 @@ import {
   HiOutlineUsers,
   HiOutlineHomeModern,
   HiOutlineCreditCard,
-  HiOutlineInboxArrowDown,
   HiOutlineExclamationCircle,
   HiOutlineLockClosed
 
@@ -20,7 +19,7 @@ export default function BranchAdminBar() {
   };
 
   return (
-    <div className={`fixed h-100 z-50 rounded-xl flex flex-col mt-10 ${resizeSidebar ? 'w-64' : 'w-20'} transition-all duration-300 ease-in-out bg-transparent shadow-xl`}>
+    <div className={`fixed h-100 z-50 bg-white opacity-80 rounded-xl flex flex-col mt-10 ${resizeSidebar ? 'w-64' : 'w-20'} transition-all duration-300 ease-in-out shadow-xl`}>
       <div className="flex flex-row gap-2 w-full py-5 px-5 items-center bg-transparent">
         <h4 className="bg-green-600 text-xs font-black px-2 py-2 rounded-lg text-white">NM</h4>
         {resizeSidebar && (
@@ -59,13 +58,8 @@ export default function BranchAdminBar() {
           {resizeSidebar && 'Billing'}
         </NavLink>
 
-        <NavLink to="/requests" className={({ isActive }) =>
-          `flex items-center gap-4 text-sm font-oswald hover:bg-green-500 rounded-md p-2 ${isActive ? 'text-green-600 font-extrabold' : 'text-black'}`}>
-          <HiOutlineInboxArrowDown className="text-xl" />
-          {resizeSidebar && 'Request'}
-        </NavLink>
 
-        <NavLink to="/notices" className={({ isActive }) =>
+        <NavLink to="/branchAdmin/branchAdminNotificationView/branchAdminNotificationViewPage" className={({ isActive }) =>
           `flex items-center gap-4 text-sm font-oswald hover:bg-green-500 rounded-md p-2 ${isActive ? 'text-green-600 font-extrabold' : 'text-black'}`}>
           <HiOutlineExclamationCircle className="text-xl" />
           {resizeSidebar && 'Notification'}

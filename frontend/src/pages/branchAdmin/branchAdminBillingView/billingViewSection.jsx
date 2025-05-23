@@ -18,7 +18,7 @@ const BillingView = () => {
   };
 
   return (
-    <div className="h-full font-oswald py-10 px-4 md:px-20 bg-gray-100">
+    <div className="h-screen font-oswald py-10 px-4 md:px-20 bg-gray-100">
       <div className="max-w-5xl mx-auto grid grid-cols-1 gap-6">
 
         {/* Rent Payment History */}
