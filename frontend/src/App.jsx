@@ -1,12 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// layout section
 import MainLayout from './layouts/customerMainLayout/MainLayout';
 import AdminLayout from './layouts/superAdminLayout/AdminLayout';
+//client side section
 import Homepage from './pages/home/homepage';
 import Loginpage from './pages/LoginRegisterClient/loginPage';
 import RegisterPage from './pages/LoginRegisterClient/registerPage';
+//super admin side section
 import DashboardMainPage from './pages/superAdmin/dashboardMain/dashboardMainPage';
 import RegisterBranchAdminAccountPage from './pages/superAdmin/dashboardBranchAdminAccounts/registerBranchAdminPage';
 import ListBranchAdminAccountPage from './pages/superAdmin/dashboardBranchAdminAccountList/listBranchAdminAccountPage';
+//branch admin side section
 import BranchAdminLayout from './layouts/branchAdminLayout/branchAdminLayout';
 import BranchAdminDashboardPage from './pages/branchAdmin/branchAdminDashboardPage';
 import BranchAdminDashboardTenantViewPage from './pages/branchAdmin/branchAdminTenantView/tenantViewPage'
