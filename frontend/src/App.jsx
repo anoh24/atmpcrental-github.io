@@ -13,7 +13,6 @@ import BranchAdminDashboardTenantViewPage from './pages/branchAdmin/branchAdminT
 import BranchAdminRoomViewPage from './pages/branchAdmin/branchAdminRoomView/branchAdminRoomViewPage';
 import BranchAdminBillingViewPage from './pages/branchAdmin/branchAdminBillingView/branchAdminBillingViewPage'
 import BranchAdminNotificationViewPage from './pages/branchAdmin/branchAdminNotificationView/branchAdminNotificationViewPage'
-
 //customer admin account section
 import CustomerAdminMainDashboardPage from './pages/customerAdminAccount/customerAdminDashboardView/customerAdminMainDashboardPage';
 function App() {
