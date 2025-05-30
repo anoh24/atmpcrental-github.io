@@ -1,22 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // layout section
 import MainLayout from './layouts/customerMainLayout/MainLayout';
-import AdminLayout from './layouts/superAdminLayout/AdminLayout';
+import BranchAdminLayout from './layouts/branchAdminLayout/branchAdminLayout';
+import CustomerAdminAccountNavbarLayout from './layouts/customerAdminAccountLayout/customerAdminAccountLayout';
 //client side section
 import Homepage from './pages/home/homepage';
 import Loginpage from './pages/LoginRegisterClient/loginPage';
 import RegisterPage from './pages/LoginRegisterClient/registerPage';
-//super admin side section
-import DashboardMainPage from './pages/superAdmin/dashboardMain/dashboardMainPage';
-import RegisterBranchAdminAccountPage from './pages/superAdmin/dashboardBranchAdminAccounts/registerBranchAdminPage';
-import ListBranchAdminAccountPage from './pages/superAdmin/dashboardBranchAdminAccountList/listBranchAdminAccountPage';
 //branch admin side section
-import BranchAdminLayout from './layouts/branchAdminLayout/branchAdminLayout';
-import BranchAdminDashboardPage from './pages/branchAdmin/branchAdminDashboardPage';
+import BranchAdminDashboardPage from './pages/branchAdmin/branchAdminDashboardView/branchAdminDashboardPage';
 import BranchAdminDashboardTenantViewPage from './pages/branchAdmin/branchAdminTenantView/tenantViewPage'
 import BranchAdminRoomViewPage from './pages/branchAdmin/branchAdminRoomView/branchAdminRoomViewPage';
 import BranchAdminBillingViewPage from './pages/branchAdmin/branchAdminBillingView/branchAdminBillingViewPage'
 import BranchAdminNotificationViewPage from './pages/branchAdmin/branchAdminNotificationView/branchAdminNotificationViewPage'
+
+//customer admin account section
+import CustomerAdminMainDashboardPage from './pages/customerAdminAccount/customerAdminDashboardView/customerAdminMainDashboardPage';
 function App() {
   return (
     <Router>
@@ -47,36 +46,9 @@ function App() {
           }
         />
 
-        {/* Admin dashboard */}
-        <Route
-          path="/superAdmin/dashboardMain/dashboardMainPage"
-          element={
-            <AdminLayout>
-              <DashboardMainPage />
-            </AdminLayout>
-          }
-        />
-        {/* Account regist branch admin */}
-           <Route
-          path="/superAdmin/dashboardBranchAdminAccounts/registerBranchAdminPage"
-          element={
-            <AdminLayout>
-              <RegisterBranchAdminAccountPage />
-            </AdminLayout>
-          }
-        />
-         {/* Account list branch admin */}
-           <Route
-          path="/superAdmin/dashboardBranchAdminAccountList/listBranchAdminAccountPage"
-          element={
-            <AdminLayout>
-              <ListBranchAdminAccountPage />
-            </AdminLayout>
-          }
-        />
         {/* Branch admin dashbnoard */}
         <Route
-         path="/branchAdmin/branchAdminDashboardPage"
+         path="/branchAdmin/branchAdminDashboardView/branchAdminDashboardPage"
          element={
           <BranchAdminLayout>
           <BranchAdminDashboardPage/>
@@ -126,6 +98,18 @@ function App() {
          }
         >
 
+        </Route>
+
+        {/* customer admin dashboard */}
+        <Route
+          path="/customerAdminAccount/customerAdminDashboardView/customerAdminMainDashboardPage"
+          element={
+            <CustomerAdminAccountNavbarLayout>
+              <CustomerAdminMainDashboardPage/>
+            </CustomerAdminAccountNavbarLayout>
+
+          }
+          >
         </Route>
       </Routes>
     </Router>

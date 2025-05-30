@@ -34,7 +34,7 @@ export default function BranchAdminBar() {
       </div>
 
       <nav className="flex flex-col gap-4 px-5 py-10">
-        <NavLink to="/dashboard" className={({ isActive }) =>
+        <NavLink to="/branchAdmin/branchAdminDashboardView/branchAdminDashboardPage" className={({ isActive }) =>
           `flex items-center gap-4 text-sm font-oswald hover:bg-green-500 rounded-md p-2 ${isActive ? 'text-green-600 font-extrabold' : 'text-black'}`}>
           <HiOutlineHome className="text-xl" />
           {resizeSidebar && 'Dashboard'}
