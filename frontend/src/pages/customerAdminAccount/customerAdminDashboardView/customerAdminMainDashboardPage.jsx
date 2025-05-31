@@ -1,9 +1,10 @@
 import React from "react";
-
+import CustomerAdminMainDashboardSection from "./customerAdminMainDashboardSection";
 export default function CustomerAdminMainDashboardPage(){
     return(
-        <div className="bg-green-700 ">
-            Hello World
-        </div>
+        <>
+              <CustomerAdminMainDashboardSection/>
+        </>
+
     )
 }

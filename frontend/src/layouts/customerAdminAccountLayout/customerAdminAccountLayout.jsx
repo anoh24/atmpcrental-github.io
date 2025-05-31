@@ -6,7 +6,7 @@ const CustomerAdminAccountNavbarLayout = ({children}) =>{
         <>  
             <div className="flex flex-1">
                 <CustomerAdminAccountNavbar/>
-                <main className="flex-1 bg-gray-500">
+                <main className="h-screen flex-1 bg-gray-100">
                     {children}
                 </main>
             </div>
