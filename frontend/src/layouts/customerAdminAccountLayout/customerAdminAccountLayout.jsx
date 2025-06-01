@@ -4,9 +4,9 @@ import CustomerAdminAccountNavbar from "../../components/customerAdminAccountBar
 const CustomerAdminAccountNavbarLayout = ({children}) =>{
     return(
         <>  
-            <div className="flex flex-1">
+            <div className="flex flex-1 min-h-screen">
                 <CustomerAdminAccountNavbar/>
-                <main className="h-screen flex-1 bg-gray-100">
+                <main className=" flex-1 bg-gray-100">
                     {children}
                 </main>
             </div>
