@@ -15,6 +15,7 @@ import BranchAdminBillingViewPage from './pages/branchAdmin/branchAdminBillingVi
 import BranchAdminNotificationViewPage from './pages/branchAdmin/branchAdminNotificationView/branchAdminNotificationViewPage'
 //customer admin account section
 import CustomerAdminMainDashboardPage from './pages/customerAdminAccount/customerAdminDashboardView/customerAdminMainDashboardPage';
+import CustomerAdminAccountProfilePage from './pages/customerAdminAccount/customerAdminAccountProfileVIew/customerAdminAccountProfilePage'
 function App() {
   return (
     <Router>
@@ -105,6 +106,18 @@ function App() {
           element={
             <CustomerAdminAccountNavbarLayout>
               <CustomerAdminMainDashboardPage/>
+            </CustomerAdminAccountNavbarLayout>
+
+          }
+          >
+        </Route>
+
+            {/* customer admin account profile */}
+        <Route
+          path="/customerAdminAccount/customerAdminAccountProfileView/customerAdminAccountProfilePage"
+          element={
+            <CustomerAdminAccountNavbarLayout>
+              <CustomerAdminAccountProfilePage/>
             </CustomerAdminAccountNavbarLayout>
 
           }

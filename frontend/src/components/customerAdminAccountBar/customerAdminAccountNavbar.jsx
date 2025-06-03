@@ -9,32 +9,27 @@ export default function CustomerAdminAccountNavbar(){
             <nav className="bg-white relative w-full flex justify-end gap-1 sm:gap-3 p-3 
             mx-auto max-w-3xl shadow-md sm:rounded-0 md:rounded-full">
                 <h1 className="text-2xl text-black font-black absolute left-5" >DASHBOARD</h1>
-                <NavLink t="/">
+                <NavLink to="/customerAdminAccount/customerAdminDashboardView/customerAdminMainDashboardpage">
                     <HiOutlineHome className="text-3xl text-black cursor-pointer 
                      rounded-full p-1 hover:border-green-600"/>
                 </NavLink> 
 
-                 <NavLink t="/">
+                 <NavLink to="/customerAdminAccount/customerAdminAccountProfileView/customerAdminAccountProfilePage">
                 <HiOutlineUsers className="text-3xl text-black cursor-pointer 
                  rounded-full p-1 hover:border-green-600"/>
                 </NavLink>
 
-                 <NavLink t="/">
-                <HiOutlineHomeModern className="text-3xl text-black cursor-pointer 
-                 rounded-full p-1 hover:border-green-600"/>
-                </NavLink>
-
-                 <NavLink t="/">
+                 <NavLink to="/">
                 <HiOutlineCreditCard className="text-3xl text-black cursor-pointer
                  rounded-full p-1 hover:border-green-600"/>
                 </NavLink>
 
-                  <NavLink t="/">
+                  <NavLink to="/">
                 <HiOutlineEnvelope className="text-3xl text-black cursor-pointer 
                  rounded-full p-1 hover:border-green-600"/>
                 </NavLink>
 
-                  <NavLink t="/">
+                  <NavLink to="/">
                  <HiOutlineLockClosed className="text-3xl text-black cursor-pointer 
                  rounded-full p-1 hover:border-green-600"/>
                 </NavLink>
