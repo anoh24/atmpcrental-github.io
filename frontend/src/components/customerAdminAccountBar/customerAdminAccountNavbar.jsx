@@ -19,12 +19,12 @@ export default function CustomerAdminAccountNavbar(){
                  rounded-full p-1 hover:border-green-600"/>
                 </NavLink>
 
-                 <NavLink to="/">
+                 <NavLink to="/customerAdminAccount/customerAdminAccountBillingView/customerAdminAccountBillingPage">
                 <HiOutlineCreditCard className="text-3xl text-black cursor-pointer
                  rounded-full p-1 hover:border-green-600"/>
                 </NavLink>
 
-                  <NavLink to="/">
+                  <NavLink to="/customerAdminAccount/customerAdminAccountChattingView/customerAdminAccountChattingPage">
                 <HiOutlineEnvelope className="text-3xl text-black cursor-pointer 
                  rounded-full p-1 hover:border-green-600"/>
                 </NavLink>

@@ -9,13 +9,15 @@ import Loginpage from './pages/LoginRegisterClient/loginPage';
 import RegisterPage from './pages/LoginRegisterClient/registerPage';
 //branch admin side section
 import BranchAdminDashboardPage from './pages/branchAdmin/branchAdminDashboardView/branchAdminDashboardPage';
-import BranchAdminDashboardTenantViewPage from './pages/branchAdmin/branchAdminTenantView/tenantViewPage'
+import BranchAdminDashboardTenantViewPage from './pages/branchAdmin/branchAdminTenantView/tenantViewPage';
 import BranchAdminRoomViewPage from './pages/branchAdmin/branchAdminRoomView/branchAdminRoomViewPage';
-import BranchAdminBillingViewPage from './pages/branchAdmin/branchAdminBillingView/branchAdminBillingViewPage'
-import BranchAdminNotificationViewPage from './pages/branchAdmin/branchAdminNotificationView/branchAdminNotificationViewPage'
+import BranchAdminBillingViewPage from './pages/branchAdmin/branchAdminBillingView/branchAdminBillingViewPage';
+import BranchAdminNotificationViewPage from './pages/branchAdmin/branchAdminNotificationView/branchAdminNotificationViewPage';
 //customer admin account section
 import CustomerAdminMainDashboardPage from './pages/customerAdminAccount/customerAdminDashboardView/customerAdminMainDashboardPage';
-import CustomerAdminAccountProfilePage from './pages/customerAdminAccount/customerAdminAccountProfileVIew/customerAdminAccountProfilePage'
+import CustomerAdminAccountProfilePage from './pages/customerAdminAccount/customerAdminAccountProfileView/customerAdminAccountProfilePage';
+import CustomerAdminAccountBillingPage from './pages/customerAdminAccount/customerAdminAccountBillingView/customerAdminAccountBillingPage';
+import CustomerAdminAccountChattingPage from './pages/customerAdminAccount/customerAdminAccountChattingView/customerAdminAccountChattingPage';
 function App() {
   return (
     <Router>
@@ -46,7 +48,7 @@ function App() {
           }
         />
 
-        {/* Branch admin dashbnoard */}
+        {/* Branch admin dashbboard */}
         <Route
          path="/branchAdmin/branchAdminDashboardView/branchAdminDashboardPage"
          element={
@@ -112,7 +114,7 @@ function App() {
           >
         </Route>
 
-            {/* customer admin account profile */}
+      
         <Route
           path="/customerAdminAccount/customerAdminAccountProfileView/customerAdminAccountProfilePage"
           element={
@@ -122,6 +124,26 @@ function App() {
 
           }
           >
+        </Route>
+
+        <Route
+          path="/customerAdminAccount/customerAdminAccountBillingView/customerAdminAccountBillingPage"
+          element={
+            <CustomerAdminAccountNavbarLayout>
+              <CustomerAdminAccountBillingPage/>
+            </CustomerAdminAccountNavbarLayout>
+
+          }
+          >
+        </Route>
+        <Route
+        path="/customerAdminAccount/customerAdminAccountChattingview/customerAdminAccountChattingPage"
+        element={
+          <CustomerAdminAccountNavbarLayout>
+            <CustomerAdminAccountChattingPage/>
+          </CustomerAdminAccountNavbarLayout>
+        }
+        >          
         </Route>
       </Routes>
     </Router>
