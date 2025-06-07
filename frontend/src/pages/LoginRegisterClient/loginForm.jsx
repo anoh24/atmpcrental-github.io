@@ -36,9 +36,9 @@ import { Link } from 'react-router-dom';
             FORGOT PASSWORD text at the bottom and<br></br>
           it will send your password in your Email.</p>
         </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10 max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-1 gap-4 mt-10 max-w-md mx-auto">
         <div className="border-gray-800 ">
-          <form onSubmit={handleSubmit} className="p-6 px-20 rounded shadow-md md:shadow-none">
+          <form onSubmit={handleSubmit} className="p-6 px-20 rounded ">
             <div className="mb-4">
               <input
                 type="email"
@@ -47,8 +47,8 @@ import { Link } from 'react-router-dom';
                 placeholder="Type your Email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full bg-gray-800 px-3 py-2 border-0 focus:border-none 
-                focus:outline-none  text-white-700"
+                className="w-full bg-white px-3 py-2 border border-gray-600
+                focus:outline-none focus:ring-1 focus:ring-black text-black"
                 required
               />
             </div>
@@ -61,8 +61,8 @@ import { Link } from 'react-router-dom';
                 placeholder="Type your Password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full bg-gray-800 px-3 py-2 border-0 focus:border-none focus:outline-none 
-                 text-white-700"
+                className="w-full bg-white px-3 py-2 border border-gray-600
+                focus:outline-none focus:ring-1 focus:ring-black text-black"
                 required
               />
               {formData.password && (
@@ -84,32 +84,16 @@ import { Link } from 'react-router-dom';
               Login
               <FaArrowRight className="text-black font-bold mt-1" />
             </button>
+              <div className="flex justify-center gap-7">
+                <p className="text-blue-800 text-xs mt-20 cursor-pointer hover:text-blue-600">Forgot Password</p> 
+                <Link to="/registerpage" className="text-blue-800 text-xs mt-20 cursor-pointer hover:text-blue-600">
+                Create Account
+                </Link>
+              </div>
           </form>
+          
         </div>
 
-
-        <div className="flex flex-col mt-7 space-y-4 px-20">
-          <button
-            type="button"
-            className="flex justify-between w-full text-white py-2 px-10 bg-red-600 hover:bg-red-400"
-          >
-            <FaGoogle className="text-white mt-1" />
-            Sign in with Google
-          </button>
-          <button
-            type="button"
-            className="flex justify-between w-full text-white py-2 px-10 bg-blue-800 hover:bg-blue-600"
-          >
-            <FaFacebook className="text-white mt-1" />
-            Sign in with Facebook
-          </button>
-        </div>
-      </div>
-      <div className="flex justify-center gap-7">
-      <p className="text-blue-800 text-xs mt-20 cursor-pointer hover:text-blue-600">Forgot Password</p> 
-      <Link to="/registerpage" className="text-blue-800 text-xs mt-20 cursor-pointer hover:text-blue-600">
-      Create Account
-      </Link>
       </div>
     </div>
   );
