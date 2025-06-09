@@ -1,7 +1,12 @@
-import React from 'react';
-
+import React, {useEffect, useState} from 'react';
+import { fetchTenants } from '../../../api/branchAdmin/userlist';
 const TenantView = () => {
-  const tenantDetails = {
+  
+    const [tenantList,setTenantList] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const {error, setError} = useState(true);
+    const [selectedTenant,setSelectedTenant] = useState(null);
+  const tenantDetails = { 
     personalInfo: {
       name: 'John Doe',
       email: 'john.doe@example.com',
