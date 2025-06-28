@@ -1,8 +1,8 @@
-import {useQuery} from '@tanstack/react-query'
+import axios from 'axios';
 
-export const fetchTenants = async () => {
-  const response = await fetch('http://localhost:8080/api/tenants');
-  if (!response.ok) throw new Error('Network response was not ok');
-  return response.json();
-};
+const API_URL ='http://localhost:8080/api/userclientslist';
 
+export const getUsers = async () => {
+  const response = await axios.get(API_URL);
+  return response.data;
+}

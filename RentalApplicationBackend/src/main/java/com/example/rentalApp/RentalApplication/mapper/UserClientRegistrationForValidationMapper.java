@@ -6,6 +6,7 @@ import com.example.rentalApp.RentalApplication.dto.UserClientRegistrationForVali
 import com.example.rentalApp.RentalApplication.entity.UserClientRegistrationForValidationEntity;
 
 
+
 @Component
 public class UserClientRegistrationForValidationMapper {
 
