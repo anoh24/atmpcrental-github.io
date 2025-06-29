@@ -22,4 +22,6 @@ public class UserClientRegistrationForValidationEntity {
     private String email;
     
     private String password;
+    private String approval;
+    private String status;
 }

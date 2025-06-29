@@ -1,21 +1,44 @@
 import React, { useState } from 'react';
-import { FaArrowRight,FaGoogle,FaFacebook,FaEye,FaEyeSlash  } from 'react-icons/fa';
+import axios from 'axios';
+import { FaArrowRight,FaEye,FaEyeSlash  } from 'react-icons/fa';
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
+  const [error , setError] = useState({});
+  const [message, setMessage] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value});
+    setError({...error, [e.target.name]: ""});
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setMessage("");
+    setError({});
+    setShowAlert(false);
+    
+    try{
+      const response = await axios.post("http://localhost:8080/api/userclients", formData);
+      setMessage(response.data.message);
+      setShowAlert(true);
+      setFormData({email: "", password: ""});
+
+      setTimeout(() =>{
+        setShowAlert(false);
+      },10000)
+    }
+    catch(err){
+      if(err.response && err.response.status === 400){
+        setError(err.response.data);
+      }
+      else{
+        setMessage("An error occurred");
+      }
+    }
   };
   const [showPassword,setShowPassword] = useState(false);
   const togglePassword = () => setShowPassword((prev) => !prev)
@@ -31,6 +54,11 @@ const RegisterForm = () => {
       <div className="grid grid-cols-1 md:grid-cols-1 gap-4 mt-10 max-w-md mx-auto">
         <div className=" border-gray-800 ">
           <form onSubmit={handleSubmit} className="p-6 px-20 rounded">
+            {showAlert && (
+              <div className="p-3 text-white bg-green-400 rounded shadow-sm mb-2">
+                {message}
+              </div>
+            )}
             <div className="mb-4">
               <input
                 type="email"
@@ -41,8 +69,9 @@ const RegisterForm = () => {
                 onChange={handleChange}
                 className="w-full bg-white px-3 py-2 border border-gray-600
                 focus:outline-none focus:ring-1 focus:ring-black text-black"
-                required
+               
               />
+              {error.email && <p className="text-red-500 text-sm">{error.email}</p>}
             </div>
 
             <div className="mb-4 relative">
@@ -55,7 +84,7 @@ const RegisterForm = () => {
                 onChange={handleChange}
                 className="w-full bg-white px-3 py-2 border border-gray-600
                 focus:outline-none focus:ring-1 focus:ring-black text-black"
-                required
+               
               />
               {formData.password && (
                 <div
@@ -65,6 +94,7 @@ const RegisterForm = () => {
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </div>
                    )}
+                {error.password && <p className="text-red-500 text-sm">{error.password} </p>}
             </div>
 
             <button

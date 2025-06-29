@@ -15,6 +15,8 @@ public class UserClientRegistrationForValidationMapper {
         UserClientRegistrationForValidationEntity entity = new UserClientRegistrationForValidationEntity();
         entity.setEmail(dto.getEmail());
         entity.setPassword(dto.getPassword());
+        entity.setApproval("Validating...");
+        entity.setStatus("In Active");
         return entity;
 
     }
@@ -23,6 +25,9 @@ public class UserClientRegistrationForValidationMapper {
         UserClientRegistrationForValidationResponseDto dto = new UserClientRegistrationForValidationResponseDto();
         dto.setCustomerid(entity.getCustomerid());
         dto.setEmail(entity.getEmail());
+        dto.setApproval(entity.getApproval());
+        dto.setStatus(entity.getStatus());
+        dto.setMessage("Account registered, we'll email you after your account validated");
         return dto;
     }
 
