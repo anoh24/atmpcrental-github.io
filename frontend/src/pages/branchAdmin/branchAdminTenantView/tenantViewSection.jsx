@@ -1,7 +1,25 @@
-import UserList from "../../../hooks/branchAdmin/userlist";
-const TenantView = () => {
-  
 
+import { useState } from "react";
+import UserList from "../../../hooks/branchAdmin/userlist";
+
+const TenantView = ({}) => {
+
+  const [selectRow, setSelectRow] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [validationStatus, setValidationStatus] = useState('');
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setValidationStatus('');
+  }
+  const handleRowClick = (row) =>{
+    setSelectRow(row);
+    setIsModalOpen(true);
+  }
+  const handleValidate = () =>{
+    if(!selectRow || !validationStatus) return;
+    setIsModalOpen(false);
+    setValidationStatus('');
+  }
   const tenantDetails = { 
     personalInfo: {
       name: 'John Doe',
@@ -21,17 +39,54 @@ const TenantView = () => {
   };
 
 
-
   return (
     <div className="h-full font-oswald px-6 md:px-20 bg-gray-100">
+      {isModalOpen && selectRow && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white text-white rounded-lg p-6 w-[90%] max-w-md shadow-lg">
+            <h2 className="text-xl text-black font-semibold mb-4">Validation</h2>
+
+            <div className="mb-4">
+              <label htmlFor="status" className="block mb-1 text-sm text-black">Select Status</label>
+              <select
+                id="status"
+                className="w-full px-3 py-2 bg-white border border-gray-700 rounded text-black"
+                value={validationStatus}
+                onChange={(e) => setValidationStatus(e.target.value)}
+              >
+                <option value="">-- Select --</option>
+                <option value="Validated">Validated</option>
+                <option value="Invalidated">Invalidated</option>
+              </select>
+            </div>
+
+            {/* Buttons */}
+            <div className="flex justify-end gap-2">
+              <button
+                className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded"
+                onClick={closeModal}
+              >
+                Close
+              </button>
+              <button
+                className="bg-green-700 hover:bg-green-500 text-white px-4 py-2 rounded"
+                onClick={handleValidate}
+              >
+                Validate
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="mx-auto max-w-3xl grid grid-cols-1 gap-6 mb-10">
         {/* TENANTS LIST TABLE */}
         <div className="bg-white rounded-xl shadow-md p-6 border mt-10 mb-10">
           <h2 className="text-lg font-bold text-black mb-4">🏠 Tenants List</h2>
           <div className="overflow-x-auto">
-            <table className="w-full text-sm text-black">
+            <table  className="w-full text-sm text-black">
               <thead>
                 <tr className="bg-gray-200">
+                  <th className="text-left p-3 hidden">Customer ID</th>
                   <th className="text-left p-3">Name</th>
                   <th className="text-left p-3">Gender</th>
                   <th className="text-left p-3">Birthdate</th>
@@ -49,7 +104,7 @@ const TenantView = () => {
                 </tr>
               </thead>
               <tbody>
-                <UserList />
+                <UserList onRowClick = {handleRowClick} />
               </tbody>
             </table>
           </div>

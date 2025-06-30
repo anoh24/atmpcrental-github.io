@@ -42,6 +42,7 @@ const RegisterForm = () => {
   };
   const [showPassword,setShowPassword] = useState(false);
   const togglePassword = () => setShowPassword((prev) => !prev)
+  
   return (
     <div className="py-40 w-full">
       <h1 className=" text-black text-center text-4xl font-black">Sign Up Your Account</h1>
