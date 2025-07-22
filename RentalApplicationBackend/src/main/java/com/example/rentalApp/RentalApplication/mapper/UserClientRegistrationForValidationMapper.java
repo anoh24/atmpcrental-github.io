@@ -9,7 +9,7 @@ import com.example.rentalApp.RentalApplication.entity.UserClientRegistrationForV
 
 @Component
 public class UserClientRegistrationForValidationMapper {
-
+    //Client user registration
     public UserClientRegistrationForValidationEntity toEntity(UserClientRegistrationForValidationDto dto){
         if(dto == null) return null;
         UserClientRegistrationForValidationEntity entity = new UserClientRegistrationForValidationEntity();
@@ -30,5 +30,8 @@ public class UserClientRegistrationForValidationMapper {
         dto.setMessage("Account registered, we'll email you after your account validated");
         return dto;
     }
+
+
+
 
 }

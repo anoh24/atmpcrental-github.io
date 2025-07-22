@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.rentalApp.RentalApplication.dto.UserClientRegistrationForValidationDto;
@@ -15,11 +16,11 @@ import com.example.rentalApp.RentalApplication.service.UserClientRegistrationFor
 
 
 @Service
-public class UserClientRegistrationForValidationImplementation implements UserClientRegistrationForValidationService {
+public abstract class UserClientRegistrationForValidationImplementation implements UserClientRegistrationForValidationService {
 
     private final UserClientRegistrationForValidationRepository userClientRegistrationForValidationRepository;
     private final UserClientRegistrationForValidationMapper userClientRegistrationForValidationMapper;
-
+    @Autowired
     public UserClientRegistrationForValidationImplementation(
         UserClientRegistrationForValidationRepository userClientRegistrationForValidationRepository,
         UserClientRegistrationForValidationMapper userClientRegistrationForValidationMapper
@@ -50,5 +51,6 @@ public class UserClientRegistrationForValidationImplementation implements UserCl
             .map(userClientRegistrationForValidationMapper::toDto)
             .collect(Collectors.toList());
     }
+
 
 }

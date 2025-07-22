@@ -1,15 +1,18 @@
 
 import { useState } from "react";
 import UserList from "../../../hooks/branchAdmin/userlist";
+import { updateUserClientValidation } from "../../../hooks/branchAdmin/userClientValidation";
 
 const TenantView = ({}) => {
 
   const [selectRow, setSelectRow] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [validationStatus, setValidationStatus] = useState('');
+
   const closeModal = () => {
     setIsModalOpen(false);
     setValidationStatus('');
+
   }
   const handleRowClick = (row) =>{
     setSelectRow(row);
@@ -19,6 +22,20 @@ const TenantView = ({}) => {
     if(!selectRow || !validationStatus) return;
     setIsModalOpen(false);
     setValidationStatus('');
+
+  }
+
+  const handlevalidation = updateUserClientValidation();
+
+  const handlesubmit = async(e) =>{
+    e.preventDefault();
+    handleValidate();
+    const formData = {
+      customerid: selectRow.customerid,
+      status: validationStatus,
+    }
+    await handlevalidation(formData);
+    closeModal();
   }
   const tenantDetails = { 
     personalInfo: {
@@ -41,43 +58,63 @@ const TenantView = ({}) => {
 
   return (
     <div className="h-full font-oswald px-6 md:px-20 bg-gray-100">
-      {isModalOpen && selectRow && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white text-white rounded-lg p-6 w-[90%] max-w-md shadow-lg">
-            <h2 className="text-xl text-black font-semibold mb-4">Validation</h2>
+    {isModalOpen && selectRow && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="bg-white text-white rounded-lg p-6 w-[90%] max-w-md shadow-lg">
+      <h2 className="text-xl text-black font-semibold mb-4">Validation</h2>
 
-            <div className="mb-4">
-              <label htmlFor="status" className="block mb-1 text-sm text-black">Select Status</label>
-              <select
-                id="status"
-                className="w-full px-3 py-2 bg-white border border-gray-700 rounded text-black"
-                value={validationStatus}
-                onChange={(e) => setValidationStatus(e.target.value)}
-              >
-                <option value="">-- Select --</option>
-                <option value="Validated">Validated</option>
-                <option value="Invalidated">Invalidated</option>
-              </select>
-            </div>
-
-            {/* Buttons */}
-            <div className="flex justify-end gap-2">
-              <button
-                className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded"
-                onClick={closeModal}
-              >
-                Close
-              </button>
-              <button
-                className="bg-green-700 hover:bg-green-500 text-white px-4 py-2 rounded"
-                onClick={handleValidate}
-              >
-                Validate
-              </button>
-            </div>
-          </div>
+      <form onSubmit={handlesubmit}>
+        {/* Example: show full name (optional) */}
+        <div className="mb-4">
+          <label className="block mb-1 text-sm text-black">Email</label>
+          <input
+            name="email"
+            type="text"
+            value={selectRow.email}
+            onChange={(e) => setEmail(e.target.value)}
+            readOnly
+            className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded text-black"
+          />
         </div>
-      )}
+
+        {/* Validation status field */}
+        <div className="mb-4">
+          <label htmlFor="status" className="block mb-1 text-sm text-black">Select Status</label>
+          <select
+            name="status"
+            id="status"
+            className="w-full px-3 py-2 bg-white border border-gray-700 rounded text-black"
+            value={validationStatus}
+            onChange={(e) => setValidationStatus(e.target.value)}
+            required
+          >
+            <option value="Validating...">{selectRow.approval}</option>
+            <option value="Validated">Validated</option>
+            <option value="Invalidated">Invalidated</option>
+          </select>
+        </div>
+        {/* Buttons */}
+        <div className="flex justify-end gap-2">
+          <button
+            type="button"
+            className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded"
+            onClick={closeModal}
+          >
+            Close
+          </button>
+          <button
+            type="submit"
+            value={selectRow.customerid}
+            className="bg-green-700 hover:bg-green-500 text-white px-4 py-2 rounded"
+          >
+            Validate
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+)}
+
       <div className="mx-auto max-w-3xl grid grid-cols-1 gap-6 mb-10">
         {/* TENANTS LIST TABLE */}
         <div className="bg-white rounded-xl shadow-md p-6 border mt-10 mb-10">

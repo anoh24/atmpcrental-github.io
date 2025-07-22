@@ -1,6 +1,5 @@
-// components/branchAdmin/UserList.jsx
 import React, { useEffect, useState } from 'react';
-import { getUsers } from '../../api/branchAdmin/userlist'; 
+import { getUsers } from '../../api/branchAdmin/userList'; 
 
 
 const UserList = ({onRowClick}) => {

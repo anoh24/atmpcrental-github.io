@@ -19,4 +19,5 @@ public class UserClientRegistrationForValidationDto {
     @NotBlank(message = "Password is required")
     @Size(message = "Only 200 characters are allowed")
     private String password;
+    private String approval;
 }
