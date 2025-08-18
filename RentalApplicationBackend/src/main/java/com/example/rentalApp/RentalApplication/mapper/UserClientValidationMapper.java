@@ -2,8 +2,6 @@ package com.example.rentalApp.RentalApplication.mapper;
 import com.example.rentalApp.RentalApplication.dto.UserClientValidationDto;
 import com.example.rentalApp.RentalApplication.entity.UserClientValidationEntity;
 import org.springframework.stereotype.Component;
-import com.example.rentalApp.RentalApplication.dto.UserClientValidationDto;
-import com.example.rentalApp.RentalApplication.entity.UserClientRegistrationForValidationEntity;
 import com.example.rentalApp.RentalApplication.dto.UserClientValidationResponseDto;
 @Component
 public class UserClientValidationMapper {

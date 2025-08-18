@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import UserList from "../../../hooks/branchAdmin/userlist";
-import { updateUserClientValidation } from "../../../hooks/branchAdmin/userClientValidation";
+// import { updateUserClientValidation } from "../../../hooks/branchAdmin/userClientValidation";
 
 const TenantView = ({}) => {
 
@@ -25,7 +25,7 @@ const TenantView = ({}) => {
 
   }
 
-  const handlevalidation = updateUserClientValidation();
+  // const handlevalidation = updateUserClientValidation();
 
   const handlesubmit = async(e) =>{
     e.preventDefault();
@@ -34,7 +34,7 @@ const TenantView = ({}) => {
       customerid: selectRow.customerid,
       status: validationStatus,
     }
-    await handlevalidation(formData);
+    await handlevalidation(selectRow.customerid, formData);
     closeModal();
   }
   const tenantDetails = { 

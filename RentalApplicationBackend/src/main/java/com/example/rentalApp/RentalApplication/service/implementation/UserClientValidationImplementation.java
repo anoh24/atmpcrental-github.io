@@ -7,6 +7,7 @@ import com.example.rentalApp.RentalApplication.dto.UserClientValidationResponseD
 import com.example.rentalApp.RentalApplication.repository.UserClientValidationRepository;
 import com.example.rentalApp.RentalApplication.mapper.UserClientValidationMapper;
 import com.example.rentalApp.RentalApplication.service.UserClientValidationService;
+
 @Service
 public abstract class UserClientValidationImplementation implements UserClientValidationService {
     private final UserClientValidationRepository userclientvalidationrepository;
