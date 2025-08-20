@@ -1,4 +1,4 @@
-package com.example.rentalApp.RentalApplication.service.implementation;
+package com.example.rentalApp.RentalApplication.implementation;
 import com.example.rentalApp.RentalApplication.dto.UserClientValidationDto;
 import com.example.rentalApp.RentalApplication.entity.UserClientValidationEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ import com.example.rentalApp.RentalApplication.mapper.UserClientValidationMapper
 import com.example.rentalApp.RentalApplication.service.UserClientValidationService;
 
 @Service
-public abstract class UserClientValidationImplementation implements UserClientValidationService {
+public class UserClientValidationImplementation implements UserClientValidationService {
     private final UserClientValidationRepository userclientvalidationrepository;
     private final UserClientValidationMapper userclientvalidationmapper;
 
@@ -22,10 +22,12 @@ public abstract class UserClientValidationImplementation implements UserClientVa
         this.userclientvalidationmapper = userclientvalidationmapper;
     }
     @Override
-    public UserClientValidationResponseDto ValidateUserAccount(UserClientValidationDto dto){
-        UserClientValidationEntity  entity = userclientvalidationmapper.toEntity(dto);
-        UserClientValidationEntity saved = userclientvalidationrepository.save(entity);
-        return userclientvalidationmapper.toDto(saved);
+    public UserClientValidationResponseDto ValidateUserAccount(Integer id, UserClientValidationDto dto){
+        UserClientValidationEntity existing = userclientvalidationrepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found with id " + id));
+        userclientvalidationmapper.updateEntityFromDto(dto,existing);
+        UserClientValidationEntity updated = userclientvalidationrepository.save(existing);
+        return userclientvalidationmapper.toDto(updated);
     }
 
 

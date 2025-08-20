@@ -1,4 +1,4 @@
-package com.example.rentalApp.RentalApplication.service.implementation;
+package com.example.rentalApp.RentalApplication.implementation;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +16,7 @@ import com.example.rentalApp.RentalApplication.service.UserClientRegistrationFor
 
 
 @Service
-public abstract class UserClientRegistrationForValidationImplementation implements UserClientRegistrationForValidationService {
+public class UserClientRegistrationForValidationImplementation implements UserClientRegistrationForValidationService {
 
     private final UserClientRegistrationForValidationRepository userClientRegistrationForValidationRepository;
     private final UserClientRegistrationForValidationMapper userClientRegistrationForValidationMapper;
@@ -24,7 +24,7 @@ public abstract class UserClientRegistrationForValidationImplementation implemen
     public UserClientRegistrationForValidationImplementation(
         UserClientRegistrationForValidationRepository userClientRegistrationForValidationRepository,
         UserClientRegistrationForValidationMapper userClientRegistrationForValidationMapper
-        
+
     ) {
         this.userClientRegistrationForValidationRepository = userClientRegistrationForValidationRepository;
         this.userClientRegistrationForValidationMapper = userClientRegistrationForValidationMapper;
@@ -43,7 +43,7 @@ public abstract class UserClientRegistrationForValidationImplementation implemen
                 .map(userClientRegistrationForValidationMapper::toDto);
 
     }
-    
+
     @Override
     public List<UserClientRegistrationForValidationResponseDto> getAllClientUser(){
         return userClientRegistrationForValidationRepository.findAll()

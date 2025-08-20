@@ -1,10 +1,9 @@
 package com.example.rentalApp.RentalApplication.service;
 import java.util.List;
 import java.util.Optional;
-
-
 import com.example.rentalApp.RentalApplication.dto.UserClientRegistrationForValidationDto;
 import com.example.rentalApp.RentalApplication.dto.UserClientRegistrationForValidationResponseDto;
+
 
 public interface UserClientRegistrationForValidationService {
     

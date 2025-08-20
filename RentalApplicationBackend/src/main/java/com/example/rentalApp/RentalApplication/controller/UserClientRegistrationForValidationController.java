@@ -1,23 +1,16 @@
 package com.example.rentalApp.RentalApplication.controller;
-
-
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import com.example.rentalApp.RentalApplication.dto.UserClientRegistrationForValidationDto;
 import com.example.rentalApp.RentalApplication.dto.UserClientRegistrationForValidationResponseDto;
 import com.example.rentalApp.RentalApplication.service.UserClientRegistrationForValidationService;
-
 import jakarta.validation.Valid;
 import java.util.List;
 @CrossOrigin(origins = "http://localhost/5173")
 @RestController
-
 @RequestMapping("/api")
 public class UserClientRegistrationForValidationController {
-
     private final UserClientRegistrationForValidationService userClientRegistrationForValidationService;
 
     public UserClientRegistrationForValidationController(UserClientRegistrationForValidationService userClientRegistrationForValidationService){
@@ -29,7 +22,8 @@ public class UserClientRegistrationForValidationController {
          UserClientRegistrationForValidationResponseDto savedClientUser = userClientRegistrationForValidationService.saveClientUser(userClientRegistrationForValidationDto);
          return new ResponseEntity<>(savedClientUser, HttpStatus.CREATED);
      }
-     @GetMapping("/userlist{customerid}")
+
+     @GetMapping("/userlist/{customerid}")
      public ResponseEntity<UserClientRegistrationForValidationResponseDto> getUserById(@PathVariable Integer customerid){
          return userClientRegistrationForValidationService.getUserById(customerid)
              .map(ResponseEntity::ok)
