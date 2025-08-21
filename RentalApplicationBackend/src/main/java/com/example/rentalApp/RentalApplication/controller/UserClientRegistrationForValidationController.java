@@ -23,7 +23,7 @@ public class UserClientRegistrationForValidationController {
          return new ResponseEntity<>(savedClientUser, HttpStatus.CREATED);
      }
 
-     @GetMapping("/userlist/{customerid}")
+     @GetMapping("/userclientslist/{customerid}")
      public ResponseEntity<UserClientRegistrationForValidationResponseDto> getUserById(@PathVariable Integer customerid){
          return userClientRegistrationForValidationService.getUserById(customerid)
              .map(ResponseEntity::ok)

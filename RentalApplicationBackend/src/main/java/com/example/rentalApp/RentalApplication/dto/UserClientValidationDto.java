@@ -8,5 +8,7 @@ import lombok.Data;
 @Data
 public class UserClientValidationDto {
     @Size(message="Only 200 characters are allowed")
-    private String Approval;
+    private String approval;
+    private  String status;
 }
+

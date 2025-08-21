@@ -6,9 +6,9 @@ import com.example.rentalApp.RentalApplication.dto.UserClientValidationDto;
 import com.example.rentalApp.RentalApplication.dto.UserClientValidationResponseDto;
 import com.example.rentalApp.RentalApplication.service.UserClientValidationService;
 import jakarta.validation.Valid;
-@CrossOrigin(origins = "http://localhost/5173")
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
-@RequestMapping("/api/userclients")
+@RequestMapping("/api")
 public class UserClientValidationController {
     private final UserClientValidationService userClientValidationService;
 
@@ -16,9 +16,9 @@ public class UserClientValidationController {
     {
         this.userClientValidationService = userClientValidationService;
     }
-    @PutMapping("/{customerid}")
+    @PutMapping("/clients/{customerid}")
     public ResponseEntity<UserClientValidationResponseDto>ValidateUserAccount(
-            @PathVariable Integer id,
+            @PathVariable("customerid") Integer id,
             @Valid @RequestBody UserClientValidationDto dto){
         return new ResponseEntity<>(userClientValidationService.ValidateUserAccount(id,dto), HttpStatus.OK);
     }

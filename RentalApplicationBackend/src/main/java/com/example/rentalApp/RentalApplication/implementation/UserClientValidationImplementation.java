@@ -25,7 +25,7 @@ public class UserClientValidationImplementation implements UserClientValidationS
     public UserClientValidationResponseDto ValidateUserAccount(Integer id, UserClientValidationDto dto){
         UserClientValidationEntity existing = userclientvalidationrepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with id " + id));
-        userclientvalidationmapper.updateEntityFromDto(dto,existing);
+        userclientvalidationmapper.updateEntityFromDto(dto, existing);
         UserClientValidationEntity updated = userclientvalidationrepository.save(existing);
         return userclientvalidationmapper.toDto(updated);
     }

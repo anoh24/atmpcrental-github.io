@@ -8,5 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserClientValidationResponseDto {
     private String approval;
+    private String status;
     private String message;
 }

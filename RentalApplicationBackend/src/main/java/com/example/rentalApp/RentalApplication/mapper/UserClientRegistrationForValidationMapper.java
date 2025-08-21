@@ -4,32 +4,31 @@ import org.springframework.stereotype.Component;
 import com.example.rentalApp.RentalApplication.dto.UserClientRegistrationForValidationDto;
 import com.example.rentalApp.RentalApplication.dto.UserClientRegistrationForValidationResponseDto;
 import com.example.rentalApp.RentalApplication.entity.UserClientRegistrationForValidationEntity;
-
+import java.util.Optional;
 
 
 @Component
 public class UserClientRegistrationForValidationMapper {
     //Client user registration
-    public UserClientRegistrationForValidationEntity toEntity(UserClientRegistrationForValidationDto dto){
-        if(dto == null) return null;
+    public UserClientRegistrationForValidationEntity toEntity(UserClientRegistrationForValidationDto dto) {
         UserClientRegistrationForValidationEntity entity = new UserClientRegistrationForValidationEntity();
-        entity.setEmail(dto.getEmail());
-        entity.setPassword(dto.getPassword());
+        Optional.ofNullable(dto.getEmail()).ifPresent(entity::setEmail);
+        Optional.ofNullable(dto.getPassword()).ifPresent(entity::setPassword);
         entity.setApproval("Validating...");
         entity.setStatus("In Active");
         return entity;
-
     }
-    public UserClientRegistrationForValidationResponseDto toDto(UserClientRegistrationForValidationEntity entity){
-        if(entity == null) return null;
+
+    public UserClientRegistrationForValidationResponseDto toDto(UserClientRegistrationForValidationEntity entity) {
         UserClientRegistrationForValidationResponseDto dto = new UserClientRegistrationForValidationResponseDto();
-        dto.setCustomerid(entity.getCustomerid());
-        dto.setEmail(entity.getEmail());
-        dto.setApproval(entity.getApproval());
-        dto.setStatus(entity.getStatus());
-        dto.setMessage("Account registered, we'll email you after your account validated");
+        Optional.ofNullable(entity.getCustomerid()).ifPresent(dto::setCustomerid);
+        Optional.ofNullable(entity.getEmail()).ifPresent(dto::setEmail);
+        Optional.ofNullable(entity.getApproval()).ifPresent(dto::setApproval);
+        Optional.ofNullable(entity.getStatus()).ifPresent(dto::setStatus);
+        dto.setMessage("Account registered, we'll email you after your account is validated");
         return dto;
     }
+
 
 
 
