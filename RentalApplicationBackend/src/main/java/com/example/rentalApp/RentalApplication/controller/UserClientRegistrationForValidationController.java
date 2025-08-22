@@ -7,7 +7,7 @@ import com.example.rentalApp.RentalApplication.dto.UserClientRegistrationForVali
 import com.example.rentalApp.RentalApplication.service.UserClientRegistrationForValidationService;
 import jakarta.validation.Valid;
 import java.util.List;
-@CrossOrigin(origins = "http://localhost/5173")
+
 @RestController
 @RequestMapping("/api")
 public class UserClientRegistrationForValidationController {

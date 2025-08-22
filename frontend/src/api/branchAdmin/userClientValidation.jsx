@@ -1,6 +1,8 @@
-// import axios from "axios";
-
-// const API_URL = import.meta.env.VITE_API_URL;
-// export const apiUpdateUserClientValidation = async (customerid) =>{
-//     return await axios.put(`${API_URL}/api/userclients/${customerid}`);
-// }
+import axios from "axios";
+//Validating approval of user client API
+const API_URL = import.meta.env.VITE_API_URL;
+export const apiUpdateUserClientValidation = async (customerid, data) =>{
+    return await axios.put(`${API_URL}/api/clients/${customerid}`, data,{
+        headers:{"Content-Type":"application/json"},
+    });
+}

@@ -9,8 +9,16 @@ import java.util.Optional;
 @Component
 public class UserClientValidationMapper {
     public void updateEntityFromDto(UserClientValidationDto dto, UserClientValidationEntity entity) {
-        Optional.ofNullable(dto.getApproval()).ifPresent(entity::setApproval);
-        Optional.ofNullable(dto.getStatus()).ifPresent(entity::setStatus);
+        Optional.ofNullable(dto.getApproval()).ifPresent(approval ->{
+            entity.setApproval(approval);
+            if("Validated".equalsIgnoreCase(approval)){
+                entity.setStatus("Active");
+            }
+            else{
+                entity.setStatus("In Active");
+            }
+        });
+
     }
 
     public UserClientValidationResponseDto toDto(UserClientValidationEntity entity) {
@@ -20,6 +28,4 @@ public class UserClientValidationMapper {
         dto.setMessage("Account successfully validated...");
         return dto;
     }
-
-
 }

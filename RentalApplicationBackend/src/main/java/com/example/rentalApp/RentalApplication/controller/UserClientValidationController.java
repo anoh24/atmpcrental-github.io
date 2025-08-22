@@ -6,7 +6,7 @@ import com.example.rentalApp.RentalApplication.dto.UserClientValidationDto;
 import com.example.rentalApp.RentalApplication.dto.UserClientValidationResponseDto;
 import com.example.rentalApp.RentalApplication.service.UserClientValidationService;
 import jakarta.validation.Valid;
-@CrossOrigin(origins = "http://localhost:8080")
+
 @RestController
 @RequestMapping("/api")
 public class UserClientValidationController {

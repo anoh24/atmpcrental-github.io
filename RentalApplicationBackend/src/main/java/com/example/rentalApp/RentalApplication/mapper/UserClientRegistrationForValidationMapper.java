@@ -14,7 +14,7 @@ public class UserClientRegistrationForValidationMapper {
         UserClientRegistrationForValidationEntity entity = new UserClientRegistrationForValidationEntity();
         Optional.ofNullable(dto.getEmail()).ifPresent(entity::setEmail);
         Optional.ofNullable(dto.getPassword()).ifPresent(entity::setPassword);
-        entity.setApproval("Validating...");
+        entity.setApproval("Invalidated");
         entity.setStatus("In Active");
         return entity;
     }
