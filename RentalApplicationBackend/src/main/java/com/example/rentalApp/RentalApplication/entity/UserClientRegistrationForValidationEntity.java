@@ -24,4 +24,5 @@ public class UserClientRegistrationForValidationEntity {
     private String password;
     private String approval;
     private String status;
+    private String branch;
 }

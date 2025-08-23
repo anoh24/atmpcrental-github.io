@@ -10,8 +10,9 @@ import lombok.NoArgsConstructor;
 public class UserClientRegistrationForValidationResponseDto {
     private Integer customerid;
     private String email;
-    private String message;
     private String approval;
     private String status;
+    private String branch;
+    private String message;
 
 }

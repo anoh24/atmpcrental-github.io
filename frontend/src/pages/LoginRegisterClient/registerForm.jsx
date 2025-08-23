@@ -1,65 +1,39 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { FaArrowRight,FaEye,FaEyeSlash  } from 'react-icons/fa';
+import React from "react";
+import { FaArrowRight, FaEye, FaEyeSlash } from "react-icons/fa";
+import useRegisterForm from "../../hooks/branchAdmin/userClientRegistration"; // adjust path if needed
+
 const RegisterForm = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
-  const [error , setError] = useState({});
-  const [message, setMessage] = useState("");
-  const [showAlert, setShowAlert] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value});
-    setError({...error, [e.target.name]: ""});
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setMessage("");
-    setError({});
-    setShowAlert(false);
-    
-    try{
-      const response = await axios.post("http://localhost:8080/api/userclients", formData);
-      setMessage(response.data.message);
-      setShowAlert(true);
-      setFormData({email: "", password: ""});
-
-      setTimeout(() =>{
-        setShowAlert(false);
-      },10000)
-    }
-    catch(err){
-      if(err.response && err.response.status === 400){
-        setError(err.response.data);
-      }
-      else{
-        setMessage("An error occurred");
-      }
-    }
-  };
-  const [showPassword,setShowPassword] = useState(false);
-  const togglePassword = () => setShowPassword((prev) => !prev)
+  const {
+    formData,
+    error,
+    showPassword,
+    handleChange,
+    handleSubmit,
+    togglePassword,
+    branch,
+    setBranch
   
+  } = useRegisterForm();
+
   return (
     <div className="py-40 w-full">
-      <h1 className=" text-black text-center text-4xl font-black">Sign Up Your Account</h1>
-        <div className="text-center text-gray-600 mt-10 max-w-7xl mx-auto px-4">
-            <p>Create your account to connect with trusted landlord — just like many renters already have.</p>
-
-          <br></br>
-          <p className="text-xs">NOTE!: If you want to go back to the Login form just click the Login/Register Button</p>
-        </div>
+      <h1 className=" text-black text-center text-4xl font-black">
+        Sign Up Your Account
+      </h1>
+      <div className="text-center text-gray-600 mt-10 max-w-7xl mx-auto px-4">
+        <p>
+          Create your account to connect with trusted landlord — just like many
+          renters already have.
+        </p>
+        <br />
+        <p className="text-xs">
+          NOTE!: If you want to go back to the Login form just click the
+          Login/Register Button
+        </p>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-1 gap-4 mt-10 max-w-md mx-auto">
         <div className=" border-gray-800 ">
           <form onSubmit={handleSubmit} className="p-6 px-20 rounded">
-            {showAlert && (
-              <div className="p-3 text-white bg-green-400 rounded shadow-sm mb-2">
-                {message}
-              </div>
-            )}
             <div className="mb-4">
               <input
                 type="email"
@@ -69,34 +43,52 @@ const RegisterForm = () => {
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full bg-white px-3 py-2 border border-gray-600
-                focus:outline-none focus:ring-1 focus:ring-black text-black"
-               
+                focus:outline-none focus:ring-1 focus:ring-black text-black rounded"
               />
-              {error.email && <p className="text-red-500 text-sm">{error.email}</p>}
+              {error.email && (
+                <p className="text-red-500 text-sm">{error.email}</p>
+              )}
             </div>
 
             <div className="mb-4 relative">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 placeholder="Type your Password"
                 value={formData.password}
                 onChange={handleChange}
+                required
                 className="w-full bg-white px-3 py-2 border border-gray-600
-                focus:outline-none focus:ring-1 focus:ring-black text-black"
-               
+                focus:outline-none focus:ring-1 focus:ring-black text-black rounded"
               />
               {formData.password && (
                 <div
                   className="absolute right-3 top-3 -translate-y-1/2 text-gray-400 cursor-pointer"
                   onClick={togglePassword}
-                  >
+                  required
+                >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
-                  </div>
-                   )}
-                {error.password && <p className="text-red-500 text-sm">{error.password} </p>}
+                </div>
+              )}
+              {error.password && (
+                <p className="text-red-500 text-sm">{error.password} </p>
+              )}
             </div>
+              <div className="mb-4">
+                <select
+                  name="branch"
+                  id="branch"
+                  className="w-full px-3 py-2 bg-white border border-gray-700 rounded text-black"
+                  value={formData.branch}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="" hidden>Select your branch</option>
+                  <option value="Cagayan De Oro">Cagayan De Oro</option>
+                  <option value="Marawi City">Marawi City</option>
+                </select>
+              </div>
 
             <button
               type="submit"
@@ -109,7 +101,6 @@ const RegisterForm = () => {
             </button>
           </form>
         </div>
-
       </div>
     </div>
   );

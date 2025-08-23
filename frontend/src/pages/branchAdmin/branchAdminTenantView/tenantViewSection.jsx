@@ -1,49 +1,25 @@
-import { useState } from "react";
 import useUserClientValidation from "../../../hooks/branchAdmin/userClientValidation";
 
 const TenantView = () => {
-  const { users, loading, error, updateUserApproval } = useUserClientValidation();
-  const [selectRow, setSelectRow] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [validationApproval, setValidationApproval] = useState("");
+  const {
+    users,
+    loading,
+    error,
+    selectRow,
+    isModalOpen,
+    validationApproval,
+    setValidationApproval,
+    handleRowClick,
+    closeModal,
+    handleSubmit,
 
-  // Close modal
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setValidationApproval("");
-  };
+  } = useUserClientValidation();
 
-  // Open modal when a row is clicked
-  const handleRowClick = (row) => {
-    setSelectRow(row);
-    setValidationApproval(row.approval);
-
-    setIsModalOpen(true);
-  };
-
-  // Handle update
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!selectRow || !validationApproval) return;
-
-    try {
-      await updateUserApproval(selectRow.customerid, validationApproval);
-    } catch (err) {
-      console.error("Update error:", err);
-    }
-
-    closeModal();
-  };
-
-  const tenantDetails = {
-    personalInfo: { name: "John Doe", email: "john.doe@example.com", phone: "09123456789" },
-    roomInfo: { roomNumber: "203", floor: "2nd", type: "Single" },
-    paymentHistory: [
-      { month: "April 2025", amount: "₱5,000", status: "Paid" },
-      { month: "May 2025", amount: "₱5,000", status: "Unpaid" },
-    ],
-    uploadedDocs: ["ID.png", "Contract.pdf"],
-  };
+  const tenantDetails = { personalInfo: { name: "John Doe", email: "john.doe@example.com", phone: "09123456789" },
+   roomInfo: { roomNumber: "203", floor: "2nd", type: "Single" },
+    paymentHistory: [ { month: "April 2025", amount: "₱5,000", status: "Paid" }, 
+      { month: "May 2025", amount: "₱5,000", status: "Unpaid" }, ],
+       uploadedDocs: ["ID.png", "Contract.pdf"], };
 
   // Render users table rows
   const renderUsers = () => {
@@ -70,10 +46,18 @@ const TenantView = () => {
         <td className="p-3">{user.contactname}</td>
         <td className="p-3">{user.contactnumber}</td>
         <td className="p-3">{user.relationshipcontact}</td>
-        <td className={`p-3 font-semibold ${user.approval === "Invalidated" ? "text-red-500" : "text-green-700"}`}>
+        <td
+          className={`p-3 font-semibold ${
+            user.approval === "Invalidated" ? "text-red-500" : "text-green-700"
+          }`}
+        >
           {user.approval}
         </td>
-        <td className={`p-3 font-semibold ${user.status === "Active" ? "text-green-700" : "text-gray-500"}`}>
+        <td
+          className={`p-3 font-semibold ${
+            user.status === "Active" ? "text-green-700" : "text-gray-500"
+          }`}
+        >
           {user.status}
         </td>
       </tr>
@@ -98,8 +82,11 @@ const TenantView = () => {
                   className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded text-black"
                 />
               </div>
+
               <div className="mb-4">
-                <label htmlFor="approval" className="block mb-1 text-sm text-black">Select Approval</label>
+                <label htmlFor="approval" className="block mb-1 text-sm text-black">
+                  Select Approval
+                </label>
                 <select
                   name="approval"
                   id="approval"
@@ -113,11 +100,19 @@ const TenantView = () => {
                   <option value="Invalidated">Invalidated</option>
                 </select>
               </div>
+
               <div className="flex justify-end gap-2">
-                <button type="button" className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded" onClick={closeModal}>
+                <button
+                  type="button"
+                  className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded"
+                  onClick={closeModal}
+                >
                   Close
                 </button>
-                <button type="submit" className="bg-green-700 hover:bg-green-500 text-white px-4 py-2 rounded">
+                <button
+                  type="submit"
+                  className="bg-green-700 hover:bg-green-500 text-white px-4 py-2 rounded"
+                >
                   Validate
                 </button>
               </div>
@@ -192,7 +187,11 @@ const TenantView = () => {
                     <tr key={idx} className="border-t hover:bg-gray-50">
                       <td className="p-3">{entry.month}</td>
                       <td className="p-3">{entry.amount}</td>
-                      <td className={`p-3 font-semibold ${entry.status === "Paid" ? "text-green-700" : "text-red-600"}`}>
+                      <td
+                        className={`p-3 font-semibold ${
+                          entry.status === "Paid" ? "text-green-700" : "text-red-600"
+                        }`}
+                      >
                         {entry.status}
                       </td>
                     </tr>

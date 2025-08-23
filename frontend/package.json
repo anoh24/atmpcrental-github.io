@@ -31,6 +31,8 @@
     "recharts": "^2.15.3",
     "slick-carousel": "^1.8.1",
     "sockjs-client": "^1.6.1",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.22.4",
     "swiper": "^11.2.6",
     "tailwind-scrollbar": "^4.0.2",
     "tailwind-scrollbar-hide": "^2.0.0"

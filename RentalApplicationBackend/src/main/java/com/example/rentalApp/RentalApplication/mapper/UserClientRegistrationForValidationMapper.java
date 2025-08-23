@@ -16,6 +16,7 @@ public class UserClientRegistrationForValidationMapper {
         Optional.ofNullable(dto.getPassword()).ifPresent(entity::setPassword);
         entity.setApproval("Invalidated");
         entity.setStatus("In Active");
+        Optional.ofNullable(dto.getBranch()).ifPresent(entity::setBranch);
         return entity;
     }
 
@@ -25,6 +26,7 @@ public class UserClientRegistrationForValidationMapper {
         Optional.ofNullable(entity.getEmail()).ifPresent(dto::setEmail);
         Optional.ofNullable(entity.getApproval()).ifPresent(dto::setApproval);
         Optional.ofNullable(entity.getStatus()).ifPresent(dto::setStatus);
+        Optional.ofNullable(entity.getBranch()).ifPresent(dto::setBranch);
         dto.setMessage("Account registered, we'll email you after your account is validated");
         return dto;
     }

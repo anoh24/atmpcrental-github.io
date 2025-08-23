@@ -9,7 +9,6 @@ import lombok.Data;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 public class UserClientRegistrationForValidationDto {
     @NotBlank(message = "Email is required")
     @Email(message = "Invalid email format")
@@ -19,5 +18,7 @@ public class UserClientRegistrationForValidationDto {
     @NotBlank(message = "Password is required")
     @Size(message = "Only 200 characters are allowed")
     private String password;
-    private String approval;
+
+    @NotBlank(message = "Branch is required")
+    private String branch;
 }

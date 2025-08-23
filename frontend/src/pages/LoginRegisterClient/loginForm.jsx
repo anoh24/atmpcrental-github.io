@@ -48,7 +48,7 @@ import { Link } from 'react-router-dom';
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full bg-white px-3 py-2 border border-gray-600
-                focus:outline-none focus:ring-1 focus:ring-black text-black"
+                focus:outline-none focus:ring-1 focus:ring-black text-black rounded"
                 required
               />
             </div>
@@ -62,7 +62,7 @@ import { Link } from 'react-router-dom';
                 value={formData.password}
                 onChange={handleChange}
                 className="w-full bg-white px-3 py-2 border border-gray-600
-                focus:outline-none focus:ring-1 focus:ring-black text-black"
+                focus:outline-none focus:ring-1 focus:ring-black text-black rounded"
                 required
               />
               {formData.password && (
