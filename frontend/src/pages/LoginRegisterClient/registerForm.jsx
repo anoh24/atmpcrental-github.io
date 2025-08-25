@@ -88,6 +88,9 @@ const RegisterForm = () => {
                   <option value="Cagayan De Oro">Cagayan De Oro</option>
                   <option value="Marawi City">Marawi City</option>
                 </select>
+                                  {error.branch &&(
+                     <p className="text-red-500 text-sm">{error.branch} </p>
+                  )}
               </div>
 
             <button

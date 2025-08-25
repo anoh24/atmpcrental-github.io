@@ -19,6 +19,6 @@ public class UserClientRegistrationForValidationDto {
     @Size(message = "Only 200 characters are allowed")
     private String password;
 
-    @NotBlank(message = "Branch is required")
+    @NotBlank(message = "You did not select branch")
     private String branch;
 }

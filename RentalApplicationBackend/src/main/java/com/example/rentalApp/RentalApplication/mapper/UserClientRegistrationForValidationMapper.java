@@ -27,7 +27,7 @@ public class UserClientRegistrationForValidationMapper {
         Optional.ofNullable(entity.getApproval()).ifPresent(dto::setApproval);
         Optional.ofNullable(entity.getStatus()).ifPresent(dto::setStatus);
         Optional.ofNullable(entity.getBranch()).ifPresent(dto::setBranch);
-        dto.setMessage("Account registered, we'll email you after your account is validated");
+
         return dto;
     }
 

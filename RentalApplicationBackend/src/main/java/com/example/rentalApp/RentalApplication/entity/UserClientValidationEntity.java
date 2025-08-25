@@ -14,7 +14,6 @@ public class UserClientValidationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customerid")
     private Integer customerid;
-
     private String approval;
     private String status;
 }
