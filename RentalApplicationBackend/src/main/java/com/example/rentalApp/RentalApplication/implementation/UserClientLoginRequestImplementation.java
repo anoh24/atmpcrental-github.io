@@ -4,10 +4,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.example.rentalApp.RentalApplication.mapper.UserClientLoginRequestMapper;
 import com.example.rentalApp.RentalApplication.dto.UserClientLoginRequestDto;
-import com.example.rentalApp.RentalApplication.dto.UserClientValidationResponseDto;
 import com.example.rentalApp.RentalApplication.entity.UserClientRegistrationForValidationEntity;
 import com.example.rentalApp.RentalApplication.repository.UserClientLoginRequestRepository;
 import com.example.rentalApp.RentalApplication.service.UserClientLoginRequestService;
+import java.util.Optional;
 @Service
 public class UserClientLoginRequestImplementation implements UserClientLoginRequestService{
     private final JwtUtil jwtUtil;
@@ -26,4 +26,15 @@ public class UserClientLoginRequestImplementation implements UserClientLoginRequ
         this.userClientLoginRequestMapper = userClientLoginRequestMapper;
     }
 
+    @Override
+    public UserClientLoginRequestService login(UserClientLoginRequestDto loginRequest){
+        UserClientRegistrationForValidationEntity user  = userClientLoginRequestRepository.findByEmail(loginRequest.getEmail())
+                .orElseThrow(() -> new RunTImeException("User email not found"));
+        Optional.ofNullable(user.getPassword())
+                .filter(encodedPassword -> passwordEncoder.matches(loginRequest.getPassword(), encodedPassword))
+                .orElseThrow(() -> new RuntimeException("Invalid password"));
+
+        String token = jwtUtil.generateToken(user.getEmail());
+        return userClientLoginRequestMapper.toUserClientLoginRequestResponseDto(user, token);
+    }
 }
