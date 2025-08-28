@@ -1,5 +1,7 @@
 package com.example.rentalApp.RentalApplication.implementation;
 
+import com.example.rentalApp.RentalApplication.GlobalExceptionHandler.UserClientLoginRequestHandler.EmailNotFoundException;
+import com.example.rentalApp.RentalApplication.GlobalExceptionHandler.UserClientLoginRequestHandler.InvalidPasswordException;
 import com.example.rentalApp.RentalApplication.mapper.UserClientLoginRequestMapper;
 import com.example.rentalApp.RentalApplication.dto.UserClientLoginRequestDto;
 import com.example.rentalApp.RentalApplication.dto.UserClientLoginRequestResponseDto;
@@ -9,6 +11,7 @@ import com.example.rentalApp.RentalApplication.service.UserClientLoginRequestSer
 import com.example.rentalApp.RentalApplication.config.JwtUtil;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 @Service
@@ -35,12 +38,12 @@ public class UserClientLoginRequestImplementation implements UserClientLoginRequ
     public UserClientLoginRequestResponseDto login(UserClientLoginRequestDto loginRequest) {
         UserClientRegistrationForValidationEntity user = userClientLoginRequestRepository
                 .findByEmail(loginRequest.getEmail())
-                .orElseThrow(() -> new RuntimeException("User email not found"));
+                .orElseThrow(() -> new EmailNotFoundException("Email not found"));
 
         // Use Optional to validate password
         Optional.ofNullable(user.getPassword())
                 .filter(encodedPassword -> passwordEncoder.matches(loginRequest.getPassword(), encodedPassword))
-                .orElseThrow(() -> new RuntimeException("Invalid password"));
+                .orElseThrow(() -> new InvalidPasswordException("Invalid password"));
 
         String token = jwtUtil.generateToken(user.getEmail()); // no role
 

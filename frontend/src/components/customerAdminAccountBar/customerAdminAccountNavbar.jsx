@@ -1,8 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { HiOutlineHome,HiOutlineUsers,HiOutlineHomeModern,HiOutlineCreditCard,HiOutlineEnvelope,HiOutlineLockClosed } from 'react-icons/hi2'
+import {useLogout} from "../../hooks/customerAdminAccountLoggingOut/customerAdminAccountLogOut";
 export default function CustomerAdminAccountNavbar(){
-    
+    const {handleLogout} = useLogout();
 
     return(
         <div className="fixed top-0 left-0 w-full font-oswald z-50">
@@ -29,10 +30,10 @@ export default function CustomerAdminAccountNavbar(){
                  rounded-full p-1 hover:border-green-600"/>
                 </NavLink>
 
-                  <NavLink to="/">
+                <button onClick={handleLogout}>
                  <HiOutlineLockClosed className="text-3xl text-black cursor-pointer 
                  rounded-full p-1 hover:border-green-600"/>
-                </NavLink>
+                </button>
             </nav>
 
         </div>

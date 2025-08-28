@@ -9,5 +9,5 @@ import lombok.AllArgsConstructor;
 public class UserClientLoginRequestResponseDto {
     private String token;
     private String email;
-    private String message;
+
 }

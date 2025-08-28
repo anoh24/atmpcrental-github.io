@@ -18,6 +18,7 @@ import CustomerAdminMainDashboardPage from './pages/customerAdminAccount/custome
 import CustomerAdminAccountProfilePage from './pages/customerAdminAccount/customerAdminAccountProfileView/customerAdminAccountProfilePage';
 import CustomerAdminAccountBillingPage from './pages/customerAdminAccount/customerAdminAccountBillingView/customerAdminAccountBillingPage';
 import CustomerAdminAccountChattingPage from './pages/customerAdminAccount/customerAdminAccountChattingView/customerAdminAccountChattingPage';
+import {PrivateRoute} from "./components/routes/Privateroute";
 function App() {
   return (
     <Router>
@@ -106,10 +107,11 @@ function App() {
         <Route
           path="/customerAdminAccount/customerAdminDashboardView/customerAdminMainDashboardPage"
           element={
+            <PrivateRoute>
             <CustomerAdminAccountNavbarLayout>
               <CustomerAdminMainDashboardPage/>
             </CustomerAdminAccountNavbarLayout>
-
+            </PrivateRoute>
           }
           >
         </Route>
@@ -118,9 +120,11 @@ function App() {
         <Route
           path="/customerAdminAccount/customerAdminAccountProfileView/customerAdminAccountProfilePage"
           element={
+            <PrivateRoute>
             <CustomerAdminAccountNavbarLayout>
               <CustomerAdminAccountProfilePage/>
             </CustomerAdminAccountNavbarLayout>
+            </PrivateRoute>
 
           }
           >
@@ -129,19 +133,22 @@ function App() {
         <Route
           path="/customerAdminAccount/customerAdminAccountBillingView/customerAdminAccountBillingPage"
           element={
+            <PrivateRoute>
             <CustomerAdminAccountNavbarLayout>
               <CustomerAdminAccountBillingPage/>
             </CustomerAdminAccountNavbarLayout>
-
+            </PrivateRoute>
           }
           >
         </Route>
         <Route
         path="/customerAdminAccount/customerAdminAccountChattingview/customerAdminAccountChattingPage"
         element={
-          <CustomerAdminAccountNavbarLayout>
-            <CustomerAdminAccountChattingPage/>
-          </CustomerAdminAccountNavbarLayout>
+             <PrivateRoute>
+            <CustomerAdminAccountNavbarLayout>
+              <CustomerAdminAccountChattingPage/>
+            </CustomerAdminAccountNavbarLayout>
+              </PrivateRoute>
         }
         >          
         </Route>
