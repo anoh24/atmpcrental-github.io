@@ -58,7 +58,6 @@ const RegisterForm = () => {
                 placeholder="Type your Password"
                 value={formData.password}
                 onChange={handleChange}
-                required
                 className="w-full bg-white px-3 py-2 border border-gray-600
                 focus:outline-none focus:ring-1 focus:ring-black text-black rounded"
               />
@@ -66,7 +65,6 @@ const RegisterForm = () => {
                 <div
                   className="absolute right-3 top-3 -translate-y-1/2 text-gray-400 cursor-pointer"
                   onClick={togglePassword}
-                  required
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </div>
@@ -82,7 +80,6 @@ const RegisterForm = () => {
                   className="w-full px-3 py-2 bg-white border border-gray-700 rounded text-black"
                   value={formData.branch}
                   onChange={handleChange}
-                  required
                 >
                   <option value="" hidden>Select your branch</option>
                   <option value="Cagayan De Oro">Cagayan De Oro</option>
