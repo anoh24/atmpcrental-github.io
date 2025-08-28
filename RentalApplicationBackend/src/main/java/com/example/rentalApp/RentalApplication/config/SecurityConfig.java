@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // allow preflight
-                        .requestMatchers("/api/auth/login").permitAll()
+                        .requestMatchers("/api/authentication/login", "/api/authentication/login/**").permitAll()
                         .requestMatchers("/api/userclients", "/api/userclients/**").permitAll()
                         .requestMatchers("/api/userclientslist/**").permitAll()
                         .requestMatchers("/api/clients/**").permitAll()

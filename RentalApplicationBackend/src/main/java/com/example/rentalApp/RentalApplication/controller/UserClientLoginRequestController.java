@@ -4,7 +4,7 @@ import com.example.rentalApp.RentalApplication.service.UserClientLoginRequestSer
 import com.example.rentalApp.RentalApplication.dto.UserClientLoginRequestResponseDto;
 import com.example.rentalApp.RentalApplication.dto.UserClientLoginRequestDto;
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/authentication")
 public class UserClientLoginRequestController{
     private final  UserClientLoginRequestService userClientLoginRequestService;
     public UserClientLoginRequestController(UserClientLoginRequestService userClientLoginRequestService){

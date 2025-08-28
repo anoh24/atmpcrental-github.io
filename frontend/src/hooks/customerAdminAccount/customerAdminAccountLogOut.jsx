@@ -17,7 +17,7 @@ export const useLogout = () =>{
              cancelButtonColor: "#f54f4f",
            }).then((result) =>{
             if(result.isConfirmed){
-                localStorage.removeItem("token");
+                localStorage.removeItem("authToken");
 
                 navigate("/loginpage");
                 Swal.fire({

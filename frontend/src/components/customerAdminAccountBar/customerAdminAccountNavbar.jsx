@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { HiOutlineHome,HiOutlineUsers,HiOutlineHomeModern,HiOutlineCreditCard,HiOutlineEnvelope,HiOutlineLockClosed } from 'react-icons/hi2'
-import {useLogout} from "../../hooks/customerAdminAccountLoggingOut/customerAdminAccountLogOut";
+import {useLogout} from "../../hooks/customerAdminAccount/customerAdminAccountLogOut";
 export default function CustomerAdminAccountNavbar(){
     const {handleLogout} = useLogout();
 

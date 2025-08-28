@@ -19,6 +19,7 @@ import CustomerAdminAccountProfilePage from './pages/customerAdminAccount/custom
 import CustomerAdminAccountBillingPage from './pages/customerAdminAccount/customerAdminAccountBillingView/customerAdminAccountBillingPage';
 import CustomerAdminAccountChattingPage from './pages/customerAdminAccount/customerAdminAccountChattingView/customerAdminAccountChattingPage';
 import {PrivateRoute} from "./components/routes/Privateroute";
+import {PublicRoute} from "./components/routes/Publicroute";
 function App() {
   return (
     <Router>
@@ -35,9 +36,11 @@ function App() {
         <Route
           path="/loginpage"
           element={
+            <PublicRoute>
             <MainLayout>
               <Loginpage />
             </MainLayout>
+            </PublicRoute>
           }
         />
         <Route
@@ -104,6 +107,7 @@ function App() {
         </Route>
 
         {/* customer admin dashboard */}
+
         <Route
           path="/customerAdminAccount/customerAdminDashboardView/customerAdminMainDashboardPage"
           element={
