@@ -4,9 +4,9 @@ const CustomerAdminAccountProfileSection = () => {
  
  const {
     formData,
-    error,
-    showPassword,
-    togglePassword,
+    // error,
+    // showPassword,
+    // togglePassword,
     handleChange,
     // handleSubmit,
   } = userClientProfile();

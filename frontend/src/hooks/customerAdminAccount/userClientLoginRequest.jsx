@@ -27,9 +27,10 @@ const useLoginForm = () => {
       const response = await apiUserClientLoginRequest(formData);
 
       const receivedToken = response.data.token;
+      const customerid =  response.data.customerid;
       setToken(receivedToken);
 
- 
+      localStorage.setItem("customerid", customerid)
       localStorage.setItem("authToken", receivedToken);
 
       setFormData({ email: "", password: "" }); 

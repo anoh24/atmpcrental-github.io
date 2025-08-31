@@ -2,20 +2,19 @@
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import {apiUserClientProfile} from "../../api/customerAdminAccount/userClientProfile"; 
-// 👆 make sure you create these API functions
+
 
 const userClientProfile = () => {
-  const [showPassword, setShowPassword] = useState(false);
+ 
 
   const [formData, setFormData] = useState({
+    customerid:"",
     fullName: "",
     gender: "",
     birthdate: "",
     phoneNumber: "",
     occupation: "",
     email: "",
-    password: "",
-    confirmPassword: "",
     address: "",
     emergencyName: "",
     emergencyNumber: "",
@@ -25,7 +24,7 @@ const userClientProfile = () => {
   const [error, setError] = useState({});
   const [loading, setLoading] = useState(true);
 
-  const togglePassword = () => setShowPassword((prev) => !prev);
+ 
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -40,9 +39,12 @@ const userClientProfile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await apiUserClientProfile(); 
+        const customerid =  localStorage.getItem("customerid");
+        const response = await apiUserClientProfile(customerid); 
         setFormData(response.data); // assuming backend returns same keys
         setLoading(false);
+   
+  
       } catch (err) {
         console.error("Failed to fetch profile:", err);
         setError({ general: "Failed to load profile" });
@@ -78,8 +80,6 @@ const userClientProfile = () => {
     formData,
     error,
     loading,
-    showPassword,
-    togglePassword,
     handleChange,
     // handleSubmit,
     setFormData, 

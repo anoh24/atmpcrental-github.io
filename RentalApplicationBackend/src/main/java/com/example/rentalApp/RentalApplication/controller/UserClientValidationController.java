@@ -16,7 +16,7 @@ public class UserClientValidationController {
     {
         this.userClientValidationService = userClientValidationService;
     }
-    @PutMapping("/clients/{customerid}")
+    @PutMapping("/{customerid}")
     public ResponseEntity<UserClientValidationResponseDto>ValidateUserAccount(
             @PathVariable("customerid") Integer id,
             @Valid @RequestBody UserClientValidationDto dto){

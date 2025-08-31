@@ -18,7 +18,7 @@ export const useLogout = () =>{
            }).then((result) =>{
             if(result.isConfirmed){
                 localStorage.removeItem("authToken");
-
+                localStorage.removeItem("customerid");
                 navigate("/loginpage");
                 Swal.fire({
                     title: "Logged out",

@@ -22,7 +22,7 @@ public class UserClientRegistrationForValidationEntity {
     private String fullname;
     private String gender;
     private String birthdate;
-    private String phonumber;
+    private String phonenumber;
     private String Occupation;
     private String address;
     private String governmentid;

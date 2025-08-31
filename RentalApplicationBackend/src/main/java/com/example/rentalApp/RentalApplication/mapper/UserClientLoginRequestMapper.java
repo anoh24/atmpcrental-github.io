@@ -13,7 +13,7 @@ public class UserClientLoginRequestMapper {
         Optional.ofNullable(entity.getFullname()).ifPresent(responseDto::setFullname);
         Optional.ofNullable(entity.getGender()).ifPresent(responseDto::setGender);
         Optional.ofNullable(entity.getBirthdate()).ifPresent(responseDto::setBirthdate);
-        Optional.ofNullable(entity.getPhonumber()).ifPresent(responseDto::setPhonumber);
+        Optional.ofNullable(entity.getPhonenumber()).ifPresent(responseDto::setPhonenumber);
         Optional.ofNullable(entity.getOccupation()).ifPresent(responseDto::setOccupation);
         Optional.ofNullable(entity.getAddress()).ifPresent(responseDto::setAddress);
         Optional.ofNullable(entity.getContactname()).ifPresent(responseDto::setContactname);
