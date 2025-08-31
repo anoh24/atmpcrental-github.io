@@ -50,6 +50,11 @@ public class UserClientLoginRequestGlobalHandler {
                 .body(Map.of("message", ex.getMessage()));
     }
 
+    @ExceptionHandler(InvalidatedLoginException.class)
+    public ResponseEntity<Map<String, String>> handeInvalidatedLogin(InvalidatedLoginException ex){
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(Map.of("message", ex.getMessage()));
+    }
     /**
      * Catch any unhandled exceptions (fallback).
      */

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { apiUserClientLoginRequest } from "../../api/customerAdminAccount/userClientLoginRequest";
 import { useNavigate } from "react-router-dom";
-
+import Swal from "sweetalert2";
 const useLoginForm = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -40,10 +40,24 @@ const useLoginForm = () => {
       console.error("Login Failed:", err.response?.data);
       const errorMessage = err.response?.data?.message || "Login failed";
 
-      if (errorMessage.includes("Email")) {
+     if (errorMessage.includes("Email")) {
         setError((prev) => ({ ...prev, email: errorMessage }));
-      } else {
+
+      } else if (errorMessage.includes("Invalid")) {   
         setError((prev) => ({ ...prev, password: errorMessage }));
+
+      } else if (errorMessage.includes("not yet approved")) {  
+        Swal.fire({
+          title: "Approval",
+          text: errorMessage,   
+          icon: "info",         
+          width: "400px",
+          confirmButtonText: "OK",
+          confirmButtonColor: "#22c55e"
+        });
+
+      } else {
+        setError((prev) => ({ ...prev, general: errorMessage }));
       }
     }
   };

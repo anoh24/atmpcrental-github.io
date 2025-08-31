@@ -1,38 +1,15 @@
 import React, { useState } from "react";
-
-const CustomerAdminAccountProfileSection = ({ availableRooms = [] }) => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: "",
-    gender: "",
-    birthdate: "",
-    phoneNumber: "",
-    occupation: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    address: "",
-    roomNumber: "",
-    emergencyName: "",
-    emergencyNumber: "",
-    relationship: "",
-  });
-
-  const togglePassword = () => setShowPassword(!showPassword);
-
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    setFormData({
-      ...formData,
-      [name]: files ? files[0] : value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-  };
-
+import userClientProfile from "../../../hooks/customerAdminAccount/userClientProfile"
+const CustomerAdminAccountProfileSection = () => {
+ 
+ const {
+    formData,
+    error,
+    showPassword,
+    togglePassword,
+    handleChange,
+    // handleSubmit,
+  } = userClientProfile();
   const inputClass =
     "bg-white text-black border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-black";
 
@@ -42,7 +19,7 @@ const CustomerAdminAccountProfileSection = ({ availableRooms = [] }) => {
     <div className="relative mt-28 flex flex-col gap-6 max-w-3xl mx-auto px-2 sm:px-4 font-oswald mb-10">
       <div className=" grid grid-cols-1 gap-6 ">
         <form
-          onSubmit={handleSubmit}
+          // onSubmit={handleSubmit}
           className="bg-white rounded-xl shadow-md p-6 border"
         >
           <h2 className="text-lg font-bold text-black mb-4 border-b pb-2">
@@ -119,39 +96,6 @@ const CustomerAdminAccountProfileSection = ({ availableRooms = [] }) => {
                 required
               />
             </div>
-
-            <div>
-              <label className={labelClass}>Password</label>
-              <div className="relative">
-                <input
-                  name="password"
-                  type={showPassword ? "text" : "password"}
-                  className={`${inputClass} pr-10`}
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
-                />
-                <span
-                  onClick={togglePassword}
-                  className="absolute right-3 top-2.5 text-gray-600 cursor-pointer"
-                >
-                  {showPassword ? "🙈" : "👁️"}
-                </span>
-              </div>
-            </div>
-
-            <div>
-              <label className={labelClass}>Confirm Password</label>
-              <input
-                name="confirmPassword"
-                type="password"
-                className={inputClass}
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
             <div className="md:col-span-2">
               <label className={labelClass}>Address</label>
               <textarea
@@ -171,24 +115,6 @@ const CustomerAdminAccountProfileSection = ({ availableRooms = [] }) => {
                 className={inputClass}
                 onChange={handleChange}
               />
-            </div>
-
-            <div>
-              <label className={labelClass}>Room Number</label>
-              <select
-                name="roomNumber"
-                className={inputClass}
-                value={formData.roomNumber}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select Room</option>
-                {availableRooms.map((room) => (
-                  <option key={room} value={room}>
-                    {room}
-                  </option>
-                ))}
-              </select>
             </div>
 
             <div>

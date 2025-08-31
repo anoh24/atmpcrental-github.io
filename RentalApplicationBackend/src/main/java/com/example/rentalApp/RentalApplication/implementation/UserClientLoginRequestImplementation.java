@@ -2,6 +2,7 @@ package com.example.rentalApp.RentalApplication.implementation;
 
 import com.example.rentalApp.RentalApplication.GlobalExceptionHandler.UserClientLoginRequestHandler.EmailNotFoundException;
 import com.example.rentalApp.RentalApplication.GlobalExceptionHandler.UserClientLoginRequestHandler.InvalidPasswordException;
+import com.example.rentalApp.RentalApplication.GlobalExceptionHandler.UserClientLoginRequestHandler.InvalidatedLoginException;
 import com.example.rentalApp.RentalApplication.mapper.UserClientLoginRequestMapper;
 import com.example.rentalApp.RentalApplication.dto.UserClientLoginRequestDto;
 import com.example.rentalApp.RentalApplication.dto.UserClientLoginRequestResponseDto;
@@ -10,6 +11,7 @@ import com.example.rentalApp.RentalApplication.repository.UserClientLoginRequest
 import com.example.rentalApp.RentalApplication.service.UserClientLoginRequestService;
 import com.example.rentalApp.RentalApplication.config.JwtUtil;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.stereotype.Service;
@@ -21,7 +23,7 @@ public class UserClientLoginRequestImplementation implements UserClientLoginRequ
     private final PasswordEncoder passwordEncoder;
     private final UserClientLoginRequestRepository userClientLoginRequestRepository;
     private final UserClientLoginRequestMapper userClientLoginRequestMapper;
-
+    @Autowired
     public UserClientLoginRequestImplementation(
             JwtUtil jwtUtil,
             PasswordEncoder passwordEncoder,
@@ -40,13 +42,22 @@ public class UserClientLoginRequestImplementation implements UserClientLoginRequ
                 .findByEmail(loginRequest.getEmail())
                 .orElseThrow(() -> new EmailNotFoundException("Email not found"));
 
-        // Use Optional to validate password
+
         Optional.ofNullable(user.getPassword())
                 .filter(encodedPassword -> passwordEncoder.matches(loginRequest.getPassword(), encodedPassword))
                 .orElseThrow(() -> new InvalidPasswordException("Invalid password"));
 
-        String token = jwtUtil.generateToken(user.getEmail()); // no role
+        Optional.ofNullable(user)
+                .filter(u ->!"In Active".equalsIgnoreCase(u.getStatus()))
+                .orElseThrow(() -> new InvalidatedLoginException("Your account is not yet approved"));
+        String token = jwtUtil.generateToken(user.getEmail());
 
         return userClientLoginRequestMapper.toUserClientLoginRequestResponseDto(user, token);
     }
+    @Override
+    public Optional<UserClientLoginRequestResponseDto> getUserById(Integer customerid) {
+        return userClientLoginRequestRepository.findById(customerid)
+                .map(userClientLoginRequestMapper::toUserClientLoginRequestResponseDto);
+    }
+
 }

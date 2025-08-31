@@ -4,4 +4,5 @@ import com.example.rentalApp.RentalApplication.entity.UserClientRegistrationForV
 import java.util.Optional;
 public interface UserClientLoginRequestRepository extends JpaRepository<UserClientRegistrationForValidationEntity , Integer> {
     Optional<UserClientRegistrationForValidationEntity> findByEmail(String email);
+
 }

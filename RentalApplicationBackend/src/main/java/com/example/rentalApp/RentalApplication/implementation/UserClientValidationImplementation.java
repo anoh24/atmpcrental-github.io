@@ -1,6 +1,6 @@
 package com.example.rentalApp.RentalApplication.implementation;
 import com.example.rentalApp.RentalApplication.dto.UserClientValidationDto;
-import com.example.rentalApp.RentalApplication.entity.UserClientValidationEntity;
+import com.example.rentalApp.RentalApplication.entity.UserClientRegistrationForValidationEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.rentalApp.RentalApplication.dto.UserClientValidationResponseDto;
@@ -23,10 +23,12 @@ public class UserClientValidationImplementation implements UserClientValidationS
     }
     @Override
     public UserClientValidationResponseDto ValidateUserAccount(Integer id, UserClientValidationDto dto){
-        UserClientValidationEntity existing = userclientvalidationrepository.findById(id)
+        UserClientRegistrationForValidationEntity existing = userclientvalidationrepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with id " + id));
         userclientvalidationmapper.updateEntityFromDto(dto, existing);
-        UserClientValidationEntity updated = userclientvalidationrepository.save(existing);
+        UserClientRegistrationForValidationEntity updated = userclientvalidationrepository.save(existing);
+        UserClientValidationResponseDto responseDto = userclientvalidationmapper.toDto(updated);
+        responseDto.setMessage("Account successfully validated...");
         return userclientvalidationmapper.toDto(updated);
     }
 
