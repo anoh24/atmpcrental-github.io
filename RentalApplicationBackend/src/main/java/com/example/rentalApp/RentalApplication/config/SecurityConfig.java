@@ -32,11 +32,12 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // allow preflight
-                        .requestMatchers("/api/{customerid}", "/api/{customerid}/**").permitAll()
-                        .requestMatchers("/api/login", "/api/login/**").permitAll()
-                        .requestMatchers("/api/userclients", "/api/userclients/**").permitAll()
-                        .requestMatchers("/api/userclientslist/**").permitAll()
-                        .requestMatchers("/api/{customerid}").permitAll()
+                        .requestMatchers("/apiUpdateUserClientProfile/{customerid}", "/apiUpdateUserClientProfile/{customerid}/**").permitAll()
+                        .requestMatchers("/apiAuthentication/{customerid}", "/apiAuthentication/{customerid}/**").permitAll()
+                        .requestMatchers("/apiAuthentication/login", "/apiAuthentication/login/**").permitAll()
+                        .requestMatchers("/apiUserClientRegistration/userclients", "/apiUserClientRegistration/userclients/**").permitAll()
+                        .requestMatchers("/apiUserClientRegistration/userclientslist/**").permitAll()
+                        .requestMatchers("/apiValidationUserClient/{customerid}", "/apiValidationUserClient/{customerid}/**").permitAll()
                         .anyRequest().authenticated()
                 );
 

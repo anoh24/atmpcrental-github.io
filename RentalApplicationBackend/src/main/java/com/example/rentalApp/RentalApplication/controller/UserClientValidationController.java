@@ -8,7 +8,7 @@ import com.example.rentalApp.RentalApplication.service.UserClientValidationServi
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/apiValidationUserClient")
 public class UserClientValidationController {
     private final UserClientValidationService userClientValidationService;
 

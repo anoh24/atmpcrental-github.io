@@ -1,12 +1,13 @@
 package com.example.rentalApp.RentalApplication.dto;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class UserClientLoginRequestResponseDto {
+@AllArgsConstructor
+@Data
+public class UserClientUpdateProfileReponseDto {
     private Integer customerid;
     private String token;
     private String email;
@@ -16,7 +17,10 @@ public class UserClientLoginRequestResponseDto {
     private String phonenumber;
     private String Occupation;
     private String address;
+    private String profilephoto;
+    private String governmentid;
     private String contactname;
     private String contactnumber;
     private String relationshipcontact;
+    private String message;
 }

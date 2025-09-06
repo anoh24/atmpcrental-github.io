@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/apiUserClientRegistration")
 public class UserClientRegistrationForValidationController {
     private final UserClientRegistrationForValidationService userClientRegistrationForValidationService;
 
