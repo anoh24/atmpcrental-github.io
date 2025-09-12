@@ -2,23 +2,23 @@
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import {apiUserClientProfile} from "../../api/customerAdminAccount/userClientProfile"; 
-
+import {apiUserClientUpdateProfile } from "../../api/customerAdminAccount/userClientUpdateProfile";
 
 const userClientProfile = () => {
  
 
   const [formData, setFormData] = useState({
     customerid:"",
-    fullName: "",
+    fullname: "",
     gender: "",
     birthdate: "",
-    phoneNumber: "",
+    phonenumber: "",
     occupation: "",
     email: "",
     address: "",
-    emergencyName: "",
-    emergencyNumber: "",
-    relationship: "",
+    contactname: "",
+    contactnumber: "",
+    relationshipcontact: "",
   });
 
   const [error, setError] = useState({});
@@ -27,11 +27,8 @@ const userClientProfile = () => {
  
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    setFormData({
-      ...formData,
-      [name]: files ? files[0] : value,
-    });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
     setError((prev) => ({ ...prev, [name]: "" }));
   };
 
@@ -39,7 +36,7 @@ const userClientProfile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const customerid =  localStorage.getItem("customerid");
+        const customerid = localStorage.getItem("customerid");
         const response = await apiUserClientProfile(customerid); 
         setFormData(response.data); // assuming backend returns same keys
         setLoading(false);
@@ -54,34 +51,37 @@ const userClientProfile = () => {
     fetchProfile();
   }, []);
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       console.log("Submitting profile form:", formData);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const customerid = Number(localStorage.getItem("customerid"));
+    console.log("Submitting profile form:", { ...formData, customerid });
 
-//       const response = await apiUpdateProfile(formData);
+    const response = await apiUserClientUpdateProfile(formData, customerid);
 
-//       Swal.fire({
-//         title: "Profile Updated",
-//         text: "Your profile information has been saved successfully.",
-//         icon: "success",
-//         confirmButtonColor: "#22c55e",
-//         width: "400px",
-//       });
+ 
 
-//       return response.data;
-//     } catch (err) {
-//       console.error("Profile update failed:", err);
-//       setError(err.response?.data || { general: "Something went wrong" });
-//     }
-//   };
+    Swal.fire({
+      title: "Profile Updated",
+      text: "Your profile information has been saved successfully.",
+      icon: "success",
+      confirmButtonColor: "#22c55e",
+      width: "400px",
+    });
+
+    return response.data;
+  } catch (err) {
+    console.error("Profile update failed:", err);
+    setError(err.response?.data || { general: "Something went wrong" });
+  }
+};
 
   return {
     formData,
     error,
     loading,
     handleChange,
-    // handleSubmit,
+    handleSubmit,
     setFormData, 
   };
 };

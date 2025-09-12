@@ -10,8 +10,7 @@ const RegisterForm = () => {
     handleChange,
     handleSubmit,
     togglePassword,
-    branch,
-    setBranch
+
   
   } = useRegisterForm();
 

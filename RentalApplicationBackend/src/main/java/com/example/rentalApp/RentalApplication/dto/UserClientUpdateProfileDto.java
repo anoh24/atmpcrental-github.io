@@ -23,7 +23,6 @@ public class UserClientUpdateProfileDto {
     private String fullname;
 
     @NotBlank(message = "You did not select a gender")
-    @Size(min = 1 , max = 200, message = "Only 5 to 200 characters are allowed")
     private String gender;
 
     @NotBlank(message = "Birth date is required")
@@ -36,7 +35,7 @@ public class UserClientUpdateProfileDto {
 
     @NotBlank(message = "Occupation is required")
     @Size(min = 5, max = 200, message = "Only 5 to 200 characters is allowed")
-    private String Occupation;
+    private String occupation;
 
     @NotBlank(message = "Address is required")
     @Size(min = 5, max = 200, message = "Only 5 to 200 characters are allowed")

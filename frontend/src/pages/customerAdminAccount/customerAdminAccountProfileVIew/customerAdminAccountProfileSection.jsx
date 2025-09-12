@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+
 import userClientProfile from "../../../hooks/customerAdminAccount/userClientProfile"
 const CustomerAdminAccountProfileSection = () => {
  
  const {
     formData,
-    // error,
-    // showPassword,
-    // togglePassword,
+    error,
     handleChange,
-    // handleSubmit,
+    handleSubmit,
   } = userClientProfile();
   const inputClass =
     "bg-white text-black border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-black";
@@ -19,7 +17,7 @@ const CustomerAdminAccountProfileSection = () => {
     <div className="relative mt-28 flex flex-col gap-6 max-w-3xl mx-auto px-2 sm:px-4 font-oswald mb-10">
       <div className=" grid grid-cols-1 gap-6 ">
         <form
-          // onSubmit={handleSubmit}
+          onSubmit={handleSubmit}
           className="bg-white rounded-xl shadow-md p-6 border"
         >
           <h2 className="text-lg font-bold text-black mb-4 border-b pb-2">
@@ -29,12 +27,15 @@ const CustomerAdminAccountProfileSection = () => {
             <div>
               <label className={labelClass}>Full Name</label>
               <input
-                name="fullName"
+                name="fullname"
                 className={inputClass}
-                value={formData.fullName}
+                value={formData.fullname || ""}
                 onChange={handleChange}
-                required
+              
               />
+              {error.fullname &&(
+                  <p className="text-red-500 text-sm">{error.fullname}</p>
+              )}
             </div>
 
             <div>
@@ -42,14 +43,16 @@ const CustomerAdminAccountProfileSection = () => {
               <select
                 name="gender"
                 className={inputClass}
-                value={formData.gender}
+                value={formData.gender || ""}
                 onChange={handleChange}
               >
-                <option value="">Select Gender</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
+                <option value="" hidden>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
               </select>
+                {error.gender &&(
+                  <p className="text-red-500 text-sm">{error.gender}</p>
+              )}
             </div>
 
             <div>
@@ -58,20 +61,26 @@ const CustomerAdminAccountProfileSection = () => {
                 name="birthdate"
                 type="date"
                 className={inputClass}
-                value={formData.birthdate}
+                value={formData.birthdate || ""}
                 onChange={handleChange}
               />
+                {error.birthdate &&(
+                  <p className="text-red-500 text-sm">{error.birthdate}</p>
+              )}
             </div>
 
             <div>
               <label className={labelClass}>Phone Number</label>
               <input
-                name="phoneNumber"
+                name="phonenumber"
                 className={inputClass}
-                value={formData.phoneNumber}
+                value={formData.phonenumber || ""}
                 onChange={handleChange}
-                required
+           
               />
+                {error.phonenumber &&(
+                  <p className="text-red-500 text-sm">{error.phonenumber}</p>
+              )}
             </div>
 
             <div>
@@ -79,10 +88,13 @@ const CustomerAdminAccountProfileSection = () => {
               <input
                 name="occupation"
                 className={inputClass}
-                value={formData.occupation}
+                value={formData.occupation || ""}
                 onChange={handleChange}
-                required
+             
               />
+                {error.occupation &&(
+                  <p className="text-red-500 text-sm">{error.occupation}</p>
+              )}
             </div>
 
             <div>
@@ -91,42 +103,27 @@ const CustomerAdminAccountProfileSection = () => {
                 name="email"
                 type="email"
                 className={inputClass}
-                value={formData.email}
+                value={formData.email || ""}
                 onChange={handleChange}
-                required
+               
               />
+                {error.email &&(
+                  <p className="text-red-500 text-sm">{error.email}</p>
+              )}
             </div>
             <div className="md:col-span-2">
               <label className={labelClass}>Address</label>
               <textarea
                 name="address"
                 className={`${inputClass} h-24`}
-                value={formData.address}
+                value={formData.address || ""}
                 onChange={handleChange}
               />
+                {error.address &&(
+                  <p className="text-red-500 text-sm">{error.address}</p>
+              )}
             </div>
-
-            <div>
-              <label className={labelClass}>Profile Photo</label>
-              <input
-                name="profilePhoto"
-                type="file"
-                accept="image/*"
-                className={inputClass}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div>
-              <label className={labelClass}>Government ID</label>
-              <input
-                name="govId"
-                type="file"
-                className={inputClass}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
+          </div>    
 
           <div className="mt-8">
             <h3 className="text-lg font-bold text-black mb-4 border-b pb-2">
@@ -136,39 +133,48 @@ const CustomerAdminAccountProfileSection = () => {
               <div>
                 <label className={labelClass}>Contact Name</label>
                 <input
-                  name="emergencyName"
+                  name="contactname"
                   className={inputClass}
-                  value={formData.emergencyName}
+                value={formData.contactname || ""}
                   onChange={handleChange}
-                  required
+               
                 />
+                {error.contactname &&(
+                  <p className="text-red-500 text-sm">{error.contactname}</p>
+              )}
               </div>
 
               <div>
                 <label className={labelClass}>Contact Number</label>
                 <input
-                  name="emergencyNumber"
+                  name="contactnumber"
                   className={inputClass}
-                  value={formData.emergencyNumber}
+                  value={formData.contactnumber || ""}
                   onChange={handleChange}
-                  required
+                
                 />
+                {error.contactnumber &&(
+                  <p className="text-red-500 text-sm">{error.contactnumber}</p>
+              )}
               </div>
 
               <div>
                 <label className={labelClass}>Relationship</label>
                 <select
-                  name="relationship"
+                  name="relationshipcontact"
                   className={inputClass}
-                  value={formData.relationship}
+                  value={formData.relationshipcontact || ""}
                   onChange={handleChange}
                 >
-                  <option value="">Select Relationship</option>
+                  <option value="" hidden>Select Relationship</option>
                   <option value="Parent">Parent</option>
                   <option value="Sibling">Sibling</option>
                   <option value="Friend">Friend</option>
-                  <option value="Other">Other</option>
+
                 </select>
+                  {error.relationshipcontact &&(
+                  <p className="text-red-500 text-sm">{error.relationshipcontact}</p>
+              )}
               </div>
             </div>
           </div>
