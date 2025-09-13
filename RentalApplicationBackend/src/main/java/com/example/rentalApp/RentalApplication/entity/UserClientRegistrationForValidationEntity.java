@@ -25,11 +25,11 @@ public class UserClientRegistrationForValidationEntity {
     private String phonenumber;
     private String Occupation;
     private String address;
-    private String governmentid;
     private String roomnumber;
     private String contactname;
     private String contactnumber;
     private String relationshipcontact;
+    private String profilephoto;
 
 
 

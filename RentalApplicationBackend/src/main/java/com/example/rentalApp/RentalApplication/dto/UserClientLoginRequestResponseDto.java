@@ -19,4 +19,5 @@ public class UserClientLoginRequestResponseDto {
     private String contactname;
     private String contactnumber;
     private String relationshipcontact;
+    private String profilephoto;
 }

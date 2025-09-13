@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import {apiUserClientProfile} from "../../api/customerAdminAccount/userClientProfile"; 
 import {apiUserClientUpdateProfile } from "../../api/customerAdminAccount/userClientUpdateProfile";
+import { apiUserClientChangeProfilePhoto } from "../../api/customerAdminAccount/userClientChangeProfilePhoto";
 
 const userClientProfile = () => {
  
@@ -19,37 +20,72 @@ const userClientProfile = () => {
     contactname: "",
     contactnumber: "",
     relationshipcontact: "",
+   
   });
-
+  const [profilePic, setProfilePic] = useState(null);
   const [error, setError] = useState({});
   const [loading, setLoading] = useState(true);
 
- 
 
+const fetchProfile = async () => {
+  try {
+    const customerid = localStorage.getItem("customerid");
+    const response = await apiUserClientProfile(customerid); 
+    
+    setFormData(response.data); 
+    setLoading(false);
+
+    if (response.data.profilephoto) {
+      setProfilePic(`/userClientProfilePhoto/${response.data.profilephoto}`);
+    } else {
+      setProfilePic("https://placehold.co/150x150"); 
+    }
+  } catch (err) {
+    console.error("Failed to fetch profile:", err);
+    setError({ general: "Failed to load profile" });
+    setLoading(false);
+  }
+};
+
+
+useEffect(() => {
+  fetchProfile();
+}, []);
+
+
+const handleProfilePicChange = async (e) => {
+  e.preventDefault();
+  const file = e.target.files?.[0];
+  if (!file) return;
+
+  setProfilePic(URL.createObjectURL(file)); 
+
+  const customerid = Number(localStorage.getItem("customerid"));
+  const formData = new FormData();
+  formData.append("file", file);
+
+  try {
+    const response = await apiUserClientChangeProfilePhoto(customerid, formData);
+
+    if (response.data.profilephoto) {
+   
+      setProfilePic(`/userClientProfilePhoto/${response.data.profilephoto}`);
+    }
+
+
+    await fetchProfile();
+
+  } catch (error) {
+    console.error("Upload failed", error);
+  }
+};
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     setError((prev) => ({ ...prev, [name]: "" }));
   };
 
- 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const customerid = localStorage.getItem("customerid");
-        const response = await apiUserClientProfile(customerid); 
-        setFormData(response.data); // assuming backend returns same keys
-        setLoading(false);
-   
-  
-      } catch (err) {
-        console.error("Failed to fetch profile:", err);
-        setError({ general: "Failed to load profile" });
-        setLoading(false);
-      }
-    };
-    fetchProfile();
-  }, []);
+
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -80,6 +116,8 @@ const handleSubmit = async (e) => {
     formData,
     error,
     loading,
+    profilePic,
+    handleProfilePicChange,
     handleChange,
     handleSubmit,
     setFormData, 

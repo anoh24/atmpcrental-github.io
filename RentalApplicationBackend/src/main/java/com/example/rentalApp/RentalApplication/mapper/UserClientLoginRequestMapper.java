@@ -9,6 +9,7 @@ public class UserClientLoginRequestMapper {
 
     public UserClientLoginRequestResponseDto toUserClientLoginRequestResponseDto(UserClientRegistrationForValidationEntity entity, String token){
         UserClientLoginRequestResponseDto responseDto = new UserClientLoginRequestResponseDto();
+     Optional.ofNullable(entity.getProfilephoto()).ifPresent(responseDto::setProfilephoto);
         Optional.ofNullable(entity.getCustomerid()).ifPresent(responseDto::setCustomerid);
         Optional.ofNullable(entity.getFullname()).ifPresent(responseDto::setFullname);
         Optional.ofNullable(entity.getGender()).ifPresent(responseDto::setGender);

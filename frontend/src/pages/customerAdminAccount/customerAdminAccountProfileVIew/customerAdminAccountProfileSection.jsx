@@ -1,21 +1,28 @@
-
 import userClientProfile from "../../../hooks/customerAdminAccount/userClientProfile"
+import { useState } from "react";
+
 const CustomerAdminAccountProfileSection = () => {
- 
- const {
+  const {
     formData,
     error,
+    profilePic,
+    handleProfilePicChange,
     handleChange,
     handleSubmit,
   } = userClientProfile();
+
+
+
   const inputClass =
     "bg-white text-black border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-black";
 
   const labelClass = "text-black font-medium text-sm mb-1";
 
+
+
   return (
     <div className="relative mt-28 flex flex-col gap-6 max-w-3xl mx-auto px-2 sm:px-4 font-oswald mb-10">
-      <div className=" grid grid-cols-1 gap-6 ">
+      <div className="grid grid-cols-1 gap-6 ">
         <form
           onSubmit={handleSubmit}
           className="bg-white rounded-xl shadow-md p-6 border"
@@ -23,6 +30,31 @@ const CustomerAdminAccountProfileSection = () => {
           <h2 className="text-lg font-bold text-black mb-4 border-b pb-2">
             🧍 Personal Information
           </h2>
+
+
+          <div className="flex flex-col items-center mb-6">
+            <div className="relative w-28 h-28">
+              <img
+                src={profilePic || "https://placehold.co/150x150"}
+                alt="Profile"
+                className="w-28 h-28 rounded-full object-cover border border-gray-300 shadow-md"
+              />
+              <label
+                htmlFor="profile-upload"
+                className="absolute bottom-0 right-0 bg-black text-white text-xs px-2 py-1 rounded-full cursor-pointer shadow-md hover:bg-gray-800"
+              >
+                Change
+              </label>
+              <input
+                id="profile-upload"
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleProfilePicChange}
+              />
+            </div>
+          </div>
+
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <label className={labelClass}>Full Name</label>
@@ -31,10 +63,9 @@ const CustomerAdminAccountProfileSection = () => {
                 className={inputClass}
                 value={formData.fullname || ""}
                 onChange={handleChange}
-              
               />
-              {error.fullname &&(
-                  <p className="text-red-500 text-sm">{error.fullname}</p>
+              {error.fullname && (
+                <p className="text-red-500 text-sm">{error.fullname}</p>
               )}
             </div>
 
@@ -50,8 +81,8 @@ const CustomerAdminAccountProfileSection = () => {
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
-                {error.gender &&(
-                  <p className="text-red-500 text-sm">{error.gender}</p>
+              {error.gender && (
+                <p className="text-red-500 text-sm">{error.gender}</p>
               )}
             </div>
 
@@ -64,8 +95,8 @@ const CustomerAdminAccountProfileSection = () => {
                 value={formData.birthdate || ""}
                 onChange={handleChange}
               />
-                {error.birthdate &&(
-                  <p className="text-red-500 text-sm">{error.birthdate}</p>
+              {error.birthdate && (
+                <p className="text-red-500 text-sm">{error.birthdate}</p>
               )}
             </div>
 
@@ -76,10 +107,9 @@ const CustomerAdminAccountProfileSection = () => {
                 className={inputClass}
                 value={formData.phonenumber || ""}
                 onChange={handleChange}
-           
               />
-                {error.phonenumber &&(
-                  <p className="text-red-500 text-sm">{error.phonenumber}</p>
+              {error.phonenumber && (
+                <p className="text-red-500 text-sm">{error.phonenumber}</p>
               )}
             </div>
 
@@ -90,10 +120,9 @@ const CustomerAdminAccountProfileSection = () => {
                 className={inputClass}
                 value={formData.occupation || ""}
                 onChange={handleChange}
-             
               />
-                {error.occupation &&(
-                  <p className="text-red-500 text-sm">{error.occupation}</p>
+              {error.occupation && (
+                <p className="text-red-500 text-sm">{error.occupation}</p>
               )}
             </div>
 
@@ -105,12 +134,12 @@ const CustomerAdminAccountProfileSection = () => {
                 className={inputClass}
                 value={formData.email || ""}
                 onChange={handleChange}
-               
               />
-                {error.email &&(
-                  <p className="text-red-500 text-sm">{error.email}</p>
+              {error.email && (
+                <p className="text-red-500 text-sm">{error.email}</p>
               )}
             </div>
+
             <div className="md:col-span-2">
               <label className={labelClass}>Address</label>
               <textarea
@@ -119,11 +148,11 @@ const CustomerAdminAccountProfileSection = () => {
                 value={formData.address || ""}
                 onChange={handleChange}
               />
-                {error.address &&(
-                  <p className="text-red-500 text-sm">{error.address}</p>
+              {error.address && (
+                <p className="text-red-500 text-sm">{error.address}</p>
               )}
             </div>
-          </div>    
+          </div>
 
           <div className="mt-8">
             <h3 className="text-lg font-bold text-black mb-4 border-b pb-2">
@@ -135,13 +164,12 @@ const CustomerAdminAccountProfileSection = () => {
                 <input
                   name="contactname"
                   className={inputClass}
-                value={formData.contactname || ""}
+                  value={formData.contactname || ""}
                   onChange={handleChange}
-               
                 />
-                {error.contactname &&(
+                {error.contactname && (
                   <p className="text-red-500 text-sm">{error.contactname}</p>
-              )}
+                )}
               </div>
 
               <div>
@@ -151,11 +179,10 @@ const CustomerAdminAccountProfileSection = () => {
                   className={inputClass}
                   value={formData.contactnumber || ""}
                   onChange={handleChange}
-                
                 />
-                {error.contactnumber &&(
+                {error.contactnumber && (
                   <p className="text-red-500 text-sm">{error.contactnumber}</p>
-              )}
+                )}
               </div>
 
               <div>
@@ -170,11 +197,10 @@ const CustomerAdminAccountProfileSection = () => {
                   <option value="Parent">Parent</option>
                   <option value="Sibling">Sibling</option>
                   <option value="Friend">Friend</option>
-
                 </select>
-                  {error.relationshipcontact &&(
+                {error.relationshipcontact && (
                   <p className="text-red-500 text-sm">{error.relationshipcontact}</p>
-              )}
+                )}
               </div>
             </div>
           </div>

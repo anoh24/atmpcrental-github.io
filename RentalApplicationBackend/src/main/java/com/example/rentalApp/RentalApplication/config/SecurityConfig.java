@@ -32,6 +32,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // allow preflight
+                        .requestMatchers("/apiUpdateUserClientProfile/{customerid}/profile-photo", "/apiUpdateUserClientProfile/{customerid}/profile-photo/**").permitAll()
                         .requestMatchers("/apiUpdateUserClientProfile/{customerid}", "/apiUpdateUserClientProfile/{customerid}/**").permitAll()
                         .requestMatchers("/apiAuthentication/{customerid}", "/apiAuthentication/{customerid}/**").permitAll()
                         .requestMatchers("/apiAuthentication/login", "/apiAuthentication/login/**").permitAll()
