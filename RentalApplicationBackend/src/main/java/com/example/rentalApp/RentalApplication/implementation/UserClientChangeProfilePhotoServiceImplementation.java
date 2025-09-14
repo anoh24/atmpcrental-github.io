@@ -41,29 +41,25 @@ public class UserClientChangeProfilePhotoServiceImplementation implements UserCl
             if (file == null || file.isEmpty()) {
                 throw new RuntimeException("File is empty");
             }
-
-            // Ensure folder exists
             Path uploadPath = Paths.get(uploadDir);
             if (!Files.exists(uploadPath)) {
                 Files.createDirectories(uploadPath);
             }
 
-            // Generate unique filename
-            String filename = UUID.randomUUID() + "_" + file.getOriginalFilename();
-
-            // Save file to folder
-            Path filePath = uploadPath.resolve(filename);
-            Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-
-            // Fetch user and update filename
             UserClientRegistrationForValidationEntity user = userClientChangeProfilePhotoRepository.findById(id)
                     .orElseThrow(() -> new RuntimeException("User not found with id " + id));
-
+            if (user.getProfilephoto() != null && !user.getProfilephoto().isEmpty()) {
+                Path oldFilePath = uploadPath.resolve(user.getProfilephoto());
+                if (Files.exists(oldFilePath)) {
+                    Files.delete(oldFilePath);
+                }
+            }
+            String filename = UUID.randomUUID() + "_" + file.getOriginalFilename();
+            Path filePath = uploadPath.resolve(filename);
+            Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
             user.setProfilephoto(filename);
             userClientChangeProfilePhotoRepository.save(user); // Hibernate updates the DB
-
             return userClientChangeProfilePhotoMapper.toDto(user);
-
         } catch (IOException e) {
             throw new RuntimeException("Failed to store file", e);
         }

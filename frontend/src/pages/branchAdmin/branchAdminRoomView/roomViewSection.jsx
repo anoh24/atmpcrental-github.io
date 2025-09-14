@@ -34,7 +34,7 @@ const RoomView = () => {
   };
 
   return (
-    <div className="h-screen font-oswald px-6 md:px-20 bg-gray-100">
+    <div className="h-full font-oswald px-6 md:px-20 bg-gray-100">
       <div className="mx-auto max-w-3xl grid grid-cols-1 gap-6 mb-10">
  
         {/* Rooms List Table */}

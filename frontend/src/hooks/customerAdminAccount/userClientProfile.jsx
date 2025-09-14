@@ -36,7 +36,7 @@ const fetchProfile = async () => {
     setLoading(false);
 
     if (response.data.profilephoto) {
-      setProfilePic(`/userClientProfilePhoto/${response.data.profilephoto}`);
+      setProfilePic(`/userClientProfilePhoto/${response.data.profilephoto}?t=${Date.now()}`);
     } else {
       setProfilePic("https://placehold.co/150x150"); 
     }
@@ -69,7 +69,7 @@ const handleProfilePicChange = async (e) => {
 
     if (response.data.profilephoto) {
    
-      setProfilePic(`/userClientProfilePhoto/${response.data.profilephoto}`);
+      setProfilePic(`/userClientProfilePhoto/${response.data.profilephoto}?t=${Date.now()}`);
     }
 
 

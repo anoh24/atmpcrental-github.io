@@ -31,29 +31,36 @@ const CustomerAdminAccountProfileSection = () => {
             🧍 Personal Information
           </h2>
 
+<div className="flex flex-col items-center mb-6">
+  <div className="relative w-28 h-28">
+    {/* Profile Image */}
+    <img
+      src={profilePic || "https://placehold.co/150x150"}
+      alt="Profile"
+      className="w-28 h-28 rounded-full object-cover border border-gray-300 shadow-md"
+    />
 
-          <div className="flex flex-col items-center mb-6">
-            <div className="relative w-28 h-28">
-              <img
-                src={profilePic || "https://placehold.co/150x150"}
-                alt="Profile"
-                className="w-28 h-28 rounded-full object-cover border border-gray-300 shadow-md"
-              />
-              <label
-                htmlFor="profile-upload"
-                className="absolute bottom-0 right-0 bg-black text-white text-xs px-2 py-1 rounded-full cursor-pointer shadow-md hover:bg-gray-800"
-              >
-                Change
-              </label>
-              <input
-                id="profile-upload"
-                type="file"
-                accept="image/*"
-                className="hidden"
-                onChange={handleProfilePicChange}
-              />
-            </div>
-          </div>
+    {/* Circular overlay button */}
+    <label
+      htmlFor="profile-upload"
+      className="absolute bottom-1 right-1 bg-black text-white w-8 h-8 flex items-center justify-center rounded-full cursor-pointer shadow-md hover:bg-gray-800"
+      title="Change profile photo"
+    >
+      &#9998; {/* pencil icon, you can replace with SVG */}
+    </label>
+
+    {/* Hidden file input */}
+    <input
+      id="profile-upload"
+      type="file"
+      accept="image/*"
+      className="hidden"
+      onChange={handleProfilePicChange}
+    />
+  </div>
+</div>
+
+
 
           <div className="grid md:grid-cols-2 gap-4">
             <div>
