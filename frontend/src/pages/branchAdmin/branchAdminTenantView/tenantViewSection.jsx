@@ -73,24 +73,24 @@ const TenantView = () => {
             <h2 className="text-xl text-black font-semibold mb-4">Validation</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label className="block mb-1 text-sm text-black">Email</label>
+                <label className="text-black font-medium text-sm mb-1">Email</label>
                 <input
                   name="email"
                   type="text"
                   value={selectRow.email}
                   readOnly
-                  className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded text-black"
+                  className="bg-white text-black border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-black"
                 />
               </div>
 
               <div className="mb-4">
-                <label htmlFor="approval" className="block mb-1 text-sm text-black">
+                <label htmlFor="approval" className="text-black font-medium text-sm mb-1">
                   Select Approval
                 </label>
                 <select
                   name="approval"
                   id="approval"
-                  className="w-full px-3 py-2 bg-white border border-gray-700 rounded text-black"
+                  className="bg-white text-black border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-black"
                   value={validationApproval}
                   onChange={(e) => setValidationApproval(e.target.value)}
                   required
