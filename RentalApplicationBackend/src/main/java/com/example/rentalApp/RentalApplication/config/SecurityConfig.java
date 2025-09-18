@@ -32,6 +32,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // allow preflight
+                        .requestMatchers("/apiBranchAdminRoomList/roomlist", "/apiBranchAdminRoomList/roomlist/**").permitAll()
+                        .requestMatchers("/apiBranchAdminRoomList/room", "/apiBranchAdminRoomList/room/**").permitAll()
                         .requestMatchers("/apiUpdateUserClientProfile/{customerid}/profile-photo", "/apiUpdateUserClientProfile/{customerid}/profile-photo/**").permitAll()
                         .requestMatchers("/apiUpdateUserClientProfile/{customerid}", "/apiUpdateUserClientProfile/{customerid}/**").permitAll()
                         .requestMatchers("/apiAuthentication/{customerid}", "/apiAuthentication/{customerid}/**").permitAll()

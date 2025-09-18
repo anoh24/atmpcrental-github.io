@@ -1,6 +1,6 @@
 import React from "react";
 import { FaArrowRight, FaEye, FaEyeSlash } from "react-icons/fa";
-import useRegisterForm from "../../hooks/branchAdmin/userClientRegistration"; // adjust path if needed
+import useRegisterForm from "../../hooks/customerAdminAccount/userClientRegistration"; // adjust path if needed
 
 const RegisterForm = () => {
   const {

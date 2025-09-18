@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { apiUserClientRegistration } from "../../api/branchAdmin/userClientRegistration";
+import { apiUserClientRegistration } from "../../api/customerAdminAccount/userClientRegistration";
 import Swal from "sweetalert2";
 const useRegisterForm = () => {
   const [formData, setFormData] = useState({ email: "", password: "", branch: "" ,});
@@ -28,7 +28,7 @@ const useRegisterForm = () => {
     setError({});
     try {
       const response = await apiUserClientRegistration(formData);
-      setFormData({ email: "", password: "", branch:"" });
+      setFormData({ email: "", password: "", branch:"" });  
       showRegistrationAlert();
       return response.data;
     } catch (err) {

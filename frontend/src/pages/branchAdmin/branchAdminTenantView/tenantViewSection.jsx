@@ -3,8 +3,7 @@ import useUserClientValidation from "../../../hooks/branchAdmin/userClientValida
 const TenantView = () => {
   const {
     users,
-    loading,
-    error,
+
     selectRow,
     isModalOpen,
     validationApproval,
@@ -23,17 +22,17 @@ const TenantView = () => {
 
   // Render users table rows
   const renderUsers = () => {
-    if (loading) return <tr><td colSpan="15">Loading...</td></tr>;
-    if (error) return <tr><td colSpan="15" className="text-red-500">{error}</td></tr>;
-    if (!users || users.length === 0) return <tr><td colSpan="15">No records found</td></tr>;
+
+
 
     return users.map((user) => (
+      
       <tr
         key={user.customerid}
         onClick={() => handleRowClick(user)}
         className="border-t hover:bg-gray-50 cursor-pointer"
       >
-        <td className="p-3 hidden">{user.customerid}</td>
+
         <td className="p-3">{user.fullname}</td>
         <td className="p-3">{user.gender}</td>
         <td className="p-3">{user.birthdate}</td>
@@ -65,7 +64,7 @@ const TenantView = () => {
   };
 
   return (
-    <div className="h-full font-oswald px-6 md:px-20 bg-gray-100">
+    <div className="h-screen font-oswald px-6 md:px-20 bg-gray-100">
       {/* Modal */}
       {isModalOpen && selectRow && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -129,7 +128,6 @@ const TenantView = () => {
             <table className="w-full text-sm text-black">
               <thead>
                 <tr className="bg-gray-200">
-                  <th className="text-left p-3 hidden">Customer ID</th>
                   <th className="text-left p-3">Name</th>
                   <th className="text-left p-3">Gender</th>
                   <th className="text-left p-3">Birthdate</th>

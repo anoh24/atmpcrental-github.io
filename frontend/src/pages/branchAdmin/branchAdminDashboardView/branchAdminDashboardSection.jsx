@@ -35,7 +35,7 @@ const Dashboard = () => {
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
   return (
-    <div className="min-h-screen mx-auto bg-gray-100 font-oswald px-6 py-10 md:px-20">
+    <div className="h-screen mx-auto bg-gray-100 font-oswald px-6 py-10 md:px-20">
       <h1 className="text-3xl font-black text-black mb-10">📊 Rental Dashboard</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-3xl mx-auto">
         {/* Pie Chart: Tenant Type */}

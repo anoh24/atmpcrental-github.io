@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { apiUpdateUserClientValidation } from "../../api/branchAdmin/userClientValidation";
+import { apiUpdateUserClientValidation, apiUserClientRegistrationList } from "../../api/branchAdmin/userClientValidation";
 import Swal from "sweetalert2";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const useUserClientValidation = () => {
   const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
+
   const [error, setError] = useState("");
 
   // Modal + form states
@@ -16,17 +16,15 @@ const useUserClientValidation = () => {
 
 
   const fetchUsers = async () => {
-    setLoading(true);
+
     try {
-      const res = await axios.get(`${API_URL}/api/userclientslist`);
+      const res = await apiUserClientRegistrationList();
       setUsers(res.data);
       setError("");
     } catch (err) {
       console.error(err);
       setError("Failed to fetch users");
-    } finally {
-      setLoading(false);
-    }
+    } 
   };
 
   useEffect(() => {
@@ -87,16 +85,15 @@ const useUserClientValidation = () => {
       const updatedUser = await updateUserApproval(selectRow.customerid, validationApproval);
             closeModal();
             showValidatedAlert();
-      return updatedUser.data
+      return updatedUser.data;
 
     } catch (err) {
-      console.error("User client validated:", err.updatedUser?.data);
+      console.error("User client validated:", err.updatedUser?.data || err.message);
     }
   };
 
   return {
     users,
-    loading,
     error,
     selectRow,
     isModalOpen,
