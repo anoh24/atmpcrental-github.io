@@ -6,3 +6,14 @@ export const apiUserClientProfile = async(customerid, formData)=>{
         headers:{"Content-Type":"multipart/form-data"}
     });
 }
+
+export const apiUserClientRoomListAvailable = async (formData) => {
+  return await axios.get(`${API_URL}/apiUpdateUserClientProfile/roomsavailable`, formData, {
+    headers: { "Content-Type": "application/json" },
+  });
+};
+export const apiUserClientAssignedRoom = async (customerid, formData) => {
+  return await axios.get(`${API_URL}/apiUpdateUserClientProfile/getAssignedRoom/${customerid}`, formData, {
+    headers: { "Content-Type": "application/json" },
+  });
+};

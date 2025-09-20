@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import com.example.rentalApp.RentalApplication.dto.UserClientRegistrationForValidationDto;
 import com.example.rentalApp.RentalApplication.dto.UserClientRegistrationForValidationResponseDto;
-import com.example.rentalApp.RentalApplication.entity.UserClientRegistrationForValidationEntity;
+import com.example.rentalApp.RentalApplication.entity.CustomerDetailsEntity;
 import com.example.rentalApp.RentalApplication.mapper.UserClientRegistrationForValidationMapper;
 import com.example.rentalApp.RentalApplication.repository.UserClientRegistrationForValidationRepository;
 import com.example.rentalApp.RentalApplication.service.UserClientRegistrationForValidationService;
@@ -37,9 +37,9 @@ public class UserClientRegistrationForValidationImplementation implements UserCl
     @Override
     public UserClientRegistrationForValidationResponseDto saveClientUser(UserClientRegistrationForValidationDto dto){
 
-        UserClientRegistrationForValidationEntity entity = userClientRegistrationForValidationMapper.toEntity(dto);
+        CustomerDetailsEntity entity = userClientRegistrationForValidationMapper.toEntity(dto);
         entity.setPassword(passwordEncoder.encode(dto.getPassword()));
-        UserClientRegistrationForValidationEntity saved = userClientRegistrationForValidationRepository.save(entity);
+        CustomerDetailsEntity saved = userClientRegistrationForValidationRepository.save(entity);
         UserClientRegistrationForValidationResponseDto responseDto = userClientRegistrationForValidationMapper.toDto(saved);
         responseDto.setMessage("Account registered, we'll email you after your account is validated");
         return responseDto;

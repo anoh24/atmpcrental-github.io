@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class BranchAdminRoomRegistrationDto {
 
-    private Integer customerid;
 
     @NotBlank(message = "Room number is required")
     @Digits(integer = 10, fraction = 0, message = "Must be a valid number with up to 10 digits")

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class UserClientUpdateProfileReponseDto {
     private Integer customerid;
+    private Integer roomid;
     private String email;
     private String fullname;
     private String gender;

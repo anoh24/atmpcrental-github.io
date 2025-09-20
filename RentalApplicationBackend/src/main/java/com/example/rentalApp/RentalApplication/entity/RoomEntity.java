@@ -12,13 +12,15 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name = "tbl_room")
-public class BranchAdminRoomRegistrationEntity {
+public class RoomEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer roomid;
 
-    private Integer customerid;
+
     private String roomnumber;
     private String capacity;
     private String monthlyrent;
+
+
 }

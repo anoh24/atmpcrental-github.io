@@ -1,9 +1,6 @@
 package com.example.rentalApp.RentalApplication.dto;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +10,11 @@ import org.springframework.format.annotation.NumberFormat;
 @NoArgsConstructor
 @Data
 public class UserClientUpdateProfileDto {
+    @NotNull(message="You did not select a room number")
+    @Min(value = 1, message = "Only 1 to 200 characters are allowed")
+    @Max(value = 200, message = "Only 1 to 200 characters are allowed")
+    private Integer roomid;
+
     @NotBlank(message = "Email is required")
     @Email(message = "Invalid email format")
     @Size(min = 5, max = 200, message = "Only 5 to 200 characters are allowed")

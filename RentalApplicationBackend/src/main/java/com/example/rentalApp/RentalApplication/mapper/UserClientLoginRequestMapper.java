@@ -1,13 +1,12 @@
 package com.example.rentalApp.RentalApplication.mapper;
-import com.example.rentalApp.RentalApplication.dto.UserClientLoginRequestDto;
 import org.springframework.stereotype.Component;
-import com.example.rentalApp.RentalApplication.entity.UserClientRegistrationForValidationEntity;
+import com.example.rentalApp.RentalApplication.entity.CustomerDetailsEntity;
 import com.example.rentalApp.RentalApplication.dto.UserClientLoginRequestResponseDto;
 import java.util.Optional;
 @Component
 public class UserClientLoginRequestMapper {
 
-    public UserClientLoginRequestResponseDto toUserClientLoginRequestResponseDto(UserClientRegistrationForValidationEntity entity, String token){
+    public UserClientLoginRequestResponseDto toUserClientLoginRequestResponseDto(CustomerDetailsEntity entity, String token){
         UserClientLoginRequestResponseDto responseDto = new UserClientLoginRequestResponseDto();
      Optional.ofNullable(entity.getProfilephoto()).ifPresent(responseDto::setProfilephoto);
         Optional.ofNullable(entity.getCustomerid()).ifPresent(responseDto::setCustomerid);
@@ -25,7 +24,7 @@ public class UserClientLoginRequestMapper {
 
         return responseDto;
     }
-    public UserClientLoginRequestResponseDto toUserClientLoginRequestResponseDto(UserClientRegistrationForValidationEntity entity){
+    public UserClientLoginRequestResponseDto toUserClientLoginRequestResponseDto(CustomerDetailsEntity entity){
         return toUserClientLoginRequestResponseDto(entity,null);
     }
 

@@ -4,6 +4,7 @@ import { useState } from "react";
 const CustomerAdminAccountProfileSection = () => {
   const {
     formData,
+
     error,
     profilePic,
     handleProfilePicChange,
@@ -31,39 +32,36 @@ const CustomerAdminAccountProfileSection = () => {
             🧍 Personal Information
           </h2>
 
-<div className="flex flex-col items-center mb-6">
-  <div className="relative w-28 h-28">
-    {/* Profile Image */}
-    <img
-      src={profilePic || "https://placehold.co/150x150"}
-      alt="Profile"
-      className="w-28 h-28 rounded-full object-cover border border-gray-300 shadow-md"
-    />
+          <div className="flex flex-col items-center mb-6">
+            <div className="relative w-28 h-28">
+              {/* Profile Image */}
+              <img
+                src={profilePic || "https://placehold.co/150x150"}
+                alt="Profile"
+                className="w-28 h-28 rounded-full object-cover border border-gray-300 shadow-md"
+              />
 
-    {/* Circular overlay button */}
-    <label
-      htmlFor="profile-upload"
-      className="absolute bottom-1 right-1 bg-black text-white w-8 h-8 flex items-center justify-center rounded-full cursor-pointer shadow-md hover:bg-gray-800"
-      title="Change profile photo"
-    >
-      &#9998; {/* pencil icon, you can replace with SVG */}
-    </label>
+              {/* Circular overlay button */}
+              <label
+                htmlFor="profile-upload"
+                className="absolute bottom-1 right-1 bg-black text-white w-8 h-8 flex items-center justify-center rounded-full cursor-pointer shadow-md hover:bg-gray-800"
+                title="Change profile photo"
+              >
+                &#9998; {/* pencil icon, you can replace with SVG */}
+              </label>
 
-    {/* Hidden file input */}
-    <input
-      id="profile-upload"
-      type="file"
-      accept="image/*"
-      className="hidden"
-      onChange={handleProfilePicChange}
-    />
-  </div>
-</div>
+              {/* Hidden file input */}
+              <input
+                id="profile-upload"
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleProfilePicChange}
+              />
+            </div>
+          </div>
 
-
-
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
+          <div>
               <label className={labelClass}>Full Name</label>
               <input
                 name="fullname"
@@ -75,6 +73,8 @@ const CustomerAdminAccountProfileSection = () => {
                 <p className="text-red-500 text-sm">{error.fullname}</p>
               )}
             </div>
+          <div className="grid md:grid-cols-2 gap-4">
+
 
             <div>
               <label className={labelClass}>Gender</label>
@@ -85,8 +85,9 @@ const CustomerAdminAccountProfileSection = () => {
                 onChange={handleChange}
               >
                 <option value="" hidden>Select Gender</option>
-                <option value="Male">Male</option>
+                   <option value="Male">Male</option>
                 <option value="Female">Female</option>
+
               </select>
               {error.gender && (
                 <p className="text-red-500 text-sm">{error.gender}</p>
@@ -144,6 +145,30 @@ const CustomerAdminAccountProfileSection = () => {
               />
               {error.email && (
                 <p className="text-red-500 text-sm">{error.email}</p>
+              )}
+            </div>
+            
+            
+           <div>
+              <label className={labelClass}>Room #</label>
+                <select
+                  name="roomid"
+                  className={inputClass}
+                  value={formData.roomid || ""}
+                  onChange={handleChange}
+                >
+                <option value="" hidden>
+                  {formData.roomid ? formData.assignedRoomNumber : "Select Room"}
+                </option>
+
+                  {formData.rooms?.map((room) => (
+                    <option key={room.roomid} value={room.roomid}>
+                      {room.roomnumber}
+                    </option>
+                  ))}
+                </select>
+                {error.roomid && (
+                <p className="text-red-500 text-sm">{error.roomid}</p>
               )}
             </div>
 

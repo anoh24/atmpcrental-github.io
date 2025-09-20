@@ -2,14 +2,15 @@ package com.example.rentalApp.RentalApplication.mapper;
 import com.example.rentalApp.RentalApplication.dto.UserClientUpdateProfileReponseDto;
 import org.springframework.stereotype.Component;
 import com.example.rentalApp.RentalApplication.dto.UserClientUpdateProfileDto;
-import com.example.rentalApp.RentalApplication.entity.UserClientRegistrationForValidationEntity;
+import com.example.rentalApp.RentalApplication.entity.CustomerDetailsEntity;
 import java.util.Optional;
 
 @Component
 public class UserClientUpdateProfileMapper {
 
 
-    public void UpdateEntityFromDto(UserClientUpdateProfileDto dto, UserClientRegistrationForValidationEntity entity) {
+    public void UpdateEntityFromDto(UserClientUpdateProfileDto dto, CustomerDetailsEntity entity) {
+        Optional.ofNullable(dto.getRoomid()).ifPresent(entity::setRoomid);
         Optional.ofNullable(dto.getFullname()).ifPresent(entity::setFullname);
         Optional.ofNullable(dto.getGender()).ifPresent(entity::setGender);
         Optional.ofNullable(dto.getBirthdate()).ifPresent(entity::setBirthdate);
@@ -22,8 +23,9 @@ public class UserClientUpdateProfileMapper {
 
     }
 
-    public UserClientUpdateProfileReponseDto toDto(UserClientRegistrationForValidationEntity entity) {
+    public UserClientUpdateProfileReponseDto toDto(CustomerDetailsEntity entity) {
         UserClientUpdateProfileReponseDto dto = new UserClientUpdateProfileReponseDto();
+        Optional.ofNullable(entity.getRoomid()).ifPresent(dto::setRoomid);
         Optional.ofNullable(entity.getFullname()).ifPresent(dto::setFullname);
         Optional.ofNullable(entity.getGender()).ifPresent(dto::setGender);
         Optional.ofNullable(entity.getBirthdate()).ifPresent(dto::setBirthdate);

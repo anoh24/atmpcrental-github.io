@@ -1,7 +1,7 @@
 package com.example.rentalApp.RentalApplication.implementation;
 
 import com.example.rentalApp.RentalApplication.dto.UserClientChangeProfilePhotoResponseDto;
-import com.example.rentalApp.RentalApplication.entity.UserClientRegistrationForValidationEntity;
+import com.example.rentalApp.RentalApplication.entity.CustomerDetailsEntity;
 import com.example.rentalApp.RentalApplication.mapper.UserClientChangeProfilePhotoMapper;
 import com.example.rentalApp.RentalApplication.repository.UserClientChangeProfilePhotoRepository;
 import com.example.rentalApp.RentalApplication.service.UserClientChangeProfilePhotoService;
@@ -46,7 +46,7 @@ public class UserClientChangeProfilePhotoServiceImplementation implements UserCl
                 Files.createDirectories(uploadPath);
             }
 
-            UserClientRegistrationForValidationEntity user = userClientChangeProfilePhotoRepository.findById(id)
+            CustomerDetailsEntity user = userClientChangeProfilePhotoRepository.findById(id)
                     .orElseThrow(() -> new RuntimeException("User not found with id " + id));
             if (user.getProfilephoto() != null && !user.getProfilephoto().isEmpty()) {
                 Path oldFilePath = uploadPath.resolve(user.getProfilephoto());

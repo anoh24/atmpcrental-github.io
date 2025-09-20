@@ -2,7 +2,7 @@ package com.example.rentalApp.RentalApplication.implementation;
 
 import com.example.rentalApp.RentalApplication.dto.BranchAdminRoomRegistrationDto;
 import com.example.rentalApp.RentalApplication.dto.BranchAdminRoomRegistrationResponseDto;
-import com.example.rentalApp.RentalApplication.entity.BranchAdminRoomRegistrationEntity;
+import com.example.rentalApp.RentalApplication.entity.RoomEntity;
 import com.example.rentalApp.RentalApplication.mapper.BranchAdminRoomRegistrationMapper;
 import com.example.rentalApp.RentalApplication.repository.BranchAdminRoomRegistrationRepository;
 import com.example.rentalApp.RentalApplication.service.BranchAdminRoomRegistrationService;
@@ -30,8 +30,8 @@ public class BranchAdminRoomRegistrationServiceImplementation implements BranchA
 
     @Override
     public BranchAdminRoomRegistrationResponseDto AddRoom(BranchAdminRoomRegistrationDto dto){
-        BranchAdminRoomRegistrationEntity entity = branchAdminRoomRegistrationMapper.toEntity(dto);
-        BranchAdminRoomRegistrationEntity save = branchAdminRoomRegistrationRepository.save(entity);
+        RoomEntity entity = branchAdminRoomRegistrationMapper.toEntity(dto);
+        RoomEntity save = branchAdminRoomRegistrationRepository.save(entity);
         BranchAdminRoomRegistrationResponseDto responseDto = branchAdminRoomRegistrationMapper.toDto(save);
         responseDto.setMessage("Room added successfully");
         return responseDto;

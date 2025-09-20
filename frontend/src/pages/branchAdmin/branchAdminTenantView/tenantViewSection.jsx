@@ -64,7 +64,7 @@ const TenantView = () => {
   };
 
   return (
-    <div className="h-screen font-oswald px-6 md:px-20 bg-gray-100">
+    <div className="h-full font-oswald px-6 md:px-20 bg-gray-100">
       {/* Modal */}
       {isModalOpen && selectRow && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">

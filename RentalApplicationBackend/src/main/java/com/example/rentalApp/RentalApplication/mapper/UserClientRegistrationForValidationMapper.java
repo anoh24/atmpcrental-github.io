@@ -3,15 +3,15 @@ import org.springframework.stereotype.Component;
 
 import com.example.rentalApp.RentalApplication.dto.UserClientRegistrationForValidationDto;
 import com.example.rentalApp.RentalApplication.dto.UserClientRegistrationForValidationResponseDto;
-import com.example.rentalApp.RentalApplication.entity.UserClientRegistrationForValidationEntity;
+import com.example.rentalApp.RentalApplication.entity.CustomerDetailsEntity;
 import java.util.Optional;
 
 
 @Component
 public class UserClientRegistrationForValidationMapper {
     //Client user registration
-    public UserClientRegistrationForValidationEntity toEntity(UserClientRegistrationForValidationDto dto) {
-        UserClientRegistrationForValidationEntity entity = new UserClientRegistrationForValidationEntity();
+    public CustomerDetailsEntity toEntity(UserClientRegistrationForValidationDto dto) {
+        CustomerDetailsEntity entity = new CustomerDetailsEntity();
         Optional.ofNullable(dto.getEmail()).ifPresent(entity::setEmail);
         Optional.ofNullable(dto.getPassword()).ifPresent(entity::setPassword);
         entity.setApproval("Invalidated");
@@ -20,7 +20,7 @@ public class UserClientRegistrationForValidationMapper {
         return entity;
     }
 
-    public UserClientRegistrationForValidationResponseDto toDto(UserClientRegistrationForValidationEntity entity) {
+    public UserClientRegistrationForValidationResponseDto toDto(CustomerDetailsEntity entity) {
         UserClientRegistrationForValidationResponseDto dto = new UserClientRegistrationForValidationResponseDto();
         Optional.ofNullable(entity.getCustomerid()).ifPresent(dto::setCustomerid);
         Optional.ofNullable(entity.getEmail()).ifPresent(dto::setEmail);

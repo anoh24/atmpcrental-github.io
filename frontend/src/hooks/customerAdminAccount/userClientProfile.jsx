@@ -1,8 +1,8 @@
 // useProfileForm.js
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-import {apiUserClientProfile} from "../../api/customerAdminAccount/userClientProfile"; 
-import {apiUserClientUpdateProfile } from "../../api/customerAdminAccount/userClientUpdateProfile";
+import {apiUserClientProfile, apiUserClientRoomListAvailable, apiUserClientAssignedRoom} from "../../api/customerAdminAccount/userClientProfile"; 
+import {apiUserClientUpdateProfile} from "../../api/customerAdminAccount/userClientUpdateProfile";
 import { apiUserClientChangeProfilePhoto } from "../../api/customerAdminAccount/userClientChangeProfilePhoto";
 
 const userClientProfile = () => {
@@ -16,29 +16,38 @@ const userClientProfile = () => {
     phonenumber: "",
     occupation: "",
     email: "",
+    roomid:"",
     address: "",
     contactname: "",
     contactnumber: "",
     relationshipcontact: "",
+    rooms:[]
    
   });
+
   const [profilePic, setProfilePic] = useState(null);
   const [error, setError] = useState({});
   const [loading, setLoading] = useState(true);
+  
 
 
 const fetchProfile = async () => {
   try {
     const customerid = localStorage.getItem("customerid");
     const response = await apiUserClientProfile(customerid); 
-    
-    setFormData(response.data); 
+
+    setFormData((prev) => ({
+      ...prev,
+      ...response.data,
+      assignedRoomNumber: response.data.roomnumber || "", // store assigned room number
+    }));
+
     setLoading(false);
 
     if (response.data.profilephoto) {
       setProfilePic(`/userClientProfilePhoto/${response.data.profilephoto}?t=${Date.now()}`);
     } else {
-      setProfilePic("https://placehold.co/150x150"); 
+      setProfilePic("https://placehold.co/150x150");
     }
   } catch (err) {
     console.error("Failed to fetch profile:", err);
@@ -47,9 +56,46 @@ const fetchProfile = async () => {
   }
 };
 
+const fetchAvailableRooms = async () => {
+  try {
+    const response = await apiUserClientRoomListAvailable(); 
+
+    const rooms = response.data.map((r) => {
+      const [roomid, roomnumber] = r.split(",");
+      return { roomid, roomnumber };
+    });
+    setFormData((prev) => ({
+      ...prev,
+      rooms
+    }));
+  } catch (err) {
+    console.error("Failed to fetch rooms", err);
+  }
+};
+const fetchAssignedRoom = async () => {
+  try {
+    const customerid = localStorage.getItem("customerid");
+    const response = await apiUserClientAssignedRoom(customerid);
+
+    const assignedRoomStr = response.data[0];
+    if (assignedRoomStr) {
+      const [roomid, roomnumber] = assignedRoomStr.split(",");
+      setFormData((prev) => ({
+        ...prev,
+        roomid: roomid,             
+        assignedRoomNumber: roomnumber 
+      }));
+    }
+
+  } catch (err) {
+    console.error("Failed to fetch assigned room", err);
+  }
+};
 
 useEffect(() => {
   fetchProfile();
+  fetchAvailableRooms();
+  fetchAssignedRoom();
 }, []);
 
 

@@ -6,7 +6,7 @@ import com.example.rentalApp.RentalApplication.GlobalExceptionHandler.UserClient
 import com.example.rentalApp.RentalApplication.mapper.UserClientLoginRequestMapper;
 import com.example.rentalApp.RentalApplication.dto.UserClientLoginRequestDto;
 import com.example.rentalApp.RentalApplication.dto.UserClientLoginRequestResponseDto;
-import com.example.rentalApp.RentalApplication.entity.UserClientRegistrationForValidationEntity;
+import com.example.rentalApp.RentalApplication.entity.CustomerDetailsEntity;
 import com.example.rentalApp.RentalApplication.repository.UserClientLoginRequestRepository;
 import com.example.rentalApp.RentalApplication.service.UserClientLoginRequestService;
 import com.example.rentalApp.RentalApplication.config.JwtUtil;
@@ -38,7 +38,7 @@ public class UserClientLoginRequestImplementation implements UserClientLoginRequ
 
     @Override
     public UserClientLoginRequestResponseDto login(UserClientLoginRequestDto loginRequest) {
-        UserClientRegistrationForValidationEntity user = userClientLoginRequestRepository
+        CustomerDetailsEntity user = userClientLoginRequestRepository
                 .findByEmail(loginRequest.getEmail())
                 .orElseThrow(() -> new EmailNotFoundException("Email not found"));
 

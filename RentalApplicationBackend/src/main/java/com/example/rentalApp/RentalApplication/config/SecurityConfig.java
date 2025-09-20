@@ -35,6 +35,8 @@ public class SecurityConfig {
                         .requestMatchers("/apiBranchAdminRoomList/roomlist", "/apiBranchAdminRoomList/roomlist/**").permitAll()
                         .requestMatchers("/apiBranchAdminRoomList/room", "/apiBranchAdminRoomList/room/**").permitAll()
                         .requestMatchers("/apiUpdateUserClientProfile/{customerid}/profile-photo", "/apiUpdateUserClientProfile/{customerid}/profile-photo/**").permitAll()
+                        .requestMatchers("/apiUpdateUserClientProfile/getAssignedRoom{customerid}", "/apiUpdateUserClientProfile/getAssignedRoom/{customerid}/**").permitAll()
+                        .requestMatchers("/apiUpdateUserClientProfile/roomsavailable", "/apiUpdateUserClientProfile/roomsavailable/**").permitAll()
                         .requestMatchers("/apiUpdateUserClientProfile/{customerid}", "/apiUpdateUserClientProfile/{customerid}/**").permitAll()
                         .requestMatchers("/apiAuthentication/{customerid}", "/apiAuthentication/{customerid}/**").permitAll()
                         .requestMatchers("/apiAuthentication/login", "/apiAuthentication/login/**").permitAll()

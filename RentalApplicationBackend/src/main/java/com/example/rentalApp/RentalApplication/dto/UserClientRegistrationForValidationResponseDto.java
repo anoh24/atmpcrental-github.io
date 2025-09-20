@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserClientRegistrationForValidationResponseDto {
     private Integer customerid;
+    private Integer roomid;
     private String email;
     private String approval;
     private String status;
