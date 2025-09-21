@@ -27,8 +27,17 @@ public class UserClientRegistrationForValidationMapper {
         Optional.ofNullable(entity.getApproval()).ifPresent(dto::setApproval);
         Optional.ofNullable(entity.getStatus()).ifPresent(dto::setStatus);
         Optional.ofNullable(entity.getBranch()).ifPresent(dto::setBranch);
+        Optional.ofNullable(entity.getFullname()).ifPresent(dto::setFullname);
+        Optional.ofNullable(entity.getGender()).ifPresent(dto::setGender);
+        Optional.ofNullable(entity.getBirthdate()).ifPresent(dto::setBirthdate);
+       Optional.ofNullable(entity.getPhonenumber()).ifPresent(dto::setPhonenumber);
+        Optional.ofNullable(entity.getOccupation()).ifPresent(dto::setOccupation);
+        Optional.ofNullable(entity.getAddress()).ifPresent(dto::setAddress);
+        Optional.ofNullable(entity.getContactname()).ifPresent(dto::setContactname);
+        Optional.ofNullable(entity.getContactnumber()).ifPresent(dto::setContactnumber);
+        Optional.ofNullable(entity.getRelationshipcontact()).ifPresent(dto::setRelationshipcontact);
 
-        return dto;
+    return dto;
     }
 
 

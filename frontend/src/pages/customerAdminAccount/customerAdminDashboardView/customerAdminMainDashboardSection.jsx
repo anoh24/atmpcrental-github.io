@@ -1,5 +1,7 @@
 import React from "react";
-
+import userClientProfile from "../../../hooks/customerAdminAccount/userClientProfile";
+const CustomerAdminMainDashboardSection = () => {
+ const{formData} = userClientProfile();
 const transactions = [
   {
     id: 1,
@@ -36,13 +38,13 @@ const notifications = {
   ],
 };
 
-const CustomerAdminMainDashboardSection = () => {
+
   return (
     <div className="relative mt-28 flex flex-col gap-6 max-w-3xl mx-auto px-2 sm:px-4 font-oswald mb-10">
       {/* Welcome Card */}
       <div className="bg-white shadow-md rounded-md p-5">
         <h1 className="sm:text-2xl md:text-3xl text-2xl text-gray-600 font-black p-5 w-auto">
-          Hello, <span className="text-black">John D. Monkey! </span>
+          Hello, <span className="text-black">{formData.fullname} </span>
           <br />
           <span className="text-xl">Welcome to your Account Profile</span>
         </h1>

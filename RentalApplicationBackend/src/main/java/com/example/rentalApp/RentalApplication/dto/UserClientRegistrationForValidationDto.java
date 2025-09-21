@@ -22,4 +22,19 @@ public class UserClientRegistrationForValidationDto {
     @NotBlank(message = "You did not select branch")
     @Size(min = 1, max = 200 , message = "Only 1 to 200 characters are allowed")
     private String branch;
+
+
+    private String approval;
+    private String status;
+
+    private String fullname;
+    private String gender;
+    private String birthdate;
+    private String phonenumber;
+    private String Occupation;
+    private String address;
+    private String contactname;
+    private String contactnumber;
+    private String relationshipcontact;
+    private String profilephoto;
 }

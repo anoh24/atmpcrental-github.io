@@ -29,7 +29,7 @@ const TenantView = () => {
       
       <tr
         key={user.customerid}
-        onClick={() => handleRowClick(user)}
+        onDoubleClick={() => handleRowClick(user)}
         className="border-t hover:bg-gray-50 cursor-pointer"
       >
 
@@ -40,8 +40,6 @@ const TenantView = () => {
         <td className="p-3">{user.occupation}</td>
         <td className="p-3">{user.email}</td>
         <td className="p-3">{user.address}</td>
-        <td className="p-3">{user.governmentid}</td>
-        <td className="p-3">{user.roomnumber}</td>
         <td className="p-3">{user.contactname}</td>
         <td className="p-3">{user.contactnumber}</td>
         <td className="p-3">{user.relationshipcontact}</td>
@@ -128,15 +126,15 @@ const TenantView = () => {
             <table className="w-full text-sm text-black">
               <thead>
                 <tr className="bg-gray-200">
-                  <th className="text-left p-3">Name</th>
+                  
+
+                  <th className="text-left p-3">Full Name</th>
                   <th className="text-left p-3">Gender</th>
                   <th className="text-left p-3">Birthdate</th>
-                  <th className="text-left p-3">Phone</th>
+                  <th className="text-left p-3">Phone #</th>
                   <th className="text-left p-3">Occupation</th>
                   <th className="text-left p-3">Email</th>
                   <th className="text-left p-3">Address</th>
-                  <th className="text-left p-3">Gov. ID</th>
-                  <th className="text-left p-3">Room</th>
                   <th className="text-left p-3">Contact Name</th>
                   <th className="text-left p-3">Contact Number</th>
                   <th className="text-left p-3">Relationship</th>

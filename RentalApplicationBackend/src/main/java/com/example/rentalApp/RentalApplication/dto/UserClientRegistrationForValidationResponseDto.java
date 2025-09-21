@@ -16,4 +16,14 @@ public class UserClientRegistrationForValidationResponseDto {
     private String branch;
     private String message;
 
+    private String fullname;
+    private String gender;
+    private String birthdate;
+    private String phonenumber;
+    private String Occupation;
+    private String address;
+    private String contactname;
+    private String contactnumber;
+    private String relationshipcontact;
+    private String profilephoto;
 }

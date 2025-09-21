@@ -6,6 +6,7 @@ import {
 } from 'recharts';
 
 const Dashboard = () => {
+ 
   const tenants = [
     { name: 'Students', value: 60 },
     { name: 'Employees', value: 40 }
