@@ -38,7 +38,7 @@ public class UserClientRegistrationForValidationMapper {
         Optional.ofNullable(entity.getRelationshipcontact()).ifPresent(dto::setRelationshipcontact);
         Optional.ofNullable(entity.getApproval()).ifPresent(dto::setApproval);
         Optional.ofNullable(entity.getStatus()).ifPresent(dto::setStatus);
-        dto.setProfilephoto("/userClientProfilePhoto/" + entity.getProfilephoto());
+        dto.setProfilephoto(entity.getProfilephoto());
     return dto;
     }
 

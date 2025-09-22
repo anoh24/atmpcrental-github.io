@@ -7,7 +7,7 @@ import com.example.rentalApp.RentalApplication.dto.UserClientUpdateProfileDto;
 import com.example.rentalApp.RentalApplication.dto.UserClientUpdateProfileReponseDto;
 import com.example.rentalApp.RentalApplication.service.UserClientChangeProfilePhotoService;
 import com.example.rentalApp.RentalApplication.service.UserClientUpdateProfileService;
-import com.example.rentalApp.RentalApplication.service.tableRoomService;
+import com.example.rentalApp.RentalApplication.service.BranchAdminFetchRoomService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,10 +22,10 @@ public class UserClientUpdateProfileController {
 
     private final UserClientUpdateProfileService userClientUpdateProfileService;
     private final UserClientChangeProfilePhotoService userClientChangeProfilePhotoService;
-    private final tableRoomService tableRoomService;
+    private final BranchAdminFetchRoomService tableRoomService;
     public UserClientUpdateProfileController(UserClientUpdateProfileService userClientUpdateProfileService,
                                              UserClientChangeProfilePhotoService userClientChangeProfilePhotoService,
-                                             tableRoomService tableRoomService){
+                                             BranchAdminFetchRoomService tableRoomService){
         this.userClientUpdateProfileService = userClientUpdateProfileService;
         this.userClientChangeProfilePhotoService = userClientChangeProfilePhotoService;
         this.tableRoomService = tableRoomService;

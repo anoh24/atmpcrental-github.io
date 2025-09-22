@@ -1,12 +1,14 @@
 import {useEffect, useState} from "react";
-import Swal from "sweetalert2";
-import { apiuserClientRoomList,apiuserClientRoom } from "../../api/branchAdmin/userClientRoomList";
 
+import { apiuserClientRoomList,apiuserClientRoom } from "../../api/branchAdmin/userClientRoomList";
+import { apiuserClientRoomOccupantsList } from "../../api/branchAdmin/userClientRoomList";
 const userClientRoomList = () =>{
     const [addRoom, setAddRoom] = useState(false);
     const [formData, setFormData] = useState({roomnumber : "", capacity : "", monthlyrent : "",});
         const [error, setError] = useState({});
     const [rooms, setRooms] = useState([]);
+    const [occupants, setOccupants] = useState([]);
+    
     const showAddRoomModal = () => {
         setAddRoom(true);
     }
@@ -15,6 +17,16 @@ const userClientRoomList = () =>{
         setAddRoom(false);
     }
 
+
+    const fetchRoomUserClientsOccupants = async (roomid) => {
+        try{
+            const response = await apiuserClientRoomOccupantsList(roomid);
+
+         setOccupants(response.data); // store array directly
+        }catch(err){
+            console.error("Failed to fetch occupants", err);
+        }
+    }
 
 
     const handleChange = (e) =>{
@@ -33,7 +45,8 @@ const userClientRoomList = () =>{
     }
 
     useEffect(() => {
-        fetchRoomList();
+    fetchRoomList();
+        fetchRoomUserClientsOccupants();
     },[]);
 
     const handleSubmit = async (e) =>{
@@ -52,6 +65,8 @@ const userClientRoomList = () =>{
     }
         return{
             addRoom, 
+            occupants,
+            fetchRoomUserClientsOccupants,
             showAddRoomModal, 
             hideAddRoomModal,
             handleChange,

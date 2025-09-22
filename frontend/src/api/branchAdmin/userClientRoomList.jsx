@@ -12,3 +12,10 @@ export const apiuserClientRoomList = async (data) => {
   });
 };
 
+export const apiuserClientRoomOccupantsList = async (roomid) => {
+  return await axios.get(`${API_URL}/apiBranchAdminRoomList/occupantsRoomList/${roomid}`,{
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+

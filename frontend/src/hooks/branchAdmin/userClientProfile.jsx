@@ -8,7 +8,7 @@ const userClientProfile = () => {
     const fetchUsersClient = async (customerid) =>{
         try{
          const response = await apiUserClientList(customerid);
-            console.log(response.data);
+
         setUserClient({
         ...response.data,
         customerid: response.data.customerid || "",

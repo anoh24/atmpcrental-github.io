@@ -4,6 +4,8 @@ import userClientRoomList from '../../../hooks/branchAdmin/userClientRoomList';
 const RoomView = () => {
   const{
             addRoom, 
+            occupants,
+            fetchRoomUserClientsOccupants,
             showAddRoomModal, 
             hideAddRoomModal,
             handleChange,
@@ -70,7 +72,12 @@ const RoomView = () => {
                         <td className="p-3">₱{room.monthlyrent}</td>
                         <td className="p-3">
                           <select className="bg-white text-black border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-black">
-                            <option>Show Occupants</option>
+
+                                {(occupants[room.roomid] || []).map((occupant) => (
+                                <option key={occupant.customerid} value={occupant.customerid}>
+                                  {occupant.fullname} 
+                                </option>
+                          ))}
                           </select>
                         </td>
                       </tr>
