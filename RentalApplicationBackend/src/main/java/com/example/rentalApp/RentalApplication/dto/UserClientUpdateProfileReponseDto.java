@@ -21,4 +21,7 @@ public class UserClientUpdateProfileReponseDto {
     private String contactnumber;
     private String relationshipcontact;
     private String message;
+    private String approval;
+    private String status;
+    private String profilephoto;
 }

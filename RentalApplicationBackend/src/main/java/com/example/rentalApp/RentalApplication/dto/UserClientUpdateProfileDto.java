@@ -54,4 +54,7 @@ public class UserClientUpdateProfileDto {
     @NotBlank(message = "Relationship contact is required")
     @Size(min = 5, max = 200, message = "Only 5 to 200 character are allowed")
     private String relationshipcontact;
+    private String approval;
+    private String status;
+    private String profilephoto;
 }

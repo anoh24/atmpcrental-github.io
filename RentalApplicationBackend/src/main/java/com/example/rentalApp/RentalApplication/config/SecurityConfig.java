@@ -34,6 +34,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // allow preflight
                         .requestMatchers("/apiBranchAdminRoomList/roomlist", "/apiBranchAdminRoomList/roomlist/**").permitAll()
                         .requestMatchers("/apiBranchAdminRoomList/room", "/apiBranchAdminRoomList/room/**").permitAll()
+                        .requestMatchers("/apiUpdateUserClientProfile/userclientslist/{customerid}", "/apiUpdateUserClientProfile/userclientslist/{customerid}/**").permitAll()
                         .requestMatchers("/apiUpdateUserClientProfile/{customerid}/profile-photo", "/apiUpdateUserClientProfile/{customerid}/profile-photo/**").permitAll()
                         .requestMatchers("/apiUpdateUserClientProfile/getAssignedRoom{customerid}", "/apiUpdateUserClientProfile/getAssignedRoom/{customerid}/**").permitAll()
                         .requestMatchers("/apiUpdateUserClientProfile/roomsavailable", "/apiUpdateUserClientProfile/roomsavailable/**").permitAll()

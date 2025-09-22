@@ -6,6 +6,13 @@ export const apiUpdateUserClientValidation = async (customerid, data) =>{
         headers:{"Content-Type":"application/json"},
     });
 }   
+
+export const apiUserClientList = async (customerid,data) => {
+  return await axios.get(`${API_URL}/apiUserClientRegistration/userclientslist/${customerid}`, data ,{
+    headers: { "Content-Type": "application/json" },
+
+  });
+}; 
 export const apiUserClientRegistrationList = async (params = {}) => {
   return await axios.get(`${API_URL}/apiUserClientRegistration/userclientslist`, {
     headers: { "Content-Type": "application/json" },

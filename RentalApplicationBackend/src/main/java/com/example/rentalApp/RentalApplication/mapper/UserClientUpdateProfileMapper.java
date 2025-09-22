@@ -20,7 +20,6 @@ public class UserClientUpdateProfileMapper {
         Optional.ofNullable(dto.getContactname()).ifPresent(entity::setContactname);
         Optional.ofNullable(dto.getContactnumber()).ifPresent(entity::setContactnumber);
         Optional.ofNullable(dto.getRelationshipcontact()).ifPresent(entity::setRelationshipcontact);
-
     }
 
     public UserClientUpdateProfileReponseDto toDto(CustomerDetailsEntity entity) {
@@ -35,6 +34,8 @@ public class UserClientUpdateProfileMapper {
         Optional.ofNullable(entity.getContactname()).ifPresent(dto::setContactname);
         Optional.ofNullable(entity.getContactnumber()).ifPresent(dto::setContactnumber);
         Optional.ofNullable(entity.getRelationshipcontact()).ifPresent(dto::setRelationshipcontact);
+        Optional.ofNullable(entity.getApproval()).ifPresent(dto::setApproval);
+        Optional.ofNullable(entity.getStatus()).ifPresent(dto::setStatus);
 
         return dto;
     }
