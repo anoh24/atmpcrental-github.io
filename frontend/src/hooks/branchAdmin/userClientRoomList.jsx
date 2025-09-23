@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 
 import { apiuserClientRoomList,apiuserClientRoom } from "../../api/branchAdmin/userClientRoomList";
 import { apiuserClientRoomOccupantsList } from "../../api/branchAdmin/userClientRoomList";
+import { data } from "autoprefixer";
 const userClientRoomList = () =>{
     const [addRoom, setAddRoom] = useState(false);
     const [formData, setFormData] = useState({roomnumber : "", capacity : "", monthlyrent : "",});
@@ -16,17 +17,27 @@ const userClientRoomList = () =>{
     const hideAddRoomModal = () =>{
         setAddRoom(false);
     }
+const fetchRoomUserClientsOccupants = async () => {
+  try {
+    const occupantsObj = {};
 
-
-    const fetchRoomUserClientsOccupants = async (roomid) => {
-        try{
-            const response = await apiuserClientRoomOccupantsList(roomid);
-
-         setOccupants(response.data); // store array directly
-        }catch(err){
-            console.error("Failed to fetch occupants", err);
-        }
-    }
+    await Promise.all(
+      rooms.map(async (room) => {
+        if (!room.roomid) return;
+        const response = await apiuserClientRoomOccupantsList(room.roomid);
+        occupantsObj[room.roomid] = response.data; // fixed typo
+      })
+    );
+    
+    setOccupants(occupantsObj);
+  } catch (err) {
+    console.error("Failed to fetch occupants", err);
+  }
+};
+// Fetch occupants whenever rooms are updated
+useEffect(() => {
+  if (rooms.length > 0) fetchRoomUserClientsOccupants();
+}, [rooms]);
 
 
     const handleChange = (e) =>{
@@ -46,7 +57,6 @@ const userClientRoomList = () =>{
 
     useEffect(() => {
     fetchRoomList();
-        fetchRoomUserClientsOccupants();
     },[]);
 
     const handleSubmit = async (e) =>{
