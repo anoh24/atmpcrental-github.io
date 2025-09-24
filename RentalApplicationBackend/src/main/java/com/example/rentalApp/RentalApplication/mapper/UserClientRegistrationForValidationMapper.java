@@ -17,6 +17,7 @@ public class UserClientRegistrationForValidationMapper {
         entity.setApproval("Invalidated");
         entity.setStatus("In Active");
         Optional.ofNullable(dto.getBranch()).ifPresent(entity::setBranch);
+
         return entity;
     }
 

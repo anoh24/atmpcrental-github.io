@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
-
 import { apiUpdateUserClientValidation, apiUserClientRegistrationList } from "../../api/branchAdmin/userClientValidation";
 import Swal from "sweetalert2";
 
-
 const useUserClientValidation = () => {
   const [users, setUsers] = useState([]);
-
   const [error, setError] = useState("");
 
   // Modal + form states
@@ -14,9 +11,8 @@ const useUserClientValidation = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [validationApproval, setValidationApproval] = useState("");
 
-//show list userclient
+  // Show list of user clients
   const fetchUsers = async () => {
-
     try {
       const res = await apiUserClientRegistrationList();
       setUsers(res.data);
@@ -24,7 +20,7 @@ const useUserClientValidation = () => {
     } catch (err) {
       console.error(err);
       setError("Failed to fetch users");
-    } 
+    }
   };
 
   useEffect(() => {
@@ -59,36 +55,37 @@ const useUserClientValidation = () => {
     setValidationApproval(user.approval || "");
     setIsModalOpen(true);
   };
-//closing Modal
+
+  // Closing modal
   const closeModal = () => {
     setSelectRow(null);
     setValidationApproval("");
     setIsModalOpen(false);
   };
-  //showing Validated alert
-  const showValidatedAlert = () =>{
-    Swal.fire({
-      title:"Validated",
-      text:"User client successfully validated",
-      icon:"success",
-      width:"400px",
-      confirmButtonText:"OK",
-      confirmButtonColor:"#22c55e"
-    })
-  }
-  //user client validation
+
+  // User client validation
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!selectRow || !validationApproval) return;
 
     try {
       const updatedUser = await updateUserApproval(selectRow.customerid, validationApproval);
-            closeModal();
-            showValidatedAlert();
-      return updatedUser.data;
+      const message = updatedUser.data?.message || "You have successfully validated the account";
 
+      closeModal();
+
+      Swal.fire({
+        title: "Validated",
+        text: message,
+        icon: "success",
+        width: "400px",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#22c55e"
+      });
+
+      return updatedUser.data;
     } catch (err) {
-      console.error("User client validated:", err.updatedUser?.data || err.message);
+      console.error("User client validation failed:", err.updatedUser?.data || err.message);
     }
   };
 
@@ -102,7 +99,6 @@ const useUserClientValidation = () => {
     handleRowClick,
     closeModal,
     handleSubmit,
-    showValidatedAlert
   };
 };
 

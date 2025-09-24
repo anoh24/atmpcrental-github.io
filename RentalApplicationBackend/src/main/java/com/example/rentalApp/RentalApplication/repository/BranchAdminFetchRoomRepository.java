@@ -1,6 +1,5 @@
 package com.example.rentalApp.RentalApplication.repository;
-import com.example.rentalApp.RentalApplication.dto.BranchAdminRoomRegistrationResponseDto;
-import com.example.rentalApp.RentalApplication.dto.UserClientRegistrationForValidationResponseDto;
+
 import com.example.rentalApp.RentalApplication.entity.RoomEntity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 
 import java.util.List;
-import java.util.Optional;
+
 
 public interface BranchAdminFetchRoomRepository extends JpaRepository<RoomEntity, Integer> {
 

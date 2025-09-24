@@ -28,7 +28,7 @@ public class UserClientValidationImplementation implements UserClientValidationS
         userclientvalidationmapper.updateEntityFromDto(dto, existing);
         CustomerDetailsEntity updated = userclientvalidationrepository.save(existing);
         UserClientValidationResponseDto responseDto = userclientvalidationmapper.toDto(updated);
-        responseDto.setMessage("Account successfully validated...");
+        responseDto.setMessage("You have successfully validated the account.");
         return userclientvalidationmapper.toDto(updated);
     }
 

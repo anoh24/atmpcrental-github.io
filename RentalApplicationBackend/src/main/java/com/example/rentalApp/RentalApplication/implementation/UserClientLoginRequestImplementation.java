@@ -49,7 +49,7 @@ public class UserClientLoginRequestImplementation implements UserClientLoginRequ
 
         Optional.ofNullable(user)
                 .filter(u ->!"In Active".equalsIgnoreCase(u.getStatus()))
-                .orElseThrow(() -> new InvalidatedLoginException("Your account is not yet approved"));
+                .orElseThrow(() -> new InvalidatedLoginException("Your account is not yet approved."));
         String token = jwtUtil.generateToken(user.getEmail());
 
         return userClientLoginRequestMapper.toUserClientLoginRequestResponseDto(user, token);

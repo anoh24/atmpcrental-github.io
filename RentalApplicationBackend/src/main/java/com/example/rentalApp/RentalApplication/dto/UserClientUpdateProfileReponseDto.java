@@ -24,4 +24,5 @@ public class UserClientUpdateProfileReponseDto {
     private String approval;
     private String status;
     private String profilephoto;
+
 }

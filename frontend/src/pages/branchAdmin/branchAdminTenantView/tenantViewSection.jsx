@@ -32,13 +32,16 @@ const TenantView = () => {
   const renderUsers = () => {
     return users
       .filter((user) =>
-        user.fullname.toLowerCase().includes(searchTerm.toLowerCase())
+         (user.fullname || "").toLowerCase().includes(searchTerm.toLowerCase())
       )
       .map((user) => (
         <tr
           key={user.customerid}
           onClick = {() => fetchUsersClient(user.customerid)}
+              onTouchStart={() => fetchUsersClient(user.customerid)}
           onDoubleClick={() => handleRowClick(user)}
+          onContextMenu={() => handleRowClick(user)}
+      
           className="border-t hover:bg-gray-50 cursor-pointer"
         >
           <td className="p-3">{user.fullname}</td>
@@ -150,7 +153,7 @@ const TenantView = () => {
           </div>
 
           {/* Scrollable wrapper */}
-          <div className="overflow-x-auto max-h-60 overflow-y-auto">
+          <div className="overflow-x-auto max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
             <table className="text-sm text-black table-fixed w-full">
               <thead className="sticky top-0 bg-gray-200 z-10">
                 <tr>

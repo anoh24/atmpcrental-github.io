@@ -33,7 +33,7 @@ public class BranchAdminRoomRegistrationServiceImplementation implements BranchA
         RoomEntity entity = branchAdminRoomRegistrationMapper.toEntity(dto);
         RoomEntity save = branchAdminRoomRegistrationRepository.save(entity);
         BranchAdminRoomRegistrationResponseDto responseDto = branchAdminRoomRegistrationMapper.toDto(save);
-        responseDto.setMessage("Room added successfully");
+        responseDto.setMessage("You have successfully added Room.");
         return responseDto;
     }
 

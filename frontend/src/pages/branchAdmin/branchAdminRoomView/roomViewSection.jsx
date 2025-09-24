@@ -2,10 +2,16 @@ import React from 'react';
 import userClientRoomList from '../../../hooks/branchAdmin/userClientRoomList';
 
 const RoomView = () => {
-  const{
-            addRoom, 
+  const{    
+            handleChangeUpdate,
+            updateFormData,
+            handleSubmitUpdate,
+            errorUpdate,
             occupants,
-            fetchRoomUserClientsOccupants,
+            isModalAddRoom,
+            isModalUpdateRoom,
+            handleRowClick,
+            hideUpdateRoomModal,
             showAddRoomModal, 
             hideAddRoomModal,
             handleChange,
@@ -49,7 +55,7 @@ const RoomView = () => {
         <div className="bg-white rounded-xl shadow-md p-6 border mt-10 mb-10">
           <h2 className="text-lg font-bold text-black mb-4">🏘️ Rooms List</h2>
           <button onClick={showAddRoomModal} className="bg-green-500 text-white text-xs px-3 py-1 mb-2 rounded hover:bg-green-600">Add Room</button>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
              <table className="w-full text-sm text-black">
       <thead>
         <tr className="bg-gray-200">
@@ -60,33 +66,50 @@ const RoomView = () => {
           <th className="text-left p-3">Occupants</th>
         </tr>
       </thead>
-      <tbody>
-        {rooms.map((room) => (
-          <tr key={room.roomid} className="border-t hover:bg-gray-50 cursor-pointer">
-            <td className="p-3">{room.roomnumber}</td>
-            <td className="p-3">{room.capacity}</td>
-            <td className={`p-3 font-semibold ${room.status === "Available" ? "text-green-600" : "text-red-600"}`}>
-              {room.status}
-            </td>
-            <td className="p-3">₱{room.monthlyrent}</td>
-            <td className="p-3">
-              <select className="bg-white text-black border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-black">
-                <option>-- Show Occupant --</option>
-                {(occupants[room.roomid] || []).map((fullname, index) => (
-                  <option key={index} value={fullname}>
-                    {fullname}
-                  </option>
-                ))}
-              </select>
-            </td>
-          </tr>
-        ))}
-      </tbody>
+        <tbody>
+          {rooms.map((room) => {
+            // Count current occupants for this room
+            const roomOccupants = occupants[room.roomid] || [];
+            const isOccupied = roomOccupants.length >= room.capacity;
+
+            return (
+              <tr key={room.roomid}
+              onDoubleClick ={() => handleRowClick(room)}
+              onContextMenu={() => handleRowClick(room)}
+              className="border-t hover:bg-gray-50 cursor-pointer">
+                <td className="p-3">{room.roomnumber}</td>
+                <td className="p-3">{room.capacity}</td>
+
+                {/* Status based on occupants vs capacity */}
+                <td
+                  className={`p-3 font-semibold ${
+                    isOccupied ? "text-red-600" : "text-green-600"
+                  }`}
+                >
+                  {isOccupied ? "Occupied" : "Available"}
+                </td>
+
+                <td className="p-3">₱{room.monthlyrent}</td>
+
+                <td className="p-3">
+                  <select className="bg-white text-black border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-black">
+                    <option>-- Show Occupant --</option>
+                    {roomOccupants.map((fullname, index) => (
+                      <option key={index} value={fullname}>
+                        {fullname}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
     </table>
           </div>
         </div>
         {/* show add room modal */}
-      {addRoom &&(
+      {isModalAddRoom &&(
         <div className="fixed inset-0 px-6 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white text-white rounded-lg p-6 w-[90%] max-w-md shadow-lg">
             <h2 className="text-xl text-black font-semibold mb-4">Add Room</h2>
@@ -153,7 +176,74 @@ const RoomView = () => {
           </div>
         </div>
       )}
-        
+              {/* show update room modal */}
+      {isModalUpdateRoom &&(
+        <div className="fixed inset-0 px-6 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white text-white rounded-lg p-6 w-[90%] max-w-md shadow-lg">
+            <h2 className="text-xl text-black font-semibold mb-4">Update Room</h2>
+            <form onSubmit={handleSubmitUpdate}>
+              <div className="mb-4">
+                <label className="text-black font-medium text-sm mb-1">Room #</label>
+                <input
+                  name="roomnumber"
+                  type="text"
+                  value={updateFormData?.roomnumber || ""}
+                  onChange={handleChangeUpdate}
+                  className="bg-white text-black border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-black"
+                />
+                  {errorUpdate.roomnumber && (
+                <p className="text-red-500 text-sm">{errorUpdate.roomnumber}</p>
+              )}
+              </div>
+                <div className="mb-4">
+                <label className="text-black font-medium text-sm mb-1">Capacity</label>
+                <input
+                  name="capacity"
+                  type="text"
+                  value={updateFormData?.capacity || ""}
+                  onChange={handleChangeUpdate}
+                  className="bg-white text-black border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-black"
+                />
+                  {errorUpdate.capacity && (
+                <p className="text-red-500 text-sm">{errorUpdate.capacity}</p>
+              )}
+              </div>
+              <div className="mb-4 relative">
+                <label className="text-black font-medium text-sm mb-1">Monthly Rent</label>
+                  <span className="absolute left-3 top-8 text-black pointer-events-none select-none">
+                    PHP
+                  </span>
+                <input
+                  name="monthlyrent"
+                  type="text"
+                  value={updateFormData?.monthlyrent || ""}
+                  onChange={handleChangeUpdate}
+                  className="bg-white text-black border border-gray-300 rounded-lg  py-2 px-12 w-full focus:outline-none focus:ring-1 focus:ring-black"
+                  placeholder ="0.00"
+                />
+                  {errorUpdate.monthlyrent && (
+                <p className="text-red-500 text-sm">{errorUpdate.monthlyrent}</p>
+              )}
+              </div>
+
+              <div className="flex justify-end gap-2">
+                <button onClick={hideUpdateRoomModal}
+                  type="button"
+                  className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  className="bg-green-700 hover:bg-green-500 text-white px-4 py-2 rounded"
+                >
+                  Update Room
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
         {/* Room Requests Table */}
         <div className="bg-white rounded-xl shadow-md p-6 border">

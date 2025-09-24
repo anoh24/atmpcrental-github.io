@@ -17,5 +17,10 @@ export const apiuserClientRoomOccupantsList = async (roomid) => {
     headers: { "Content-Type": "application/json" },
   });
 };
+export const apibranchroomupdate = async (roomid,data) => {
+  return await axios.put(`${API_URL}/apiUpdateRoom/${roomid}`, data,{
+    headers: { "Content-Type": "application/json" },
+  });
+};
 
 

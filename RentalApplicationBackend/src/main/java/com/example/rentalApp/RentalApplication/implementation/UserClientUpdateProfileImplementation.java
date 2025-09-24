@@ -38,7 +38,7 @@ public class UserClientUpdateProfileImplementation implements UserClientUpdatePr
         userClientUpdateProfileMapper.UpdateEntityFromDto(dto, existing);
         CustomerDetailsEntity updated = userClientUpdateProfileRepository.save(existing);
         UserClientUpdateProfileReponseDto responseDto = userClientUpdateProfileMapper.toDto(updated);
-        responseDto.setMessage("User profile update successfully");
+        responseDto.setMessage("Your profile information has been saved successfully.");
         return userClientUpdateProfileMapper.toDto(updated);
     }
 
