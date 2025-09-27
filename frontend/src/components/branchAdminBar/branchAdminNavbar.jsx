@@ -6,7 +6,8 @@ import {
   HiOutlineHomeModern,
   HiOutlineCreditCard,
   HiOutlineExclamationCircle,
-  HiOutlineLockClosed
+  HiOutlineLockClosed,
+  HiOutlineEnvelope
 
 } from 'react-icons/hi2';
 import { NavLink } from 'react-router-dom';
@@ -51,6 +52,12 @@ export default function BranchAdminBar() {
           <HiOutlineHomeModern className="text-xl" />
           {resizeSidebar && 'Rooms'}
         </NavLink>
+
+          <NavLink to="/branchAdmin/branchAdminMessagesView/branchAdminMessagePage" className={({ isActive }) =>
+          `flex items-center gap-4 text-sm font-oswald hover:bg-green-500 rounded-md p-2 ${isActive ? 'text-green-600 font-extrabold' : 'text-black'}`}>
+            <HiOutlineEnvelope className="text-xl"/>
+               {resizeSidebar && 'Messages'}
+           </NavLink>
 
         <NavLink to="/branchAdmin/branchAdminBillingView/branchAdminBillingViewPage" className={({ isActive }) =>
           `flex items-center gap-4 text-sm font-oswald hover:bg-green-500 rounded-md p-2 ${isActive ? 'text-green-600 font-extrabold' : 'text-black'}`}>

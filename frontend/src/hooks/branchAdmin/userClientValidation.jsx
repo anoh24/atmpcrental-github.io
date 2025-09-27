@@ -70,7 +70,7 @@ const useUserClientValidation = () => {
 
     try {
       const updatedUser = await updateUserApproval(selectRow.customerid, validationApproval);
-      const message = updatedUser.data?.message || "You have successfully validated the account";
+      const message = updatedUser.data?.message || "You have successfully validated the account.";
 
       closeModal();
 

@@ -13,6 +13,7 @@ import BranchAdminDashboardTenantViewPage from './pages/branchAdmin/branchAdminT
 import BranchAdminRoomViewPage from './pages/branchAdmin/branchAdminRoomView/branchAdminRoomViewPage';
 import BranchAdminBillingViewPage from './pages/branchAdmin/branchAdminBillingView/branchAdminBillingViewPage';
 import BranchAdminNotificationViewPage from './pages/branchAdmin/branchAdminNotificationView/branchAdminNotificationViewPage';
+import BranchAdminMessagePage from './pages/branchAdmin/branchAdminMessagesView/branchAdminMessagePage';
 //customer admin account section
 import CustomerAdminMainDashboardPage from './pages/customerAdminAccount/customerAdminDashboardView/customerAdminMainDashboardPage';
 import CustomerAdminAccountProfilePage from './pages/customerAdminAccount/customerAdminAccountProfileView/customerAdminAccountProfilePage';
@@ -73,6 +74,7 @@ function App() {
         >
 
         </Route>
+
           <Route
          path="/branchAdmin/branchAdminRoomView/branchAdminRoomViewPage"
          element={
@@ -81,7 +83,16 @@ function App() {
           </BranchAdminLayout>
          }
         >
+        </Route>
 
+        <Route
+        path="/branchAdmin/branchAdminMessagesView/branchAdminMessagePage"
+        element={
+          <BranchAdminLayout>
+          <BranchAdminMessagePage/>
+          </BranchAdminLayout>
+          }
+          >
         </Route>
 
         <Route
